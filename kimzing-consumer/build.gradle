@@ -1,0 +1,6 @@
+description '消费方服务示例'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'com.alibaba.cloud:spring-cloud-starter-dubbo'
+}

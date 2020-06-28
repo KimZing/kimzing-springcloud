@@ -1,8 +1,96 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '2.3.0.RELEASE' apply false
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE' apply false
 }
 
-group 'com.kimzing'
-version '1.0.0-SNAPSHOT'
+ext {
+    // SpringCloud项目
+    cloudProjects = subprojects.findAll { it.name.startsWith('server-') || it.name.startsWith('kimzing-')}
+    // 业务开发项目
+    javaProjects = subprojects.findAll { it.name.startsWith('kimzing-') }
+    // 版本声明
+    springBootAdminVersion = '2.2.3'
+    springCloudAlibabaVersion = '2.2.1.RELEASE'
+    springCloudVersion = 'Hoxton.SR4'
+}
 
-sourceCompatibility = 1.8
+// 所有项目公共配置
+allprojects {
+    apply plugin: 'java'
+
+    group 'org.kimzing'
+    version '0.0.1-SNAPSHOT'
+    sourceCompatibility = '1.8'
+
+    repositories {
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'http://mvn.kimzing.com/nexus/content/repositories/snapshots/' }
+        mavenCentral()
+    }
+}
+
+// cloud生态项目配置
+configure (cloudProjects) {
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    configurations {
+        // 使compileOnly包含annotationProcessor的集合
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+        // 使testCompileOnly包含testAnnotationProcessor的集合
+        testCompileOnly {
+            extendsFrom testAnnotationProcessor
+        }
+    }
+
+    dependencies {
+        // 健康监测
+        implementation 'org.springframework.boot:spring-boot-starter-actuator'
+        // admin监控客户端
+        implementation 'de.codecentric:spring-boot-admin-starter-client'
+        // nacos 配置查找
+        //implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config'
+        // nacos 注册发现
+        implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery'
+        // 测试依赖
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+            // 排除对老版本测试的兼容
+            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        }
+    }
+
+    // 依赖管理
+    dependencyManagement {
+        imports {
+            mavenBom "de.codecentric:spring-boot-admin-dependencies:${springBootAdminVersion}"
+            mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+
+    test {
+        // 使用junit5
+        useJUnitPlatform()
+    }
+
+}
+
+
+// 开发项目公共配置
+configure (javaProjects) {
+    dependencies {
+        // openfeign接口调用
+        implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+        // JSR303校验
+        implementation 'org.springframework.boot:spring-boot-starter-validation'
+        // 生成配置解析
+        annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+        // lombok
+        annotationProcessor 'org.projectlombok:lombok'
+        testAnnotationProcessor 'org.projectlombok:lombok'
+    }
+
+}

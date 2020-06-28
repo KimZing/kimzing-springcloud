@@ -1,0 +1,23 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: kimzing-gateway
+  cloud:
+    nacos:
+      # Nacos注册发现
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+management:
+  endpoints:
+    jmx:
+      exposure:
+        include: '*'
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

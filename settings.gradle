@@ -1,1 +1,6 @@
 rootProject.name = 'kimzing-springcloud'
+
+include 'kimzing-consumer'
+include 'kimzing-gateway'
+include 'kimzing-provider'
+include 'server-admin'

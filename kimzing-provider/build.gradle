@@ -1,0 +1,8 @@
+description '生产方服务示例'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'com.alibaba.cloud:spring-cloud-starter-dubbo'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    runtimeOnly 'mysql:mysql-connector-java'
+}
