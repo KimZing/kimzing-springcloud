@@ -10,11 +10,12 @@ spring:
         server-addr: localhost:8848
         username: nacos
         password: nacos
+        metadata:
+          # 当应用自身带有认证时，需要向注册中心提供自己的用户密码，admin server才能正常获取到信息
+          user.name: kimzing
+          user.password: 123456
 management:
   endpoints:
-    jmx:
-      exposure:
-        include: '*'
     web:
       exposure:
         include: '*'

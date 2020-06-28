@@ -12,9 +12,6 @@ spring:
         password: nacos
 management:
   endpoints:
-    jmx:
-      exposure:
-        include: '*'
     web:
       exposure:
         include: '*'

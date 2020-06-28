@@ -8,3 +8,11 @@
 ## TODO
 
 端口规范文档
+
+需要创建一个模板项目-全量的功能
+
+springboot admin动态查看日志功能
+
+添加整理日志logback
+
+Dockerfile
