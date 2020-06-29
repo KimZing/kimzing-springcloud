@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: kimzing-consumer
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+        group: business
+        username: dev
+        password: 123456
+        namespace: ${spring.profiles.active}
+        # 配置公共的属性
+        extension-configs:
+          - data-id: management.yaml
+            group: business
+            refresh: true

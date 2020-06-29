@@ -2,7 +2,6 @@ description '服务监控'
 
 dependencies {
     implementation 'de.codecentric:spring-boot-admin-starter-server'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
     // 安全访问
     implementation 'org.springframework.boot:spring-boot-starter-security'
     // 发送邮件通知

@@ -52,7 +52,7 @@ configure (cloudProjects) {
         // admin监控客户端
         implementation 'de.codecentric:spring-boot-admin-starter-client'
         // nacos 配置查找
-        //implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config'
+        implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config'
         // nacos 注册发现
         implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery'
         // 测试依赖

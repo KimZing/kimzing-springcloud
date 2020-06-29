@@ -3,17 +3,50 @@ server:
 spring:
   application:
     name: server-admin
+  # 配置发送告警的邮箱
+  mail:
+    host: smtp.163.com
+    username: kimnotice@163.com
+    password: Kim123456
+    default-encoding: utf-8
+    port: 465
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+  boot:
+    admin:
+      notify:
+        mail:
+          # 配置邮件通知开关
+          enabled: false
+          # 告警发件人
+          from: ${spring.mail.username}
+          # 告警收件人
+          to: kimzing@163.com
   cloud:
     nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+        namespace: dev
+        group: server
+        username: dev
+        password: 123456
       # Nacos注册发现
       discovery:
         server-addr: localhost:8848
-        username: nacos
-        password: nacos
+        namespace: dev
+        group: server
+        username: dev
+        password: 123456
         metadata:
           # 当应用自身带有认证时，需要向注册中心提供自己的用户密码，admin server才能正常获取到信息
-          user.name: kimzing
+          user.name: admin
           user.password: 123456
+
 management:
   endpoints:
     web:
