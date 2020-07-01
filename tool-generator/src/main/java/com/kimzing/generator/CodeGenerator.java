@@ -96,9 +96,11 @@ public class CodeGenerator {
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         // strategy.setSuperEntityClass("你自己的父类实体,没有就不用设置!");
+        //TODO 逻辑删除， 另外生成api和服务的包要分开
+        // strategy.setLogicDeleteFieldName()
         strategy.setEntityLombokModel(true);
         // 写于父类中的公共字段
-        strategy.setSuperEntityColumns("id");
+        strategy.setSuperEntityColumns("id", "creater", "modifier", "create_time", "modify_time");
         strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
         return strategy;
     }
