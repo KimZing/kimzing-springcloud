@@ -5,10 +5,14 @@ plugins {
 }
 
 ext {
-    // SpringCloud项目
-    cloudProjects = subprojects.findAll { it.name.startsWith('server-') || it.name.startsWith('kimzing-')}
+    // SpringCloud公共组件项目
+    serverProjects = subprojects.findAll {it.name.startsWith('server-')}
+    // 网关服务
+    gatewayProjects = project(":gateway")
+    // 入口聚合项目
+    entryProjects = subprojects.findAll {it.name.startsWith('entry-')}
     // 业务开发项目
-    javaProjects = subprojects.findAll { it.name.startsWith('kimzing-') }
+    businessProjects = subprojects.findAll { it.name.startsWith('service-') } - project(':service-api')
     // 版本声明
     springBootAdminVersion = '2.2.3'
     springCloudAlibabaVersion = '2.2.1.RELEASE'
@@ -19,21 +23,9 @@ ext {
 allprojects {
     apply plugin: 'java'
 
-    group 'org.kimzing'
+    group 'com.kimzing'
     version '0.0.1-SNAPSHOT'
     sourceCompatibility = '1.8'
-
-    repositories {
-        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url 'http://mvn.kimzing.com/nexus/content/repositories/snapshots/' }
-        mavenCentral()
-    }
-}
-
-// cloud生态项目配置
-configure (cloudProjects) {
-    apply plugin: 'org.springframework.boot'
-    apply plugin: 'io.spring.dependency-management'
 
     configurations {
         // 使compileOnly包含annotationProcessor的集合
@@ -45,6 +37,25 @@ configure (cloudProjects) {
             extendsFrom testAnnotationProcessor
         }
     }
+
+    repositories {
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'http://mvn.kimzing.com/nexus/content/repositories/snapshots/' }
+        mavenCentral()
+    }
+
+    dependencies {
+        // lombok
+        annotationProcessor 'org.projectlombok:lombok:1.18.12'
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+    }
+
+}
+
+// SpringCloud生态项目配置
+configure(serverProjects + gatewayProjects + entryProjects + businessProjects) {
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
 
     dependencies {
         // 健康监测
@@ -80,17 +91,22 @@ configure (cloudProjects) {
 
 
 // 开发项目公共配置
-configure (javaProjects) {
+configure(businessProjects + entryProjects) {
     dependencies {
+        // 公共api模块
+        implementation project(':service-api')
+        // 自定义starter, 提供各种功能
+        implementation 'com.kimzing:kimzing-springboot-starter:1.0.0-SNAPSHOT'
+        // dubbo依赖
+        implementation 'com.alibaba.cloud:spring-cloud-starter-dubbo'
+        // webmvc
+        implementation 'org.springframework.boot:spring-boot-starter-web'
         // openfeign接口调用
         implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
         // JSR303校验
         implementation 'org.springframework.boot:spring-boot-starter-validation'
         // 生成配置解析
         annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-        // lombok
-        annotationProcessor 'org.projectlombok:lombok'
-        testAnnotationProcessor 'org.projectlombok:lombok'
     }
 
 }

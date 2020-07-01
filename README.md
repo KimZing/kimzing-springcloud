@@ -18,3 +18,6 @@ springboot admin动态查看日志功能
 Dockerfile
 
 换underw容器
+
+添加常用枚举类
+

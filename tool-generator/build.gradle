@@ -1,0 +1,6 @@
+description 'MyBatis Plus 代码生成'
+
+dependencies {
+    implementation 'com.baomidou:mybatis-plus-generator:3.3.2'
+    runtimeOnly 'mysql:mysql-connector-java:5.1.48'
+}
