@@ -40,11 +40,13 @@ allprojects {
 
     repositories {
         maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url 'http://mvn.kimzing.com/nexus/content/repositories/snapshots/' }
+        maven { url 'http://mvn.kimzing.com/nexus/content/repositories/releases/' }
         mavenCentral()
     }
 
     dependencies {
+        // 自定义工具项目, 提供各种工具
+        implementation 'com.kimzing:kimzing-utils:1.0.0'
         // lombok
         annotationProcessor 'org.projectlombok:lombok:1.18.12'
         testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
@@ -96,7 +98,7 @@ configure(businessProjects + entryProjects) {
         // 公共api模块
         implementation project(':service-api')
         // 自定义starter, 提供各种功能
-        implementation 'com.kimzing:kimzing-springboot-starter:1.0.0-SNAPSHOT'
+        implementation 'com.kimzing:kimzing-springboot-starter:1.0.0'
         // dubbo依赖
         implementation 'com.alibaba.cloud:spring-cloud-starter-dubbo'
         // webmvc
