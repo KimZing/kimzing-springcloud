@@ -1,6 +1,6 @@
 package com.kimzing.user.domain.user;
 
-import com.kimzing.user.domain.car.CarSaveDTO;
+import com.kimzing.user.domain.car.CarUpdateDTO;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -44,6 +44,6 @@ public class UserUpdateDTO implements Serializable {
     /**
      * 车辆信息
      */
-    private List<CarSaveDTO> cars;
+    private List<CarUpdateDTO> carList;
 
 }

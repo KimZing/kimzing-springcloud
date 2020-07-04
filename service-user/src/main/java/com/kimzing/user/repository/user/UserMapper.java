@@ -1,11 +1,12 @@
 package com.kimzing.user.repository.user;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.kimzing.user.domain.user.UserBO;
 import com.kimzing.user.domain.user.UserPO;
 import com.kimzing.user.domain.user.UserQueryDTO;
-import com.kimzing.utils.page.PageParam;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 用户信息仓储.
@@ -33,7 +34,7 @@ public interface UserMapper {
      * 根据ID更新用户信息
      * @param userPO
      */
-    void updateById(UserPO userPO);
+    void update(UserPO userPO);
 
     /**
      * 根据ID查询用户信息
@@ -44,10 +45,10 @@ public interface UserMapper {
 
     /**
      * 分页查询用户信息
-     * @param pageParam
+     * @param page
      * @param userQueryDTO
      * @return
      */
-    IPage<UserBO> selectPage(PageParam pageParam, UserQueryDTO userQueryDTO);
+    IPage<UserBO> selectPage(Page<UserBO> page, @Param("query") UserQueryDTO userQueryDTO);
 
 }

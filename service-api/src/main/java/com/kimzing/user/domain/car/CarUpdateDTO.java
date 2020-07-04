@@ -1,5 +1,6 @@
 package com.kimzing.user.domain.car;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -33,6 +34,7 @@ public class CarUpdateDTO implements Serializable {
     /**
      * 车辆购买时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime buyTime;
 
 }

@@ -1,4 +1,4 @@
-description '生产者服务'
+description '用户服务'
 
 dependencies {
     implementation 'com.baomidou:mybatis-plus-boot-starter:3.1.2'

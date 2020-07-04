@@ -13,6 +13,17 @@ knife4j:
     # 密码
     password: 123456
 
+# Swagger配置
+swagger:
+  title: App聚合服务
+  description: 聚合各模块的服务接口
+  termsOfServiceUrl: http://localhost:9002/app
+  authorName: KimZing
+  authorEmail: kimzing@163.com
+  authorUrl: http://kimzing.com
+  version: 1.0.0
+  basePackage: com.kimzing
+
 spring:
   application:
     name: entry-app

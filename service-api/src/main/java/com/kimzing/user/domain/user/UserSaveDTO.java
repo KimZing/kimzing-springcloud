@@ -39,6 +39,6 @@ public class UserSaveDTO implements Serializable {
     /**
      * 车辆信息
      */
-    private List<CarSaveDTO> cars;
+    private List<CarSaveDTO> carList;
 
 }

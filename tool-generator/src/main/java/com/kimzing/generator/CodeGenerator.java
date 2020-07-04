@@ -122,6 +122,7 @@ public class CodeGenerator {
     private static GlobalConfig getGlobalConfig() {
         GlobalConfig globalConfig = new GlobalConfig();
         globalConfig.setOutputDir(outputDir);
+        globalConfig.setSwagger2(true);
         globalConfig.setAuthor(author);
         globalConfig.setOpen(needOpenDir);
         globalConfig.setBaseResultMap(baseResultMap);

@@ -44,6 +44,6 @@ public class UserBO implements Serializable {
     /**
      * 车辆信息
      */
-    private List<CarBO> cars;
+    private List<CarBO> carList;
 
 }

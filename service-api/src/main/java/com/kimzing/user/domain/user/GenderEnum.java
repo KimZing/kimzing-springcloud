@@ -8,8 +8,8 @@ package com.kimzing.user.domain.user;
  */
 public enum GenderEnum {
 
-    WOMAN("女"),
-    MAN("男"),
+    FEMALE("女"),
+    MALE("男"),
     SECRET("保密");
 
     private String name;

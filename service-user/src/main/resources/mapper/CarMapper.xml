@@ -2,7 +2,52 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kimzing.user.repository.car.CarMapper">
 
-    <insert id="insertCarList"></insert>
-    <update id="updateCarListByUserId"></update>
-    <delete id="deleteByUserId"></delete>
+    <insert id="insertList">
+        INSERT INTO `car` (<include refid="po_column"></include>) VALUES
+        <foreach item="item" collection="carPOList" open="(" close=")" separator=",">
+            #{userId},#{item.brand},#{item.price},#{item.buyTime}
+        </foreach>
+    </insert>
+
+    <update id="deleteByUserId">UPDATE `car` SET deleted = 1 WHERE user_id = #{userId}</update>
+
+    <update id="updateListByUserId">
+        <foreach item="item" collection="carPOList" separator=";">
+            <choose>
+                <when test="item.id != null">
+                    UPDATE `car`
+                    <set>
+                        <if test="item.brand != null">brand = #{item.brand},</if>
+                        <if test="item.price != null">price = #{item.price},</if>
+                        <if test="item.buyTime != null">buy_time = #{item.buyTime},</if>
+                    </set>
+                    WHERE id = #{item.id} AND user_id = #{userId}
+                </when>
+                <otherwise>
+                    INSERT INTO `car`(<include refid="po_column"></include>)
+                    VALUES(#{userId},#{item.brand},#{item.price},#{item.buyTime})
+                </otherwise>
+            </choose>
+        </foreach>
+    </update>
+
+    <select id="selectCarListByUserId" resultType="com.kimzing.user.domain.car.CarBO">
+        SELECT * FROM `car` WHERE user_id = #{userId} AND deleted = 0
+    </select>
+
+    <!-- 通用查询结果列 -->
+    <sql id="all_column">
+        id,
+        deleted,
+        creator,
+        modifier,
+        create_time,
+        modify_time,
+        brand, price, buy_time
+    </sql>
+
+    <!-- 通用查询结果列 -->
+    <sql id="po_column">
+        user_id, brand, price, buy_time
+    </sql>
 </mapper>

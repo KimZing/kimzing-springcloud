@@ -18,6 +18,11 @@ import java.time.LocalDateTime;
 public class CarPO extends AbstractPO {
 
     /**
+     * 用户ID
+     */
+    private Integer userId;
+
+    /**
      * 车辆品牌
      */
     private String brand;

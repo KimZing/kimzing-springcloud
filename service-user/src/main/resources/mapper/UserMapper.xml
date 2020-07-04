@@ -3,9 +3,58 @@
 <mapper namespace="com.kimzing.user.repository.user.UserMapper">
 
     <insert id="insert">
+        INSERT INTO `user`(<include refid="po_column"></include>) VALUES(#{username},#{age},#{amount},#{gender});
     </insert>
-    <update id="updateById"></update>
-    <delete id="delete"></delete>
-    <select id="select" resultType="com.kimzing.user.domain.user.UserBO"></select>
-    <select id="selectPage" resultType="com.kimzing.user.domain.user.UserBO"></select>
+
+    <update id="update">
+        UPDATE `user`
+        <set>
+            <if test="username != null">username = #{username},</if>
+            <if test="age != null">age = #{age},</if>
+            <if test="amount != null">amount = #{amount},</if>
+            <if test="gender != null">gender = #{gender},</if>
+        </set>
+        WHERE id = #{id};
+    </update>
+
+    <update id="delete">
+        UPDATE `user` SET deleted = 1 WHERE id = #{id}
+    </update>
+
+    <select id="select" resultMap="allResultWithCarList" resultType="com.kimzing.user.domain.user.UserBO">
+        SELECT <include refid="all_column"></include> FROM `user` WHERE id = #{id} AND deleted = 0
+    </select>
+
+    <select id="selectPage" resultType="com.kimzing.user.domain.user.UserBO">
+        SELECT <include refid="all_column"></include> FROM `user`
+        <where>
+            <if test="query.ageFrom != null">AND age &gt;= #{query.ageFrom}</if>
+            <if test="query.ageTo != null">AND age &lt;= #{query.ageTo}</if>
+            <if test="query.gender != null">AND gender = #{query.gender}</if>
+            <if test="query.carNumGreaterThan != null">AND id IN (SELECT c.user_id FROM `car` c WHERE c.deleted = 0
+                GROUP BY c.user_id HAVING COUNT(id) > #{query.carNumGreaterThan})
+            </if>
+        </where>
+    </select>
+
+    <resultMap id="allResultWithCarList" type="com.kimzing.user.domain.user.UserBO">
+        <result property="id" column="id"/>
+        <collection property="carList" column="id" select="com.kimzing.user.repository.car.CarMapper.selectCarListByUserId"></collection>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="all_column">
+        id,
+        deleted,
+        creator,
+        modifier,
+        create_time,
+        modify_time,
+        username, age, amount, gender
+    </sql>
+
+    <!-- 通用查询结果列 -->
+    <sql id="po_column">
+        username, age, amount, gender
+    </sql>
 </mapper>

@@ -1,0 +1,57 @@
+### 基础信息
+@host=http://localhost:9002/app/user
+
+### 保存用户
+POST {{host}}
+Content-Type: application/json
+
+{
+  "username": "kimzing3",
+  "age": 18,
+  "gender": "MALE",
+  "amount": 100,
+  "carList": [
+    {
+      "brand": "宝马",
+      "price": 1,
+      "buyTime": "2020-07-02 12:00"
+    }
+  ]
+}
+
+### 移除用户
+DELETE {{host}}/1
+
+### 更新用户
+PUT {{host}}
+Content-Type: application/json
+
+{
+  "id": 1,
+  "username": "kimzing",
+  "age": 18,
+  "gender": "MALE",
+  "amount": 100,
+  "carList": [
+    {
+      "id": 1,
+      "brand": "宝马3系",
+      "price": 400000,
+      "buyTime": "2020-07-02 12:00"
+    },
+    {
+      "brand": "奥迪A8",
+      "price": 800000,
+      "buyTime": "2019-07-02 12:00"
+    }
+  ]
+}
+
+### 通过用户ID查询单个用户
+GET {{host}}/1
+
+### 分页查询用户
+GET {{host}}/list?{"ageFrom":1,"ageTo":20,"gender":"MALE","carNumGreaterThan":1}&pageNum=1&pageSize=10
+
+### 查询用户及订单信息
+GET {{host}}/user-order/2?pageNum=1&pageSize=10
