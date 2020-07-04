@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: service-order
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      server-addr: ${nacos-server-addr:localhost:8848}
+      username: ${nacos-username:dev}
+      password: ${nacos-password:123456}
+      discovery:
+        namespace: ${spring.profiles.active}
+      config:
+        namespace: ${spring.profiles.active}
+        file-extension: yaml
+        max-retry: 3
+        # 共享配置
+        extension-configs:
+          - data-id: actuator.yaml
+            refresh: true
+          - data-id: dubbo.yaml
+            refresh: true
+
+# DataSource Config
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springcloud?setUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456

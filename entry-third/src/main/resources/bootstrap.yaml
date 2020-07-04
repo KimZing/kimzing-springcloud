@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: entry-app
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      server-addr: ${nacos-server-addr:localhost:8848}
+      username: ${nacos-username:dev}
+      password: ${nacos-password:123456}
+      discovery:
+        namespace: ${spring.profiles.active}
+      config:
+        namespace: ${spring.profiles.active}
+        file-extension: yaml
+        max-retry: 3
+        # 共享配置
+        extension-configs:
+          - data-id: actuator.yaml
+            refresh: true
+          - data-id: dubbo.yaml
+            refresh: true
