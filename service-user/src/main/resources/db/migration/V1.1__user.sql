@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `user`
     `create_time` datetime       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `modify_time` datetime       NOT NUll DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     PRIMARY KEY (`id`),
-    KEY `index_gender` (`gender`) USING BTREE COMMENT '性别'
+    KEY `index_gender` (`gender`) USING BTREE COMMENT '性别',KEY `index_username` (`username`) USING BTREE COMMENT '用户名'
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_general_ci

@@ -9,7 +9,7 @@ import lombok.Data;
  * @since 2020/7/2 01:08
  */
 @Data
-public class CreateUserEvent {
+public class UserCreatedEvent {
 
     /**
      * 用户ID

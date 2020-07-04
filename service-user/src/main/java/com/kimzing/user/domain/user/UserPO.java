@@ -1,24 +1,20 @@
 package com.kimzing.user.domain.user;
 
-import com.kimzing.enums.GenderEnum;
 import com.kimzing.utils.po.AbstractPO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * <p>
- * 
- * </p>
+ * 用户信息持久化对象.
  *
- * @author MybatisPlus Generator
- * @since 2020-07-02
+ * @author KimZing - kimzing@163.com
+ * @since 2020/7/4 15:25
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class UserPO extends AbstractPO implements Serializable {
+public class UserPO extends AbstractPO {
 
     /**
      * 用户名

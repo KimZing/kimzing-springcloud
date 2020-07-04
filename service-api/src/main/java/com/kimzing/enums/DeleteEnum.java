@@ -1,19 +1,19 @@
 package com.kimzing.enums;
 
 /**
- * 启用禁用状态.
+ * 是否删除.
  *
  * @author KimZing - kimzing@163.com
- * @since 2020/7/3 17:55
+ * @since 2020/7/4 14:42
  */
-public enum StatusEnum {
+public enum DeleteEnum {
 
-    ENABLE("启用"),
-    DISABLE("禁用");
+    DELETED("已删除"),
+    NOT_DELETE("未删除");
 
     private String name;
 
-    StatusEnum(String name) {
+    DeleteEnum(String name) {
         this.name = name;
     }
 

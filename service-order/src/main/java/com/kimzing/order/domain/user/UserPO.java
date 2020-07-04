@@ -1,6 +1,6 @@
 package com.kimzing.order.domain.user;
 
-import com.kimzing.enums.GenderEnum;
+import com.kimzing.user.domain.user.GenderEnum;
 import com.kimzing.utils.po.AbstractPO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

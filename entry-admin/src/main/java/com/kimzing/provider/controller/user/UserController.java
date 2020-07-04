@@ -1,6 +1,6 @@
 package com.kimzing.provider.controller.user;
 
-import com.kimzing.provider.service.user.UserService;
+import com.kimzing.user.service.user.UserService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;

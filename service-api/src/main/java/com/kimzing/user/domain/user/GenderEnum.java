@@ -1,19 +1,20 @@
-package com.kimzing.enums;
+package com.kimzing.user.domain.user;
 
 /**
- * 启用禁用状态.
+ * 性别.
  *
  * @author KimZing - kimzing@163.com
- * @since 2020/7/3 17:55
+ * @since 2020/7/1 22:50
  */
-public enum StatusEnum {
+public enum GenderEnum {
 
-    ENABLE("启用"),
-    DISABLE("禁用");
+    WOMAN("女"),
+    MAN("男"),
+    SECRET("保密");
 
     private String name;
 
-    StatusEnum(String name) {
+    GenderEnum(String name) {
         this.name = name;
     }
 

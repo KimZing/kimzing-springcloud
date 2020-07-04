@@ -1,18 +1,20 @@
-package com.kimzing.provider.domain.user;
+package com.kimzing.user.domain.user;
 
-import com.kimzing.enums.GenderEnum;
+import com.kimzing.user.domain.car.CarBO;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
+ * 用户信息业务对象
  *
- * @author generator
- * @since 2020-07-01
+ * @author KimZing - kimzing@163.com
+ * @since 2020/7/4 14:30
  */
 @Data
-public class UserUpdateDTO implements Serializable {
+public class UserBO implements Serializable {
 
     /**
      * 用户ID
@@ -38,5 +40,10 @@ public class UserUpdateDTO implements Serializable {
      * 金额
      */
     private BigDecimal amount;
+
+    /**
+     * 车辆信息
+     */
+    private List<CarBO> cars;
 
 }

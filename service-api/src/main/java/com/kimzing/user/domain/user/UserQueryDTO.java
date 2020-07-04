@@ -1,15 +1,14 @@
-package com.kimzing.provider.domain.user;
+package com.kimzing.user.domain.user;
 
-import com.kimzing.enums.GenderEnum;
 import lombok.Data;
 
 import java.io.Serializable;
 
 /**
- * 用户查询.
+ * 用户信息查询对象.
  *
  * @author KimZing - kimzing@163.com
- * @since 2020/7/2 00:32
+ * @since 2020/7/4 14:30
  */
 @Data
 public class UserQueryDTO implements Serializable {
@@ -28,5 +27,10 @@ public class UserQueryDTO implements Serializable {
      * 性别
      */
     private GenderEnum gender;
+
+    /**
+     * 查询车辆数量大于条件
+     */
+    private Integer carNumGreaterThan;
 
 }
