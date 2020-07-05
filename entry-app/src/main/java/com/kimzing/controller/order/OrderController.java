@@ -1,4 +1,4 @@
-package com.kimzing.order.controller.order;
+package com.kimzing.controller.order;
 
 
 import org.springframework.web.bind.annotation.*;

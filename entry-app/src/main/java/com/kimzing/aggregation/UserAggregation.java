@@ -1,10 +1,10 @@
-package com.kimzing.user.aggregation;
+package com.kimzing.aggregation;
 
+import com.kimzing.domain.UserOrderBO;
 import com.kimzing.order.domain.order.OrderBO;
 import com.kimzing.order.domain.order.OrderQueryDTO;
 import com.kimzing.order.service.order.OrderService;
 import com.kimzing.user.domain.user.UserBO;
-import com.kimzing.user.domain.user.UserOrderBO;
 import com.kimzing.user.service.user.UserService;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
