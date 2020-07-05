@@ -1,4 +1,4 @@
-package ${package.Entity}.${cfg.packageName};
+package ${package.Entity};
 
 <#list table.importPackages as pkg>
 import ${pkg};

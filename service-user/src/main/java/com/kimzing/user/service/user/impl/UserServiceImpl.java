@@ -21,13 +21,12 @@ import static com.kimzing.user.common.utils.PageUtil.convertPage;
 import static com.kimzing.user.common.utils.PageUtil.convertPageResult;
 
 /**
- * 用户服务实现.
+ * 用户信息 服务实现类
  * <p>
- *     如果编写版本号，调用方同样需要制定版本号
+ *     如果编写version版本号，调用方同样需要制定版本号
  * </p>
- *
- * @author KimZing - kimzing@163.com
- * @since 2020/7/2 00:59
+ * @author KimZing
+ * @since 2020-07-05
  */
 @Service(protocol = "dubbo", timeout = 2000)
 public class UserServiceImpl implements UserService {
@@ -40,8 +39,6 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 保存用户信息
-     *
-     * @param userSaveDTO
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -59,9 +56,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 删除用户信息
-     *
-     * @param id
+     * 移除用户信息
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -72,8 +67,6 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 更新用户信息
-     *
-     * @param userUpdateDTO
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -88,10 +81,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 根据ID获取用户信息
-     *
-     * @param id
-     * @return
+     * 查询单个用户信息
      */
     @Override
     @Transactional(readOnly = true)
@@ -100,11 +90,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 分页并根据条件获取用户信息
-     *
-     * @param userQueryDTO
-     * @param pageParam
-     * @return
+     * 分页条件查询用户信息
      */
     @Override
     @Transactional(readOnly = true)

@@ -1,4 +1,4 @@
-package com.kimzing.user.domain.car.car;
+package com.kimzing.user.domain.car;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
