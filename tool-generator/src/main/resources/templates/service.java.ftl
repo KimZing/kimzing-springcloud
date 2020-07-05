@@ -1,12 +1,12 @@
 package ${package.Service};
 
-import ${package.Entity}.${entity};
-import ${superServiceClassPackage};
+import ${package.Entity}.${cfg.packageName}.*;
+<#--import ${superServiceClassPackage};-->
+import com.kimzing.utils.page.PageParam;
+import com.kimzing.utils.page.PageResult;
 
 /**
- * <p>
- * ${table.comment!} 服务类
- * </p>
+ * ${table.comment!} 服务接口
  *
  * @author ${author}
  * @since ${date}
@@ -16,36 +16,30 @@ interface ${table.serviceName} : ${superServiceClass}<${entity}>
 <#else>
 <#--public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {-->
 public interface ${table.serviceName} {
-    /**
-     * 保存用户
-     * @return
-     */
-    Integer save(UserSaveOrUpdateDTO userSaveDTO);
 
     /**
-     * 移除用户
-     * @return
+     * 保存${table.comment!}
      */
-    Integer remove(Integer id);
+    void save(${cfg.upperTableName}SaveDTO ${table.name}SaveDTO);
 
     /**
-     * 更新用户
-     * @return
+     * 移除${table.comment!}
      */
-    Integer update(UserSaveOrUpdateDTO userSaveDTO);
+    public void remove(Integer id);
 
     /**
-     * 通过ID查询单个用户
-     * @return
+     * 更新${table.comment!}
      */
-    UserSaveOrUpdateDTO get(Integer id);
+    public void update(${cfg.upperTableName}UpdateDTO ${table.name}UpdateDTO);
 
     /**
-     * 分页查询用户
-     * @param userQueryDTO
-     * @param pageParam
-     * @return
+     * 查询单个${table.comment!}
      */
-    List<UserSaveOrUpdateDTO> list(UserQueryDTO userQueryDTO, PageParam pageParam);
+    public ${cfg.upperTableName}BO get(Integer id);
+
+    /**
+     * 分页条件查询${table.comment!}
+     */
+    public PageResult<${cfg.upperTableName}BO> listPage(${cfg.upperTableName}QueryDTO ${table.name}QueryDTO, PageParam pageParam);
 }
 </#if>
