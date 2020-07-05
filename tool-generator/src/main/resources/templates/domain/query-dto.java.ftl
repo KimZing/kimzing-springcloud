@@ -1,11 +1,9 @@
-package ${package.Entity};
+package ${package.Entity}.${cfg.packageName};
 
-<#list table.importPackages as pkg>
-import ${pkg};
-</#list>
 <#if swagger2>
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.Serializable;
 </#if>
 <#if entityLombokModel>
 import lombok.Data;
@@ -29,14 +27,12 @@ import lombok.experimental.Accessors;
 <#if swagger2>
 @ApiModel(value="${table.comment!}查询", description="${table.comment!}")
 </#if>
-public class ${cfg.upperTableName}UpdateDTO implements Serializable {
+public class ${cfg.upperTableName}QueryDTO implements Serializable {
 
 <#if entitySerialVersionUID>
     private static final long serialVersionUID = 1L;
 </#if>
 
-    @ApiModelProperty(value = "${table.comment!}ID")
-    private Integer id;
 <#-- ----------  BEGIN 字段循环遍历  ---------->
 <#list table.fields as field>
     <#if field.keyFlag>

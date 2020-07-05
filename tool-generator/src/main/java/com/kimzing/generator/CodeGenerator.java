@@ -51,6 +51,7 @@ public class CodeGenerator {
             map.put("lowerServiceName", StringUtil.lowerFirstChar(this.getConfig().getTableInfoList().get(0).getServiceName()));
             map.put("lowerMapperName", StringUtil.lowerFirstChar(this.getConfig().getTableInfoList().get(0).getMapperName()));
             map.put("upperTableName", StringUtil.upperFirstChar(this.getConfig().getTableInfoList().get(0).getName()));
+            map.put("packageName", packageName);
             this.setMap(map);
         }};
 

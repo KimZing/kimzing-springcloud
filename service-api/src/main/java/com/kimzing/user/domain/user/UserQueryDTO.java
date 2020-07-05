@@ -1,36 +1,35 @@
 package com.kimzing.user.domain.user;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
 /**
- * 用户信息查询对象.
+ * 用户信息查询
  *
- * @author KimZing - kimzing@163.com
- * @since 2020/7/4 14:30
+ * @author KimZing
+ * @since 2020-07-05
  */
 @Data
+@Accessors(chain = true)
+@ApiModel(value="用户信息查询", description="用户信息")
 public class UserQueryDTO implements Serializable {
 
-    /**
-     * 最小年龄
-     */
+    private static final long serialVersionUID = 1L;
+
+    @ApiModelProperty(value = "最小年龄")
     private Integer ageFrom;
 
-    /**
-     * 最大年龄
-     */
+    @ApiModelProperty(value = "最大年龄")
     private Integer ageTo;
 
-    /**
-     * 性别
-     */
+    @ApiModelProperty(value = "性别")
     private GenderEnum gender;
 
-    /**
-     * 查询车辆数量大于条件
-     */
+    @ApiModelProperty(value = "查询车辆数量大于条件")
     private Integer carNumGreaterThan;
 
 }

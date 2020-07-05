@@ -1,4 +1,4 @@
-package ${package.Entity}.${table.name};
+package ${package.Entity}.${cfg.packageName};
 
 <#if swagger2>
 import io.swagger.annotations.ApiModel;

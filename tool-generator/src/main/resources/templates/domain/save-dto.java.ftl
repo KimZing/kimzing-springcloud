@@ -1,11 +1,9 @@
-package ${package.Entity};
+package ${package.Entity}.${cfg.packageName};
 
-<#list table.importPackages as pkg>
-import ${pkg};
-</#list>
 <#if swagger2>
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.Serializable;
 </#if>
 <#if entityLombokModel>
 import lombok.Data;
