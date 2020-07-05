@@ -1,4 +1,4 @@
-package com.kimzing.user.listener.user.event;
+package com.kimzing.user.listener.event;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

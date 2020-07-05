@@ -1,6 +1,6 @@
-package com.kimzing.user.listener.user;
+package com.kimzing.user.listener;
 
-import com.kimzing.user.listener.user.event.UserCreatedEvent;
+import com.kimzing.user.listener.event.UserCreatedEvent;
 import com.kimzing.utils.log.LogUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;

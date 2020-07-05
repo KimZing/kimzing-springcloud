@@ -3,7 +3,7 @@ package com.kimzing.user.service.user.impl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.kimzing.user.domain.car.CarPO;
 import com.kimzing.user.domain.user.*;
-import com.kimzing.user.listener.user.event.UserCreatedEvent;
+import com.kimzing.user.listener.event.UserCreatedEvent;
 import com.kimzing.user.repository.car.CarMapper;
 import com.kimzing.user.repository.user.UserMapper;
 import com.kimzing.user.service.user.UserService;
