@@ -44,14 +44,14 @@ public class UserServiceImpl implements UserService {
     @Transactional(rollbackFor = Exception.class)
     public void save(UserSaveDTO userSaveDTO) {
         UserPO userPO = BeanUtil.mapperBean(userSaveDTO, UserPO.class);
-        Integer userId = userMapper.insert(userPO);
+        userMapper.insert(userPO);
         List<CarPO> carPOList = BeanUtil.mapperList(userSaveDTO.getCarList(), CarPO.class);
-        carMapper.insertList(userId, carPOList);
+        carMapper.insertList(userPO.getId(), carPOList);
 
         // 发布创建事件
         SpringContextUtil.getApplicationContext()
                 .publishEvent(new UserCreatedEvent()
-                        .setId(userId)
+                        .setId(userPO.getId())
                         .setUsername(userPO.getUsername()));
     }
 
