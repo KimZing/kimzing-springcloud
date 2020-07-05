@@ -1,8 +1,7 @@
 package com.kimzing.user.controller.user;
 
 
-import com.kimzing.order.domain.OrderBO;
-import com.kimzing.order.service.OrderService;
+import com.kimzing.user.aggregation.UserAggregation;
 import com.kimzing.user.domain.user.*;
 import com.kimzing.user.service.user.UserService;
 import com.kimzing.utils.page.PageParam;
@@ -13,7 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.annotation.Resource;
 
 /**
  * 用户信息接口层.
@@ -29,8 +28,8 @@ public class UserController {
     @Reference
     UserService userService;
 
-    @Reference
-    OrderService orderService;
+    @Resource
+    UserAggregation userAggregation;
 
     @ApiOperation(value = "保存用户信息")
     @PostMapping
@@ -64,10 +63,8 @@ public class UserController {
 
     @ApiOperation(value = "聚合用户+订单(演示聚合的使用)")
     @GetMapping("/user-order/{id}")
-    public UserOrderVO getUserAndOrderList(@PathVariable("id") Integer id, @ModelAttribute PageParam pageParam) {
-        UserBO userBO = userService.get(id);
-        List<OrderBO> orderBOList = orderService.listPageByUserId(id, pageParam);
-        return new UserOrderVO().setUserInfo(userBO).setOrderList(orderBOList);
+    public UserOrderBO getUserAndOrderList(@PathVariable("id") Integer id, @ModelAttribute PageParam pageParam) {
+        return userAggregation.getUserInfoWithOrderList(id, pageParam);
     }
 
 }

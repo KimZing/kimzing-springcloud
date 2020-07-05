@@ -21,11 +21,11 @@
         UPDATE `user` SET deleted = 1 WHERE id = #{id}
     </update>
 
-    <select id="select" resultMap="allResultWithCarList" resultType="com.kimzing.user.domain.user.UserBO">
+    <select id="select" resultMap="resultWithCarList" resultType="com.kimzing.user.domain.user.UserBO">
         SELECT <include refid="all_column"></include> FROM `user` WHERE id = #{id} AND deleted = 0
     </select>
 
-    <select id="selectPage" resultType="com.kimzing.user.domain.user.UserBO">
+    <select id="selectPage" resultMap="resultWithCarList" resultType="com.kimzing.user.domain.user.UserBO">
         SELECT <include refid="all_column"></include> FROM `user`
         <where>
             <if test="query.ageFrom != null">AND age &gt;= #{query.ageFrom}</if>
@@ -37,7 +37,7 @@
         </where>
     </select>
 
-    <resultMap id="allResultWithCarList" type="com.kimzing.user.domain.user.UserBO">
+    <resultMap id="resultWithCarList" type="com.kimzing.user.domain.user.UserBO">
         <result property="id" column="id"/>
         <collection property="carList" column="id" select="com.kimzing.user.repository.car.CarMapper.selectCarListByUserId"></collection>
     </resultMap>

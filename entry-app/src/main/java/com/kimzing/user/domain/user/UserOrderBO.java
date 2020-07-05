@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Data
 @Accessors(chain = true)
-public class UserOrderVO {
+public class UserOrderBO {
 
     /**
      * 用户信息
