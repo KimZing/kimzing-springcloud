@@ -1,6 +1,6 @@
 package com.kimzing.generator.param;
 
-import com.kimzing.generator.CodeGenerator;
+import com.kimzing.generator.generator.CodeGenerator;
 import com.kimzing.utils.property.PropertiesUtil;
 
 import java.io.File;
