@@ -1,5 +1,7 @@
 package ${package.Entity}.${cfg.packageName};
 
+import java.time.LocalDateTime;
+import java.math.BigDecimal;
 <#list table.importPackages as pkg>
 import ${pkg};
 </#list>

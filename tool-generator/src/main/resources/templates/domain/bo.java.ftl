@@ -1,5 +1,9 @@
 package ${package.Entity}.${cfg.packageName};
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDateTime;
+import java.math.BigDecimal;
+
 <#if swagger2>
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -49,6 +53,9 @@ public class ${cfg.upperTableName}BO implements Serializable {
      * ${field.comment}
      */
         </#if>
+    </#if>
+    <#if field.propertyType == "LocalDateTime">
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     </#if>
     private ${field.propertyType} ${field.propertyName};
 </#list>
