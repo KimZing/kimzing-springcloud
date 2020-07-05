@@ -3,4 +3,6 @@ description '公共API'
 dependencies {
     // 用作日期格式化注解
     compileOnly 'com.fasterxml.jackson.core:jackson-annotations:2.11.1'
+    // Swagger注解
+    compileOnly 'io.swagger:swagger-annotations:1.5.22'
 }

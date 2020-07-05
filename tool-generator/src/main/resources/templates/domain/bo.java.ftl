@@ -1,11 +1,9 @@
-package ${package.Entity};
+package ${package.Entity}.${table.name};
 
-<#list table.importPackages as pkg>
-import ${pkg};
-</#list>
 <#if swagger2>
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.Serializable;
 </#if>
 <#if entityLombokModel>
 import lombok.Data;
@@ -29,7 +27,7 @@ import lombok.experimental.Accessors;
 <#if swagger2>
 @ApiModel(value="${table.comment!}业务对象", description="${table.comment!}")
 </#if>
-public class ${cfg.upperTableName}UpdateDTO implements Serializable {
+public class ${cfg.upperTableName}BO implements Serializable {
 
 <#if entitySerialVersionUID>
     private static final long serialVersionUID = 1L;
