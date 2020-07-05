@@ -1,7 +1,5 @@
 package ${package.Entity}.${cfg.packageName};
 
-import java.time.LocalDateTime;
-import java.math.BigDecimal;
 <#list table.importPackages as pkg>
 import ${pkg};
 </#list>
@@ -12,6 +10,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
     </#if>
 </#if>
+import java.io.Serializable;
 
 /**
  * ${table.comment!}实体

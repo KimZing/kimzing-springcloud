@@ -73,7 +73,7 @@ public class CodeGenerator {
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
                 return generaPath + "/src/main/java/" + packageParent.replace(".","/") + "/" + moduleName
-                        + "/domain/" + StringUtil.upperFirstChar(tableInfo.getName()) + "SaveDTO.java";
+                        + "/domain/" + packageName + "/" + StringUtil.upperFirstChar(tableInfo.getName()) + "SaveDTO.java";
             }
         });
 
@@ -82,7 +82,7 @@ public class CodeGenerator {
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
                 return generaPath + "/src/main/java/" + packageParent.replace(".","/") + "/" +moduleName
-                        + "/domain/" + StringUtil.upperFirstChar(tableInfo.getName()) + "UpdateDTO.java";
+                        + "/domain/" + packageName + "/" + StringUtil.upperFirstChar(tableInfo.getName()) + "UpdateDTO.java";
             }
         });
 
@@ -91,7 +91,7 @@ public class CodeGenerator {
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
                 return generaPath + "/src/main/java/" + packageParent.replace(".","/") + "/" +moduleName
-                        + "/domain/" + StringUtil.upperFirstChar(tableInfo.getName()) + "QueryDTO.java";
+                        + "/domain/" + packageName + "/" + StringUtil.upperFirstChar(tableInfo.getName()) + "QueryDTO.java";
             }
         });
 
@@ -100,7 +100,7 @@ public class CodeGenerator {
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
                 return generaPath + "/src/main/java/" + packageParent.replace(".","/") + "/" +moduleName
-                        + "/domain/" + StringUtil.upperFirstChar(tableInfo.getName()) + "BO.java";
+                        + "/domain/" + packageName + "/" + StringUtil.upperFirstChar(tableInfo.getName()) + "BO.java";
             }
         });
 
@@ -147,7 +147,7 @@ public class CodeGenerator {
         packageConfig.setService("service." + packageName);
         packageConfig.setServiceImpl("service." + packageName + ".impl");
         packageConfig.setMapper("repository." + packageName);
-        packageConfig.setEntity("domain");
+        packageConfig.setEntity("domain." + packageName);
         packageConfig.setXml("mapper." + packageName);
 
         return packageConfig;
