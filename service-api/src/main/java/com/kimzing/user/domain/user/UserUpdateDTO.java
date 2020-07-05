@@ -1,49 +1,44 @@
 package com.kimzing.user.domain.user;
 
 import com.kimzing.user.domain.car.CarUpdateDTO;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * 用户信息更新对象
+ * 用户信息更新
  *
- * @author KimZing - kimzing@163.com
- * @since 2020/7/4 14:30
+ * @author KimZing
+ * @since 2020-07-05
  */
 @Data
+@Accessors(chain = true)
+@ApiModel(value="用户信息更新", description="用户信息")
 public class UserUpdateDTO implements Serializable {
 
-    /**
-     * 用户ID
-     */
+    private static final long serialVersionUID = 1L;
+
+    @ApiModelProperty(value = "用户信息ID")
     private Integer id;
 
-    /**
-     * 用户名
-     */
+    @ApiModelProperty(value = "用户名")
     private String username;
 
-    /**
-     * 年龄
-     */
+    @ApiModelProperty(value = "年龄")
     private Integer age;
 
-    /**
-     * 性别
-     */
-    private GenderEnum gender;
-
-    /**
-     * 金额
-     */
+    @ApiModelProperty(value = "金额")
     private BigDecimal amount;
 
-    /**
-     * 车辆信息
-     */
+    @ApiModelProperty(value = "性别")
+    private String gender;
+
+    @ApiModelProperty(value = "车辆信息")
     private List<CarUpdateDTO> carList;
 
 }
