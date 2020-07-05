@@ -8,6 +8,7 @@ import com.kimzing.user.service.user.UserService;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
 import com.kimzing.web.resolver.json.JsonParam;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ import java.util.List;
  * @author KimZing
  * @since 2020-07-05
  */
+@Api(tags = "用户信息")
 @RestController
 @RequestMapping("/user")
 public class UserController {

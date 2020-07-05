@@ -3,6 +3,7 @@ package ${package.Controller};
 
 import org.springframework.web.bind.annotation.*;
 import org.apache.dubbo.config.annotation.Reference;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import com.kimzing.web.resolver.json.JsonParam;
 import com.kimzing.utils.page.PageParam;
@@ -26,6 +27,7 @@ import ${superControllerClassPackage};
  * @since ${date}
  */
 <#if restControllerStyle>
+@Api(tags = "${table.comment!}")
 @RestController
 <#else>
 @Controller
