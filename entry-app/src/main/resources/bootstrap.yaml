@@ -1,31 +1,3 @@
-# knife开源的swagger ui配置
-knife4j:
-  # 是否是生产环境，如果是生产环境会默认关闭swagger
-  production: false
-  # 配置自定义markdown文件的位置
-  markdowns: classpath:markdown/*
-  # 配置认证功能
-  basic:
-    # 是否开启认证
-    enable: true
-    # 用户名
-    username: admin
-    # 密码
-    password: 123456
-
-# Swagger配置
-kimzing:
-  swagger:
-    enabled: true
-    title: App聚合服务
-    description: 聚合各模块的服务接口
-    termsOfServiceUrl: http://localhost:9002/app
-    authorName: KimZing
-    authorEmail: kimzing@163.com
-    authorUrl: http://kimzing.com
-    version: 1.0.0
-    basePackage: com.kimzing
-
 spring:
   application:
     name: entry-app
@@ -48,3 +20,5 @@ spring:
             refresh: true
           - data-id: dubbo.yaml
             refresh: true
+          - data-id: swagger.yaml
+            refresh: false

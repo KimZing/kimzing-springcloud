@@ -43,7 +43,7 @@
         modifier,
         create_time,
         modify_time,
-        brand, price, buy_time
+        user_id, brand, price, buy_time
     </sql>
 
     <!-- 通用查询结果列 -->

@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `user`
 (
     `id`          int(11)        NOT NULL AUTO_INCREMENT COMMENT '用户ID',
-    `username`    varchar(20)    NOT NULL UNIQUE COMMENT '用户名',
+    `username`    varchar(20)    NOT NULL COMMENT '用户名',
     `age`         int(2)         NOT NULL COMMENT '年龄',
     `amount`      decimal(10, 2) NOT NULL COMMENT '金额',
     `gender`      varchar(10)    NOT NULL COMMENT '性别',
