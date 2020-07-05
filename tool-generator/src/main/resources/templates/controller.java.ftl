@@ -1,11 +1,14 @@
 package ${package.Controller};
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.apache.dubbo.config.annotation.Reference;
 import io.swagger.annotations.ApiOperation;
+import com.kimzing.web.resolver.json.JsonParam;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
+import ${package.Service}.${table.serviceName};
+import ${package.Entity}.${table.name}.*;
 
 <#if restControllerStyle>
 import org.springframework.web.bind.annotation.RestController;
