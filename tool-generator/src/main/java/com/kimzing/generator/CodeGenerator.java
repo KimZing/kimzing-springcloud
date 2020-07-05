@@ -11,7 +11,9 @@ import com.kimzing.utils.po.AbstractPO;
 import com.kimzing.utils.string.StringUtil;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.kimzing.generator.param.Parameters.*;
 
@@ -44,17 +46,60 @@ public class CodeGenerator {
     }
 
     private static InjectionConfig getInjectionConfig() {
-        InjectionConfig injectionConfig = new InjectionConfig() {@Override public void initMap() {}};
+        InjectionConfig injectionConfig = new InjectionConfig() {@Override public void initMap() {
+            Map<String, Object> map = new HashMap<>();
+            map.put("lowerServiceName", StringUtil.lowerFirstChar(this.getConfig().getTableInfoList().get(0).getServiceName()));
+            map.put("lowerMapperName", StringUtil.lowerFirstChar(this.getConfig().getTableInfoList().get(0).getMapperName()));
+            map.put("upperTableName", StringUtil.upperFirstChar(this.getConfig().getTableInfoList().get(0).getName()));
+            this.setMap(map);
+        }};
 
         // 自定义输出配置
         List<FileOutConfig> focList = new ArrayList<>();
         // 自定义配置会被优先输出
+        // xml配置
         focList.add(new FileOutConfig("/templates/mapper.xml.ftl") {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
                 return generaPath + "/src/main/resources/mapper/" + packageName
                         + "/" + StringUtil.upperFirstChar(tableInfo.getName()) + "Mapper" + StringPool.DOT_XML;
+            }
+        });
+
+        focList.add(new FileOutConfig("/templates/domain/save-dto.java.ftl") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+                return generaPath + "/src/main/java/" + packageParent.replace(".","/") + "/" +packageName
+                        + "/domain/" + StringUtil.upperFirstChar(tableInfo.getName()) + "SaveDTO.java";
+            }
+        });
+
+        focList.add(new FileOutConfig("/templates/domain/update-dto.java.ftl") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+                return generaPath + "/src/main/java/" + packageParent.replace(".","/") + "/" +packageName
+                        + "/domain/" + StringUtil.upperFirstChar(tableInfo.getName()) + "UpdateDTO.java";
+            }
+        });
+
+        focList.add(new FileOutConfig("/templates/domain/query-dto.java.ftl") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+                return generaPath + "/src/main/java/" + packageParent.replace(".","/") + "/" +packageName
+                        + "/domain/" + StringUtil.upperFirstChar(tableInfo.getName()) + "QueryDTO.java";
+            }
+        });
+
+        focList.add(new FileOutConfig("/templates/domain/bo.java.ftl") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+                return generaPath + "/src/main/java/" + packageParent.replace(".","/") + "/" +packageName
+                        + "/domain/" + StringUtil.upperFirstChar(tableInfo.getName()) + "BO.java";
             }
         });
 
@@ -71,7 +116,7 @@ public class CodeGenerator {
         templateConfig.setService(service ? "templates/service.java": "");
         templateConfig.setServiceImpl(serviceImpl ? "templates/serviceImpl-" + serviceImplType + ".java": "");
         templateConfig.setMapper(mapper ? "templates/mapper.java": "");
-        templateConfig.setEntity(entity ? "templates/entity.java": "");
+        templateConfig.setEntity(entity ? "templates/domain/po.java": "");
         templateConfig.setXml(xml ? "templates/mapper.xml": "");
         return templateConfig;
     }
@@ -89,18 +134,19 @@ public class CodeGenerator {
         strategy.setInclude(tables);
         strategy.setChainModel(true);
         strategy.setEntityTableFieldAnnotationEnable(true);
+        strategy.setRestControllerStyle(true);
         return strategy;
     }
 
     private static PackageConfig getPackageConfig() {
         PackageConfig packageConfig = new PackageConfig();
-        packageConfig.setParent("com.kimzing");
+        packageConfig.setParent(packageParent);
         packageConfig.setModuleName(moduleName);
         packageConfig.setController("controller." + packageName);
         packageConfig.setService("service." + packageName);
         packageConfig.setServiceImpl("service." + packageName + ".impl");
-        packageConfig.setMapper("mapper." + packageName);
-        packageConfig.setEntity("mapper." + packageName + ".po");
+        packageConfig.setMapper("repository." + packageName);
+        packageConfig.setEntity("domain");
         packageConfig.setXml("mapper." + packageName);
 
         return packageConfig;

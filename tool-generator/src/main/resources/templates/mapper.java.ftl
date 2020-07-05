@@ -5,9 +5,7 @@ import ${superMapperClassPackage};
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * <p>
  * ${table.comment!} Mapper 接口
- * </p>
  *
  * @author ${author}
  * @since ${date}
@@ -16,7 +14,8 @@ import org.apache.ibatis.annotations.Mapper;
 interface ${table.mapperName} : ${superMapperClass}<${entity}>
 <#else>
 @Mapper
-public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
+<#--public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {-->
+public interface ${table.mapperName} {
 
 }
 </#if>

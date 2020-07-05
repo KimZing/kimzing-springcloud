@@ -9,48 +9,34 @@ import io.swagger.annotations.ApiModelProperty;
 </#if>
 <#if entityLombokModel>
 import lombok.Data;
-import lombok.EqualsAndHashCode;
     <#if chainModel>
 import lombok.experimental.Accessors;
     </#if>
 </#if>
 
 /**
- * <p>
- * ${table.comment!}
- * </p>
+ * ${table.comment!}查询
  *
  * @author ${author}
  * @since ${date}
  */
 <#if entityLombokModel>
 @Data
-    <#if superEntityClass??>
-@EqualsAndHashCode(callSuper = true)
-    <#else>
-@EqualsAndHashCode(callSuper = false)
-    </#if>
     <#if chainModel>
 @Accessors(chain = true)
     </#if>
 </#if>
-<#if table.convert>
-@TableName("${table.name}")
-</#if>
 <#if swagger2>
-@ApiModel(value="${entity}对象", description="${table.comment!}")
+@ApiModel(value="${table.comment!}查询", description="${table.comment!}")
 </#if>
-<#if superEntityClass??>
-public class ${entity} extends ${superEntityClass}<#if activeRecord><${entity}></#if> {
-<#elseif activeRecord>
-public class ${entity} extends Model<${entity}> {
-<#else>
-public class ${entity} implements Serializable {
-</#if>
+public class ${cfg.upperTableName}UpdateDTO implements Serializable {
 
 <#if entitySerialVersionUID>
     private static final long serialVersionUID = 1L;
 </#if>
+
+    @ApiModelProperty(value = "${table.comment!}ID")
+    private Integer id;
 <#-- ----------  BEGIN 字段循环遍历  ---------->
 <#list table.fields as field>
     <#if field.keyFlag>
@@ -66,38 +52,9 @@ public class ${entity} implements Serializable {
      */
         </#if>
     </#if>
-    <#if field.keyFlag>
-        <#-- 主键 -->
-        <#if field.keyIdentityFlag>
-    @TableId(value = "${field.annotationColumnName}", type = IdType.AUTO)
-        <#elseif idType??>
-    @TableId(value = "${field.annotationColumnName}", type = IdType.${idType})
-        <#elseif field.convert>
-    @TableId("${field.annotationColumnName}")
-        </#if>
-        <#-- 普通字段 -->
-    <#elseif field.fill??>
-    <#-- -----   存在字段填充设置   ----->
-        <#if field.convert>
-    @TableField(value = "${field.annotationColumnName}", fill = FieldFill.${field.fill})
-        <#else>
-    @TableField(fill = FieldFill.${field.fill})
-        </#if>
-    <#elseif field.convert>
-    @TableField("${field.annotationColumnName}")
-    </#if>
-    <#-- 乐观锁注解 -->
-    <#if (versionFieldName!"") == field.name>
-    @Version
-    </#if>
-    <#-- 逻辑删除注解 -->
-    <#if (logicDeleteFieldName!"") == field.name>
-    @TableLogic
-    </#if>
     private ${field.propertyType} ${field.propertyName};
 </#list>
 <#------------  END 字段循环遍历  ---------->
-
 <#if !entityLombokModel>
     <#list table.fields as field>
         <#if field.propertyType == "boolean">

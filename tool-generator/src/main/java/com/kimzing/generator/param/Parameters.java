@@ -21,6 +21,7 @@ public class Parameters {
     public static Boolean baseColumnList = Boolean.valueOf(properties.get("baseColumnList"));
     public static Boolean needOpenDir = Boolean.valueOf(properties.get("needOpenDir"));
     public static String moduleName = properties.get("moduleName");
+    public static String packageParent = properties.get("packageParent");
     public static String packageName = properties.get("packageName");
     public static Boolean controller =  Boolean.valueOf(properties.get("controller"));
     public static Boolean service =  Boolean.valueOf(properties.get("service"));

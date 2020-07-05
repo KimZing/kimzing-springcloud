@@ -7,6 +7,7 @@ import com.kimzing.user.service.user.UserService;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
 import com.kimzing.web.resolver.json.JsonParam;
+import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +19,8 @@ import java.util.List;
  * @author KimZing - kimzing@163.com
  * @since 2020/7/4 12:53
  */
-@RequestMapping("/user")
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
     @Reference
@@ -32,6 +33,7 @@ public class UserController {
      * 保存用户
      * @return
      */
+    @ApiOperation(value = "保存用户")
     @PostMapping
     public void save(@RequestBody UserSaveDTO userSaveDTO) {
         userService.save(userSaveDTO);
