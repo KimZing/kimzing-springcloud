@@ -23,12 +23,6 @@ public class OrderUpdateDTO implements Serializable {
     @ApiModelProperty(value = "订单信息ID")
     private Integer id;
 
-    @ApiModelProperty(value = "用户ID")
-    private Integer userId;
-
-    @ApiModelProperty(value = "订单总价")
-    private Integer totalPrice;
-
     @ApiModelProperty(value = "状态")
     private OrderStatusEnum status;
 

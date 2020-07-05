@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * 订单信息实体
@@ -32,7 +33,7 @@ public class OrderPO extends AbstractPO implements Serializable{
      * 订单总价
      */
     @TableField("total_price")
-    private Integer totalPrice;
+    private BigDecimal totalPrice;
 
     /**
      * 状态
