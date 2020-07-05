@@ -20,3 +20,5 @@ spring:
             refresh: true
           - data-id: dubbo.yaml
             refresh: true
+          - data-id: swagger.yaml
+            refresh: false

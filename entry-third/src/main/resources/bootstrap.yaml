@@ -1,6 +1,6 @@
 spring:
   application:
-    name: entry-app
+    name: entry-third
   profiles:
     active: dev
   cloud:
@@ -20,3 +20,5 @@ spring:
             refresh: true
           - data-id: dubbo.yaml
             refresh: true
+          - data-id: swagger.yaml
+            refresh: false

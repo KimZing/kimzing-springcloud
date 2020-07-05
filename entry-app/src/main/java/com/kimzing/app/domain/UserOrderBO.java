@@ -1,4 +1,4 @@
-package com.kimzing.domain;
+package com.kimzing.app.domain;
 
 import com.kimzing.order.domain.order.OrderBO;
 import com.kimzing.user.domain.user.UserBO;

@@ -1,4 +1,4 @@
-description '聚合服务-APP入口'
+description '聚合服务-第三方调用入口'
 
 dependencies {
 

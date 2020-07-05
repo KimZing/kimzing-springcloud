@@ -1,6 +1,6 @@
-package com.kimzing.aggregation;
+package com.kimzing.app.aggregation;
 
-import com.kimzing.domain.UserOrderBO;
+import com.kimzing.app.domain.UserOrderBO;
 import com.kimzing.order.domain.order.OrderBO;
 import com.kimzing.order.domain.order.OrderQueryDTO;
 import com.kimzing.order.service.order.OrderService;

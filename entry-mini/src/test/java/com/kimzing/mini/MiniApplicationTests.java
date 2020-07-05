@@ -1,10 +1,10 @@
-package com.kimzing;
+package com.kimzing.mini;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AppApplicationTests {
+class MiniApplicationTests {
 
     @Test
     void contextLoads() {

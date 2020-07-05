@@ -1,8 +1,8 @@
-package com.kimzing.controller.user;
+package com.kimzing.app.controller.user;
 
 
-import com.kimzing.aggregation.UserAggregation;
-import com.kimzing.domain.UserOrderBO;
+import com.kimzing.app.aggregation.UserAggregation;
+import com.kimzing.app.domain.UserOrderBO;
 import com.kimzing.user.domain.user.UserBO;
 import com.kimzing.user.domain.user.UserQueryDTO;
 import com.kimzing.user.domain.user.UserSaveDTO;
