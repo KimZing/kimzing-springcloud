@@ -1,3 +1,4 @@
+
 spring:
   application:
     name: entry-admin
@@ -10,6 +11,9 @@ spring:
       password: ${nacos-password:123456}
       discovery:
         namespace: ${spring.profiles.active}
+        metadata:
+          management:
+            context-path: '${server.servlet.context-path}/actuator'
       config:
         namespace: ${spring.profiles.active}
         file-extension: yaml

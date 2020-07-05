@@ -10,6 +10,9 @@ spring:
       password: ${nacos-password:123456}
       discovery:
         namespace: ${spring.profiles.active}
+        metadata:
+          management:
+            context-path: '${server.servlet.context-path}/actuator'
       config:
         namespace: ${spring.profiles.active}
         file-extension: yaml
@@ -18,3 +21,7 @@ spring:
         extension-configs:
           - data-id: common.yaml
             refresh: false
+management:
+  server:
+    servlet:
+      context-path: /third
