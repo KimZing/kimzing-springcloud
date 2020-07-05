@@ -17,8 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.List;
 
-import static com.kimzing.user.common.utils.PageUtil.convertPage;
-import static com.kimzing.user.common.utils.PageUtil.convertPageResult;
+import static com.kimzing.utils.page.MPPageUtil.convertPage;
+import static com.kimzing.utils.page.MPPageUtil.convertPageResult;
 
 /**
  * 用户信息 服务实现类

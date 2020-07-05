@@ -62,12 +62,7 @@ public class UserController {
         return userService.listPage(userQueryDTO, pageParam);
     }
 
-    /**
-     * 查询用户信息及其订单信息(演示聚合的使用)
-     * @param id
-     * @param pageParam
-     * @return
-     */
+    @ApiOperation(value = "聚合用户+订单(演示聚合的使用)")
     @GetMapping("/user-order/{id}")
     public UserOrderVO getUserAndOrderList(@PathVariable("id") Integer id, @ModelAttribute PageParam pageParam) {
         UserBO userBO = userService.get(id);

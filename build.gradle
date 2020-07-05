@@ -92,7 +92,7 @@ configure(serverProjects + gatewayProjects + entryProjects + businessProjects) {
 
 }
 
-// 开发项目公共配置
+// 聚合项目公共配置
 configure(entryProjects) {
     dependencies {
         implementation 'com.github.xiaoymin:knife4j-spring-boot-starter:2.0.4'

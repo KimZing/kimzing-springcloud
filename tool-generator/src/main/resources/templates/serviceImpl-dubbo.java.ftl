@@ -10,8 +10,8 @@ import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.transaction.annotation.Transactional;
-import static com.kimzing.user.common.utils.PageUtil.convertPage;
-import static com.kimzing.user.common.utils.PageUtil.convertPageResult;
+import static com.kimzing.utils.page.MPPageUtil.convertPage;
+import static com.kimzing.utils.page.MPPageUtil.convertPageResult;
 
 import javax.annotation.Resource;
 
