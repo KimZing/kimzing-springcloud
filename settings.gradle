@@ -2,7 +2,6 @@ rootProject.name = 'kimzing-springcloud'
 
 include 'entry-admin'
 include 'entry-app'
-include 'entry-mini'
 include 'entry-third'
 include 'gateway'
 include 'server-admin'

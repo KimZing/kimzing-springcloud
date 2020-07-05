@@ -16,9 +16,5 @@ spring:
         max-retry: 3
         # 共享配置
         extension-configs:
-          - data-id: actuator.yaml
-            refresh: true
-          - data-id: dubbo.yaml
-            refresh: true
-          - data-id: swagger.yaml
+          - data-id: common.yaml
             refresh: false
