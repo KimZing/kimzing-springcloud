@@ -1,4 +1,4 @@
-package com.kimzing.order.domain;
+package com.kimzing.order.domain.order;
 
 /**
  * 订单状态.

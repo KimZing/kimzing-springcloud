@@ -1,15 +1,15 @@
 package com.kimzing.user.aggregation;
 
-import com.kimzing.order.domain.OrderBO;
-import com.kimzing.order.service.OrderService;
+import com.kimzing.order.domain.order.OrderBO;
+import com.kimzing.order.domain.order.OrderQueryDTO;
+import com.kimzing.order.service.order.OrderService;
 import com.kimzing.user.domain.user.UserBO;
 import com.kimzing.user.domain.user.UserOrderBO;
 import com.kimzing.user.service.user.UserService;
 import com.kimzing.utils.page.PageParam;
+import com.kimzing.utils.page.PageResult;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * 用户相关信息聚合.
@@ -35,7 +35,7 @@ public class UserAggregation {
      */
     public UserOrderBO getUserInfoWithOrderList(Integer id, PageParam pageParam) {
         UserBO userBO = userService.get(id);
-        List<OrderBO> orderBOList = orderService.listPageByUserId(id, pageParam);
-        return new UserOrderBO().setUserInfo(userBO).setOrderList(orderBOList);
+        PageResult<OrderBO> orderBOPageResult = orderService.listPage(new OrderQueryDTO().setUserId(id), pageParam);
+        return new UserOrderBO().setUserInfo(userBO).setOrderList(orderBOPageResult.getData());
     }
 }

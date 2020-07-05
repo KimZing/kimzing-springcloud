@@ -28,12 +28,18 @@
 </#if>
 <#if baseColumnList>
     <!-- 通用查询结果列 -->
-    <sql id="Base_Column_List">
+    <sql id="all_column">
 <#list table.commonFields as field>
         ${field.columnName},
 </#list>
         ${table.fieldNames}
     </sql>
 
+</#if>
+<#if baseColumnList>
+    <!-- 通用查询结果列 -->
+    <sql id="po_column">
+        ${table.fieldNames}
+    </sql>
 </#if>
 </mapper>

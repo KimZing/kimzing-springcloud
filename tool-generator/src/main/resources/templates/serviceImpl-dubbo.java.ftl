@@ -4,7 +4,7 @@ import ${package.Mapper}.${table.mapperName};
 import ${package.Service}.${table.serviceName};
 <#--import ${superServiceImplClassPackage};-->
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.kimzing.user.domain.user.*;
+import ${package.Entity}.*;
 import com.kimzing.utils.bean.BeanUtil;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
@@ -80,8 +80,8 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
     @Transactional(readOnly = true)
     public PageResult<${cfg.upperTableName}BO> listPage(${cfg.upperTableName}QueryDTO ${table.name}QueryDTO, PageParam pageParam) {
         // MARK Page对象必须放在第一个
-        IPage<${cfg.upperTableName}BO> ${table.name}BOPage = ${cfg.lowerMapperName}.selectPage(convertPage(pageParam), userQueryDTO);
-        return convertPageResult(userBOPage);
+        IPage<${cfg.upperTableName}BO> ${table.name}BOPage = ${cfg.lowerMapperName}.selectPage(convertPage(pageParam), ${table.name}QueryDTO);
+        return convertPageResult(${table.name}BOPage);
     }
 
 }

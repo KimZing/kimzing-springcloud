@@ -1,6 +1,6 @@
 package ${package.Service};
 
-import ${package.Entity}.${cfg.packageName}.*;
+import ${package.Entity}.*;
 <#--import ${superServiceClassPackage};-->
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
@@ -25,21 +25,21 @@ public interface ${table.serviceName} {
     /**
      * 移除${table.comment!}
      */
-    public void remove(Integer id);
+    void remove(Integer id);
 
     /**
      * 更新${table.comment!}
      */
-    public void update(${cfg.upperTableName}UpdateDTO ${table.name}UpdateDTO);
+    void update(${cfg.upperTableName}UpdateDTO ${table.name}UpdateDTO);
 
     /**
      * 查询单个${table.comment!}
      */
-    public ${cfg.upperTableName}BO get(Integer id);
+    ${cfg.upperTableName}BO get(Integer id);
 
     /**
      * 分页条件查询${table.comment!}
      */
-    public PageResult<${cfg.upperTableName}BO> listPage(${cfg.upperTableName}QueryDTO ${table.name}QueryDTO, PageParam pageParam);
+    PageResult<${cfg.upperTableName}BO> listPage(${cfg.upperTableName}QueryDTO ${table.name}QueryDTO, PageParam pageParam);
 }
 </#if>

@@ -1,6 +1,6 @@
 package com.kimzing.user.domain.user;
 
-import com.kimzing.order.domain.OrderBO;
+import com.kimzing.order.domain.order.OrderBO;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
