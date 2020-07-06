@@ -1,18 +1,19 @@
 package com.kimzing.order.domain.order;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.kimzing.utils.po.AbstractPO;
-import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
  * 订单信息实体
  *
- * @author KimZing
+ * @author longfeifan
  * @since 2020-07-06
  */
 @Data
@@ -27,7 +28,7 @@ public class OrderPO extends AbstractPO implements Serializable{
      * 用户ID
      */
     @TableField("user_id")
-    private String userId;
+    private Integer userId;
 
     /**
      * 订单总价

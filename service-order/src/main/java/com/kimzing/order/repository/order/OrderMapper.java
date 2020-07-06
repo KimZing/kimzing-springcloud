@@ -5,11 +5,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.kimzing.order.domain.order.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import java.util.List;
 
 /**
  * 订单信息 Mapper 接口
  *
- * @author KimZing
+ * @author longfeifan
  * @since 2020-07-06
  */
 @Mapper
@@ -19,6 +20,11 @@ public interface OrderMapper {
      * 保存订单信息
      */
     Integer insert(OrderPO orderPO);
+
+    /**
+     * 批量保存订单信息
+     */
+    void insertBatch(List<OrderPO> list);
 
     /**
      * 删除订单信息

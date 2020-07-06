@@ -36,7 +36,7 @@ public class OrderController {
     @ApiOperation(value = "移除订单信息")
     @DeleteMapping("/{id}")
     public void remove(@PathVariable("id") Integer id) {
-         orderService.remove(id);
+        orderService.remove(id);
     }
 
     @ApiOperation(value = "更新订单信息")
