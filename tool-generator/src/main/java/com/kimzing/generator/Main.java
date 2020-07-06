@@ -1,5 +1,9 @@
 package com.kimzing.generator;
 
+import com.kimzing.generator.split.SplitOperation;
+
+import java.io.IOException;
+
 import static com.kimzing.generator.generator.CodeGenerator.generate;
 
 /**
@@ -10,8 +14,9 @@ import static com.kimzing.generator.generator.CodeGenerator.generate;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         generate();
+        SplitOperation.split();
     }
 
 }

@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 /**
  * 订单信息实体
  *
- * @author longfeifan
+ * @author KimZing
  * @since 2020-07-06
  */
 @Data
@@ -40,6 +40,6 @@ public class OrderPO extends AbstractPO implements Serializable{
      * 状态
      */
     @TableField("status")
-    private String status;
+    private OrderStatusEnum status;
 
 }
