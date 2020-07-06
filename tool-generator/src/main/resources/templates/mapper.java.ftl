@@ -24,7 +24,7 @@ public interface ${table.mapperName} {
     /**
      * 保存${table.comment!}
      */
-    Integer insert(${entity} ${cfg.lowerEntityName});
+    Integer insert(${entity} ${entity?uncap_first});
 
     /**
      * 删除${table.comment!}
@@ -34,17 +34,17 @@ public interface ${table.mapperName} {
     /**
      * 根据ID更新${table.comment!}
      */
-    void update(${entity} ${cfg.lowerEntityName});
+    void update(${entity} ${entity?uncap_first});
 
     /**
      * 根据ID查询${table.comment!}
      */
-    ${cfg.upperTableName}BO select(Integer id);
+    ${table.name?cap_first}BO select(Integer id);
 
     /**
      * 条件分页查询${table.comment!}
      */
-    IPage<${cfg.upperTableName}BO> selectPage(Page<${cfg.upperTableName}BO> page, @Param("query") ${cfg.upperTableName}QueryDTO ${table.name}QueryDTO);
+    IPage<${table.name?cap_first}BO> selectPage(Page<${table.name?cap_first}BO> page, @Param("query") ${table.name?cap_first}QueryDTO ${table.name}QueryDTO);
 
-  }
+}
 </#if>

@@ -31,7 +31,7 @@ import lombok.experimental.Accessors;
 <#if swagger2>
 @ApiModel(value="${table.comment!}业务对象", description="${table.comment!}")
 </#if>
-public class ${cfg.upperTableName}BO implements Serializable {
+public class ${table.name?cap_first}BO implements Serializable {
 
 <#if entitySerialVersionUID>
     private static final long serialVersionUID = 1L;

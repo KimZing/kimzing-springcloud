@@ -33,16 +33,16 @@ open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperNam
 public class ${table.serviceImplName} implements ${table.serviceName} {
 
     @Resource
-    ${table.mapperName} ${cfg.lowerMapperName};
+    ${table.mapperName} ${table.mapperName?uncap_first};
 
     /**
      * 保存${table.comment!}
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void save(${cfg.upperTableName}SaveDTO ${table.name}SaveDTO) {
-        ${entity} ${cfg.lowerEntityName} = BeanUtil.mapperBean(${table.name}SaveDTO, ${entity}.class);
-        ${cfg.lowerMapperName}.insert(${cfg.lowerEntityName});
+    public void save(${table.name?cap_first}SaveDTO ${table.name}SaveDTO) {
+        ${entity} ${entity?uncap_first} = BeanUtil.mapperBean(${table.name}SaveDTO, ${entity}.class);
+        ${table.mapperName?uncap_first}.insert(${entity?uncap_first});
     }
 
     /**
@@ -51,7 +51,7 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void remove(Integer id) {
-        ${cfg.lowerMapperName}.delete(id);
+        ${table.mapperName?uncap_first}.delete(id);
     }
 
     /**
@@ -59,9 +59,9 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void update(${cfg.upperTableName}UpdateDTO ${table.name}UpdateDTO) {
-        ${entity} ${cfg.lowerEntityName} = BeanUtil.mapperBean(${table.name}UpdateDTO, ${entity}.class);
-        ${cfg.lowerMapperName}.update(${cfg.lowerEntityName});
+    public void update(${table.name?cap_first}UpdateDTO ${table.name}UpdateDTO) {
+        ${entity} ${entity?uncap_first} = BeanUtil.mapperBean(${table.name}UpdateDTO, ${entity}.class);
+        ${table.mapperName?uncap_first}.update(${entity?uncap_first});
     }
 
     /**
@@ -69,8 +69,8 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
      */
     @Override
     @Transactional(readOnly = true)
-    public ${cfg.upperTableName}BO get(Integer id) {
-        return ${cfg.lowerMapperName}.select(id);
+    public ${table.name?cap_first}BO get(Integer id) {
+        return ${table.mapperName?uncap_first}.select(id);
     }
 
     /**
@@ -78,9 +78,9 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
      */
     @Override
     @Transactional(readOnly = true)
-    public PageResult<${cfg.upperTableName}BO> listPage(${cfg.upperTableName}QueryDTO ${table.name}QueryDTO, PageParam pageParam) {
+    public PageResult<${table.name?cap_first}BO> listPage(${table.name?cap_first}QueryDTO ${table.name}QueryDTO, PageParam pageParam) {
         // MARK Page对象必须放在第一个
-        IPage<${cfg.upperTableName}BO> ${table.name}BOPage = ${cfg.lowerMapperName}.selectPage(convertPage(pageParam), ${table.name}QueryDTO);
+        IPage<${table.name?cap_first}BO> ${table.name}BOPage = ${table.mapperName?uncap_first}.selectPage(convertPage(pageParam), ${table.name}QueryDTO);
         return convertPageResult(${table.name}BOPage);
     }
 

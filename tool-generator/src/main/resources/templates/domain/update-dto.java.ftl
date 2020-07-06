@@ -31,7 +31,7 @@ import lombok.experimental.Accessors;
 <#if swagger2>
 @ApiModel(value="${table.comment!}更新", description="${table.comment!}")
 </#if>
-public class ${cfg.upperTableName}UpdateDTO implements Serializable {
+public class ${table.name?cap_first}UpdateDTO implements Serializable {
 
 <#if entitySerialVersionUID>
     private static final long serialVersionUID = 1L;

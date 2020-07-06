@@ -20,7 +20,7 @@ public interface ${table.serviceName} {
     /**
      * 保存${table.comment!}
      */
-    void save(${cfg.upperTableName}SaveDTO ${table.name}SaveDTO);
+    void save(${table.name?cap_first}SaveDTO ${table.name}SaveDTO);
 
     /**
      * 移除${table.comment!}
@@ -30,16 +30,16 @@ public interface ${table.serviceName} {
     /**
      * 更新${table.comment!}
      */
-    void update(${cfg.upperTableName}UpdateDTO ${table.name}UpdateDTO);
+    void update(${table.name?cap_first}UpdateDTO ${table.name}UpdateDTO);
 
     /**
      * 查询单个${table.comment!}
      */
-    ${cfg.upperTableName}BO get(Integer id);
+    ${table.name?cap_first}BO get(Integer id);
 
     /**
      * 分页条件查询${table.comment!}
      */
-    PageResult<${cfg.upperTableName}BO> listPage(${cfg.upperTableName}QueryDTO ${table.name}QueryDTO, PageParam pageParam);
+    PageResult<${table.name?cap_first}BO> listPage(${table.name?cap_first}QueryDTO ${table.name}QueryDTO, PageParam pageParam);
 }
 </#if>

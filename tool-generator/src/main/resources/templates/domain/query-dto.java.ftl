@@ -29,7 +29,7 @@ import lombok.experimental.Accessors;
 <#if swagger2>
 @ApiModel(value="${table.comment!}查询", description="${table.comment!}")
 </#if>
-public class ${cfg.upperTableName}QueryDTO implements Serializable {
+public class ${table.name?cap_first}QueryDTO implements Serializable {
 
 <#if entitySerialVersionUID>
     private static final long serialVersionUID = 1L;

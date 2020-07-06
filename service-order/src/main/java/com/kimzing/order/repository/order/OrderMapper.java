@@ -40,4 +40,4 @@ public interface OrderMapper {
      */
     IPage<OrderBO> selectPage(Page<OrderBO> page, @Param("query") OrderQueryDTO orderQueryDTO);
 
-  }
+}

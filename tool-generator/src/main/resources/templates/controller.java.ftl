@@ -44,36 +44,36 @@ public class ${table.controllerName} {
 </#if>
 
     @Reference
-    ${table.serviceName} ${cfg.lowerServiceName};
+    ${table.serviceName} ${table.serviceName?uncap_first};
 
     @ApiOperation(value = "保存${table.comment!}")
     @PostMapping
-    public void save(@RequestBody ${cfg.upperTableName}SaveDTO ${table.name}SaveDTO) {
-        ${table.name}Service.save(${table.name}SaveDTO);
+    public void save(@RequestBody ${table.name?cap_first}SaveDTO ${table.name}SaveDTO) {
+        ${table.serviceName?uncap_first}.save(${table.name}SaveDTO);
     }
 
     @ApiOperation(value = "移除${table.comment!}")
     @DeleteMapping("/{id}")
     public void remove(@PathVariable("id") Integer id) {
-         ${table.name}Service.remove(id);
+        ${table.serviceName?uncap_first}.remove(id);
     }
 
     @ApiOperation(value = "更新${table.comment!}")
     @PutMapping
-    public void update(@RequestBody ${cfg.upperTableName}UpdateDTO ${table.name}UpdateDTO) {
-        ${table.name}Service.update(${table.name}UpdateDTO);
+    public void update(@RequestBody ${table.name?cap_first}UpdateDTO ${table.name}UpdateDTO) {
+        ${table.serviceName?uncap_first}.update(${table.name}UpdateDTO);
     }
 
     @ApiOperation(value = "查询单个${table.comment!}")
     @GetMapping("/{id}")
-    public ${cfg.upperTableName}BO get(@PathVariable("id") Integer id) {
-        return ${table.name}Service.get(id);
+    public ${table.name?cap_first}BO get(@PathVariable("id") Integer id) {
+        return ${table.serviceName?uncap_first}.get(id);
     }
 
     @ApiOperation(value = "分页条件查询${table.comment!}")
     @GetMapping("/list")
-    public PageResult<${cfg.upperTableName}BO> listPage(@JsonParam ${cfg.upperTableName}QueryDTO ${table.name}QueryDTO, @ModelAttribute PageParam pageParam) {
-        return ${table.name}Service.listPage(${table.name}QueryDTO, pageParam);
+    public PageResult<${table.name?cap_first}BO> listPage(@JsonParam ${table.name?cap_first}QueryDTO ${table.name}QueryDTO, @ModelAttribute PageParam pageParam) {
+        return ${table.serviceName?uncap_first}.listPage(${table.name}QueryDTO, pageParam);
     }
 
 }
