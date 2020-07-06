@@ -4,9 +4,9 @@
     <sql id="all_column">id,deleted,creator,modifier,create_time,modify_time,user_id, brand, price, buy_time</sql>
     <sql id="po_column">user_id, brand, price, buy_time</sql>
 
-    <insert id="insertList">
+    <insert id="insertBatch">
         INSERT INTO `car` (<include refid="po_column"></include>) VALUES
-        <foreach item="item" collection="carPOList" open="(" close=")" separator=",">
+        <foreach item="item" collection="list" open="(" close=")" separator=",">
             #{userId},#{item.brand},#{item.price},#{item.buyTime}
         </foreach>
     </insert>

@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import ${package.Entity}.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import java.util.List;
 
 /**
  * ${table.comment!} Mapper 接口
@@ -25,6 +26,11 @@ public interface ${table.mapperName} {
      * 保存${table.comment!}
      */
     Integer insert(${entity} ${entity?uncap_first});
+
+    /**
+     * 批量保存${table.comment!}
+     */
+    void insertBatch(List<${entity}> list);
 
     /**
      * 删除${table.comment!}

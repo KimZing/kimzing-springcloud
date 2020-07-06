@@ -2,9 +2,13 @@ package com.kimzing.user.repository.user;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.kimzing.user.domain.user.*;
+import com.kimzing.user.domain.user.UserBO;
+import com.kimzing.user.domain.user.UserPO;
+import com.kimzing.user.domain.user.UserQueryDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * 用户信息 Mapper 接口
@@ -19,6 +23,11 @@ public interface UserMapper {
      * 保存用户信息
      */
     Integer insert(UserPO userPO);
+
+    /**
+     * 批量保存用户信息
+     */
+    void insertBatch(List<UserPO> list);
 
     /**
      * 删除用户信息

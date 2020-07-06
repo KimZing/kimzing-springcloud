@@ -18,9 +18,9 @@ public interface CarMapper {
     /**
      * 批量插入车辆信息
      * @param userId
-     * @param carPOList
+     * @param list
      */
-    void insertList(Integer userId, List<CarPO> carPOList);
+    void insertBatch(Integer userId, List<CarPO> list);
 
     /**
      * 根据用户ID删除所有车辆信息

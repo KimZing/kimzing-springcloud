@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
         UserPO userPO = BeanUtil.mapperBean(userSaveDTO, UserPO.class);
         userMapper.insert(userPO);
         List<CarPO> carPOList = BeanUtil.mapperList(userSaveDTO.getCarList(), CarPO.class);
-        carMapper.insertList(userPO.getId(), carPOList);
+        carMapper.insertBatch(userPO.getId(), carPOList);
 
         // 发布创建事件
         SpringContextUtil.getApplicationContext()
