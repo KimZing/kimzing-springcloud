@@ -17,9 +17,7 @@ import static com.kimzing.utils.page.MPPageUtil.convertPageResult;
 
 /**
  * 订单信息 服务实现类
- * <p>
- *     如果编写version版本号，调用方同样需要制定版本号
- * </p>
+ *
  * @author KimZing
  * @since 2020-07-06
  */
@@ -73,7 +71,6 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional(readOnly = true)
     public PageResult<OrderBO> listPage(OrderQueryDTO orderQueryDTO, PageParam pageParam) {
-        // MARK Page对象必须放在第一个
         IPage<OrderBO> orderBOPage = orderMapper.selectPage(convertPage(pageParam), orderQueryDTO);
         return convertPageResult(orderBOPage);
     }

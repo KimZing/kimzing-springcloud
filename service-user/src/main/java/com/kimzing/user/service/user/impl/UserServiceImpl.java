@@ -22,9 +22,7 @@ import static com.kimzing.utils.page.MPPageUtil.convertPageResult;
 
 /**
  * 用户信息 服务实现类
- * <p>
- *     如果编写version版本号，调用方同样需要制定版本号
- * </p>
+ *
  * @author KimZing
  * @since 2020-07-05
  */
@@ -95,7 +93,6 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(readOnly = true)
     public PageResult<UserBO> listPage(UserQueryDTO userQueryDTO, PageParam pageParam) {
-        // MARK Page对象必须放在第一个
         IPage<UserBO> userBOPage = userMapper.selectPage(convertPage(pageParam), userQueryDTO);
         return convertPageResult(userBOPage);
     }
