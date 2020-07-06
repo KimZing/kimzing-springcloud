@@ -24,7 +24,7 @@
         UPDATE `user` SET deleted = 1 WHERE id = #{id}
     </update>
 
-    <select id="select" resultMap="resultWithCarList" resultType="com.kimzing.user.domain.user.UserBO">
+    <select id="selectById" resultMap="resultWithCarList" resultType="com.kimzing.user.domain.user.UserBO">
         SELECT <include refid="all_column"></include> FROM `user` WHERE id = #{id} AND deleted = 0
     </select>
 

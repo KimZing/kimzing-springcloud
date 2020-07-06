@@ -86,7 +86,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(readOnly = true)
     public UserBO get(Integer id) {
-        return userMapper.select(id);
+        return userMapper.selectById(id);
     }
 
     /**

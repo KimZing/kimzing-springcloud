@@ -33,7 +33,7 @@ public interface OrderMapper {
     /**
      * 根据ID查询订单信息
      */
-    OrderBO select(Integer id);
+    OrderBO selectById(Integer id);
 
     /**
      * 条件分页查询订单信息

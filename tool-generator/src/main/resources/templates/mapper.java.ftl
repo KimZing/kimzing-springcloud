@@ -39,7 +39,7 @@ public interface ${table.mapperName} {
     /**
      * 根据ID查询${table.comment!}
      */
-    ${table.name?cap_first}BO select(Integer id);
+    ${table.name?cap_first}BO selectById(Integer id);
 
     /**
      * 条件分页查询${table.comment!}

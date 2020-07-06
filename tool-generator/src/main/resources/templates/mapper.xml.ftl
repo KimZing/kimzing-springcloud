@@ -32,7 +32,7 @@
         UPDATE `${table.name}` SET deleted = 1 WHERE id = <#noparse>#</#noparse>{id}
     </delete>
 
-    <select id="select" resultType="com.kimzing.order.domain.order.OrderBO">
+    <select id="selectById" resultType="com.kimzing.order.domain.order.OrderBO">
         SELECT <include refid="all_column"></include> FROM `${table.name}` WHERE id = <#noparse>#</#noparse>{id} AND deleted = 0
     </select>
 

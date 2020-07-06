@@ -70,7 +70,7 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
     @Override
     @Transactional(readOnly = true)
     public ${table.name?cap_first}BO get(Integer id) {
-        return ${table.mapperName?uncap_first}.select(id);
+        return ${table.mapperName?uncap_first}.selectById(id);
     }
 
     /**

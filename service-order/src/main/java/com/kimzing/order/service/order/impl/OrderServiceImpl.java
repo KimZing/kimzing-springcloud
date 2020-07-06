@@ -64,7 +64,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional(readOnly = true)
     public OrderBO get(Integer id) {
-        return orderMapper.select(id);
+        return orderMapper.selectById(id);
     }
 
     /**
