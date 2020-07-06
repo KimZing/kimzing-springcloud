@@ -77,7 +77,6 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
     @Override
     @Transactional(readOnly = true)
     public PageResult<${table.name?cap_first}BO> listPage(${table.name?cap_first}QueryDTO ${table.name}QueryDTO, PageParam pageParam) {
-        // MARK Page对象必须放在第一个
         IPage<${table.name?cap_first}BO> ${table.name}BOPage = ${table.mapperName?uncap_first}.selectPage(convertPage(pageParam), ${table.name}QueryDTO);
         return convertPageResult(${table.name}BOPage);
     }
