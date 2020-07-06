@@ -17,9 +17,7 @@ import javax.annotation.Resource;
 
 /**
  * ${table.comment!} 服务实现类
- * <p>
- *     如果编写version版本号，调用方同样需要制定版本号
- * </p>
+ *
  * @author ${author}
  * @since ${date}
  */
