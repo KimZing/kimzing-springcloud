@@ -1,27 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kimzing.order.repository.order.OrderMapper">
-    <sql id="all_column">id,deleted,creator,modifier,create_time,modify_time,user_id, total_price, status</sql>
-    <sql id="po_column">user_id, total_price, status</sql>
+    <sql id="all_column">id,deleted,creator,modifier,create_time,modify_time,user_id,total_price,status</sql>
+    <sql id="po_column">user_id,total_price,status</sql>
 
     <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
-
+        INSERT INTO `order`(<include refid="po_column"></include>)
+        VALUES(#{userId},#{totalPrice},#{status});
     </insert>
 
     <update id="update">
-
+        UPDATE `order`
+        <set>
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="totalPrice != null">total_price = #{totalPrice},</if>
+            <if test="status != null">status = #{status},</if>
+        </set>
+        WHERE id = #{id};
     </update>
 
     <delete id="delete">
-
+        UPDATE `order` SET deleted = 1 WHERE id = #{id}
     </delete>
 
     <select id="select" resultType="com.kimzing.order.domain.order.OrderBO">
-
+        SELECT <include refid="all_column"></include> FROM `order` WHERE id = #{id} AND deleted = 0
     </select>
 
     <select id="selectPage" resultType="com.kimzing.order.domain.order.OrderBO">
-
+        SELECT <include refid="all_column"></include> FROM `order`
+        <where>
+            <if test="query.userId != null">AND user_id = #{query.userId}</if>
+            <if test="query.totalPrice != null">AND total_price = #{query.totalPrice}</if>
+            <if test="query.status != null">AND status = #{query.status}</if>
+        </where>
     </select>
 
 </mapper>

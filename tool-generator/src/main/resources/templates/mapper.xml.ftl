@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="${package.Mapper}.${table.mapperName}">
+<#--  PO属性列表  -->
 <#if enableCache>
     <!-- 开启二级缓存 -->
     <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
@@ -13,23 +14,35 @@
 </#if>
 
     <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
-
+        INSERT INTO `${table.name}`(<include refid="po_column"></include>)
+        VALUES(<#list table.fields as field><#noparse>#</#noparse>{${field.propertyName}}<#if field_has_next>,</#if></#list>);
     </insert>
 
     <update id="update">
-
+        UPDATE `${table.name}`
+        <set>
+            <#list table.fields as field>
+            <if test="${field.propertyName} != null">${field.columnName} = <#noparse>#</#noparse>{${field.propertyName}},</if>
+            </#list>
+        </set>
+        WHERE id = <#noparse>#</#noparse>{id};
     </update>
 
     <delete id="delete">
-
+        UPDATE `${table.name}` SET deleted = 1 WHERE id = <#noparse>#</#noparse>{id}
     </delete>
 
-    <select id="select" resultType="${package.Entity}.${table.name?cap_first}BO">
-
+    <select id="select" resultType="com.kimzing.order.domain.order.OrderBO">
+        SELECT <include refid="all_column"></include> FROM `${table.name}` WHERE id = <#noparse>#</#noparse>{id} AND deleted = 0
     </select>
 
-    <select id="selectPage" resultType="${package.Entity}.${table.name?cap_first}BO">
-
+    <select id="selectPage" resultType="com.kimzing.order.domain.order.OrderBO">
+        SELECT <include refid="all_column"></include> FROM `${table.name}`
+        <where>
+            <#list table.fields as field>
+                <if test="query.${field.propertyName} != null">AND ${field.columnName} = <#noparse>#</#noparse>{query.${field.propertyName}}</if>
+            </#list>
+        </where>
     </select>
 
 <#if baseResultMap>

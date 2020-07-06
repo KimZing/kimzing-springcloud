@@ -11,7 +11,9 @@
         </foreach>
     </insert>
 
-    <update id="deleteByUserId">UPDATE `car` SET deleted = 1 WHERE user_id = #{userId}</update>
+    <update id="deleteByUserId">
+        UPDATE `car` SET deleted = 1 WHERE user_id = #{userId}
+    </update>
 
     <update id="updateListByUserId">
         <foreach item="item" collection="carPOList" separator=";">

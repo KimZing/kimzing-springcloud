@@ -5,7 +5,8 @@
     <sql id="po_column">username, age, amount, gender</sql>
 
     <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
-        INSERT INTO `user`(<include refid="po_column"></include>) VALUES(#{username},#{age},#{amount},#{gender});
+        INSERT INTO `user`(<include refid="po_column"></include>)
+        VALUES(#{username},#{age},#{amount},#{gender});
     </insert>
 
     <update id="update">
