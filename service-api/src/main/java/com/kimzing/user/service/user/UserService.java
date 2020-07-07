@@ -4,6 +4,8 @@ import com.kimzing.user.domain.user.*;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * 用户信息 服务接口
  *
@@ -20,20 +22,20 @@ public interface UserService {
     /**
      * 移除用户信息
      */
-    public void remove(Integer id);
+    void remove(@NotNull(message = "用户信息ID不能为空") Integer id);
 
     /**
      * 更新用户信息
      */
-    public void update(UserUpdateDTO userUpdateDTO);
+    void update(UserUpdateDTO userUpdateDTO);
 
     /**
      * 查询单个用户信息
      */
-    public UserBO get(Integer id);
+    UserBO get(@NotNull(message = "用户信息ID不能为空") Integer id);
 
     /**
      * 分页条件查询用户信息
      */
-    public PageResult<UserBO> listPage(UserQueryDTO userQueryDTO, PageParam pageParam);
+    PageResult<UserBO> listPage(UserQueryDTO userQueryDTO, PageParam pageParam);
 }

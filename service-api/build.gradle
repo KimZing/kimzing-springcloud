@@ -5,4 +5,6 @@ dependencies {
     compileOnly 'com.fasterxml.jackson.core:jackson-annotations:2.11.1'
     // Swagger注解
     compileOnly 'io.swagger:swagger-annotations:1.5.22'
+    compileOnly 'javax.validation:validation-api:2.0.1.Final'
+    compileOnly 'org.hibernate:hibernate-validator:6.1.5.Final'
 }
