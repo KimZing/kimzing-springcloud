@@ -21,11 +21,11 @@ public class OrderUpdateDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "订单信息ID")
+    @ApiModelProperty(value = "订单信息ID", example = "1")
     private Integer id;
 
     @NotNull(message = "ORDER_1003")
-    @ApiModelProperty(value = "状态")
+    @ApiModelProperty(value = "状态", example = "PAYED")
     private OrderStatusEnum status;
 
 }

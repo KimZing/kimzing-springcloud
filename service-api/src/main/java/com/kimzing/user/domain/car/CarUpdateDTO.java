@@ -23,19 +23,19 @@ public class CarUpdateDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "用户车辆信息ID")
+    @ApiModelProperty(value = "用户车辆信息ID", example = "1")
     private Integer id;
 
-    @ApiModelProperty(value = "所属用户ID")
+    @ApiModelProperty(value = "所属用户ID", example = "1")
     private Integer userId;
 
-    @ApiModelProperty(value = "车辆品牌")
+    @ApiModelProperty(value = "车辆品牌", example = "奥迪A8")
     private String brand;
 
-    @ApiModelProperty(value = "车辆价格")
+    @ApiModelProperty(value = "车辆价格", example = "800000")
     private BigDecimal price;
 
-    @ApiModelProperty(value = "购买时间")
+    @ApiModelProperty(value = "购买时间", example = "2019-07-07 12:12:12")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime buyTime;
 

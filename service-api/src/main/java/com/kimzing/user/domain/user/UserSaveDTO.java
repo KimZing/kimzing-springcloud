@@ -29,18 +29,18 @@ public class UserSaveDTO implements Serializable {
 
     @NotBlank(message = "USER_1001")
     @Size(min = 3, max = 8, message = "USER_1002")
-    @ApiModelProperty(value = "用户名")
+    @ApiModelProperty(value = "用户名", example = "KimZing")
     private String username;
 
     @Range(min = 1, max = 200, message = "USER_1003")
-    @ApiModelProperty(value = "年龄")
+    @ApiModelProperty(value = "年龄", example = "20")
     private Integer age;
 
-    @ApiModelProperty(value = "金额")
+    @ApiModelProperty(value = "金额", example = "10000")
     private BigDecimal amount;
 
     @NotNull(message = "USER_1004")
-    @ApiModelProperty(value = "性别")
+    @ApiModelProperty(value = "性别", example = "MALE")
     private GenderEnum gender;
 
     @ApiModelProperty(value = "车辆信息")

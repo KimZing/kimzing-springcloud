@@ -22,13 +22,13 @@ public class OrderQueryDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
-    @ApiModelProperty(value = "用户ID")
+    @ApiModelProperty(value = "用户ID", example = "1")
     private Integer userId;
 
-    @ApiModelProperty(value = "订单总价")
+    @ApiModelProperty(value = "订单总价", example = "8888")
     private BigDecimal totalPrice;
 
-    @ApiModelProperty(value = "状态")
+    @ApiModelProperty(value = "状态", example = "PAYED")
     private OrderStatusEnum status;
 
 }

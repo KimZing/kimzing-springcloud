@@ -26,13 +26,13 @@ public class CarSaveDTO implements Serializable {
     @ApiModelProperty(value = "所属用户ID")
     private Integer userId;
 
-    @ApiModelProperty(value = "车辆品牌")
+    @ApiModelProperty(value = "车辆品牌", example = "奥迪")
     private String brand;
 
-    @ApiModelProperty(value = "车辆价格")
+    @ApiModelProperty(value = "车辆价格", example = "600000")
     private BigDecimal price;
 
-    @ApiModelProperty(value = "购买时间")
+    @ApiModelProperty(value = "购买时间", example = "2020-07-07 12:12:12")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime buyTime;
 

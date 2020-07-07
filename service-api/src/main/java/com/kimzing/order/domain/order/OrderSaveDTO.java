@@ -24,15 +24,15 @@ public class OrderSaveDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @NotNull(message = "ORDER_1001")
-    @ApiModelProperty(value = "用户ID")
+    @ApiModelProperty(value = "用户ID", example = "1")
     private Integer userId;
 
     @DecimalMin(value = "0", message = "ORDER_1002")
-    @ApiModelProperty(value = "订单总价")
+    @ApiModelProperty(value = "订单总价", example = "888")
     private BigDecimal totalPrice;
 
     @NotNull(message = "ORDER_1003")
-    @ApiModelProperty(value = "状态")
+    @ApiModelProperty(value = "状态", example = "CREATED")
     private OrderStatusEnum status;
 
 }

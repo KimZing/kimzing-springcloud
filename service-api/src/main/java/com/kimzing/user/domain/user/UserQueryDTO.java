@@ -20,16 +20,16 @@ public class UserQueryDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "最小年龄")
+    @ApiModelProperty(value = "最小年龄", example = "1")
     private Integer ageFrom;
 
-    @ApiModelProperty(value = "最大年龄")
+    @ApiModelProperty(value = "最大年龄", example = "30")
     private Integer ageTo;
 
-    @ApiModelProperty(value = "性别")
+    @ApiModelProperty(value = "性别", example = "MALE")
     private GenderEnum gender;
 
-    @ApiModelProperty(value = "查询车辆数量大于条件")
+    @ApiModelProperty(value = "查询车辆数量大于条件", example = "0")
     private Integer carNumGreaterThan;
 
 }
