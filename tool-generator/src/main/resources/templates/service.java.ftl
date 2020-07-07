@@ -4,6 +4,7 @@ import ${package.Entity}.*;
 <#--import ${superServiceClassPackage};-->
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
+import javax.validation.constraints.NotNull;
 
 /**
  * ${table.comment!} 服务接口
@@ -25,7 +26,7 @@ public interface ${table.serviceName} {
     /**
      * 移除${table.comment!}
      */
-    void remove(Integer id);
+    void remove(@NotNull(message = "${table.name?upper_case}_1001") Integer id);
 
     /**
      * 更新${table.comment!}
@@ -35,7 +36,7 @@ public interface ${table.serviceName} {
     /**
      * 查询单个${table.comment!}
      */
-    ${table.name?cap_first}BO get(Integer id);
+    ${table.name?cap_first}BO get(@NotNull(message = "${table.name?upper_case}_1001") Integer id);
 
     /**
      * 分页条件查询${table.comment!}

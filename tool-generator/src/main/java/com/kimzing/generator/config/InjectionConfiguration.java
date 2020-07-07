@@ -44,6 +44,14 @@ public class InjectionConfiguration {
             }
         });
 
+        focList.add(new FileOutConfig("/templates/exception.properties.ftl") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+                return generaPath + "/src/main/resources/exception.properties";
+            }
+        });
+
         focList.add(new FileOutConfig("/templates/domain/save-dto.java.ftl") {
             @Override
             public String outputFile(TableInfo tableInfo) {
