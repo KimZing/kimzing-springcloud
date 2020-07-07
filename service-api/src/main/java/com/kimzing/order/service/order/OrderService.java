@@ -36,4 +36,9 @@ public interface OrderService {
      * 分页条件查询订单信息
      */
     PageResult<OrderBO> listPage(OrderQueryDTO orderQueryDTO, PageParam pageParam);
+
+    /**
+     * 通过User服务抛出自定义异常
+     */
+    void testException();
 }

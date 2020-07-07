@@ -4,9 +4,11 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.kimzing.order.domain.order.*;
 import com.kimzing.order.repository.order.OrderMapper;
 import com.kimzing.order.service.order.OrderService;
+import com.kimzing.user.service.user.UserService;
 import com.kimzing.utils.bean.BeanUtil;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
+import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +25,9 @@ import static com.kimzing.utils.page.MPPageUtil.convertPageResult;
  */
 @Service(protocol = "dubbo", timeout = 2000)
 public class OrderServiceImpl implements OrderService {
+
+    @Reference
+    UserService userService;
 
     @Resource
     OrderMapper orderMapper;
@@ -73,6 +78,14 @@ public class OrderServiceImpl implements OrderService {
     public PageResult<OrderBO> listPage(OrderQueryDTO orderQueryDTO, PageParam pageParam) {
         IPage<OrderBO> orderBOPage = orderMapper.selectPage(convertPage(pageParam), orderQueryDTO);
         return convertPageResult(orderBOPage);
+    }
+
+    /**
+     * 通过User服务抛出自定义异常
+     */
+    @Override
+    public void testException() {
+        userService.testException();
     }
 
 }

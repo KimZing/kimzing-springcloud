@@ -22,7 +22,7 @@ public interface UserService {
     /**
      * 移除用户信息
      */
-    void remove(@NotNull(message = "用户信息ID不能为空") Integer id);
+    void remove(@NotNull(message = "USER_1005") Integer id);
 
     /**
      * 更新用户信息
@@ -32,10 +32,16 @@ public interface UserService {
     /**
      * 查询单个用户信息
      */
-    UserBO get(@NotNull(message = "用户信息ID不能为空") Integer id);
+    UserBO get(@NotNull(message = "USER_1005") Integer id);
 
     /**
      * 分页条件查询用户信息
      */
     PageResult<UserBO> listPage(UserQueryDTO userQueryDTO, PageParam pageParam);
+
+    /**
+     * 抛出自定义异常
+     */
+    void testException();
+
 }

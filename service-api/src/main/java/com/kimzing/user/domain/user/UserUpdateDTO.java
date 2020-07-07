@@ -27,23 +27,23 @@ public class UserUpdateDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @NotNull(message = "用户信息ID不能为空")
+    @NotNull(message = "USER_1005")
     @ApiModelProperty(value = "用户信息ID")
     private Integer id;
 
-    @NotBlank(message = "用户名不能为空")
-    @Size(min = 3, max = 8, message = "用户名长度3-8")
+    @NotBlank(message = "USER_1001")
+    @Size(min = 3, max = 8, message = "USER_1002")
     @ApiModelProperty(value = "用户名")
     private String username;
 
-    @Range(min = 1, max = 200, message = "年龄信息错误")
+    @Range(min = 1, max = 200, message = "USER_1003")
     @ApiModelProperty(value = "年龄")
     private Integer age;
 
     @ApiModelProperty(value = "金额")
     private BigDecimal amount;
 
-    @NotNull(message = "用户性别不能为空")
+    @NotNull(message = "USER_1004")
     @ApiModelProperty(value = "性别")
     private GenderEnum gender;
 

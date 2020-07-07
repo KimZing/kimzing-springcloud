@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -23,6 +24,7 @@ public class OrderUpdateDTO implements Serializable {
     @ApiModelProperty(value = "订单信息ID")
     private Integer id;
 
+    @NotNull(message = "ORDER_1003")
     @ApiModelProperty(value = "状态")
     private OrderStatusEnum status;
 

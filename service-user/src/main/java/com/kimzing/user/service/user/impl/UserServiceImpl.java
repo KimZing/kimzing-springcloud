@@ -8,6 +8,7 @@ import com.kimzing.user.repository.car.CarMapper;
 import com.kimzing.user.repository.user.UserMapper;
 import com.kimzing.user.service.user.UserService;
 import com.kimzing.utils.bean.BeanUtil;
+import com.kimzing.utils.exception.ExceptionManager;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
 import com.kimzing.utils.spring.SpringContextUtil;
@@ -95,6 +96,16 @@ public class UserServiceImpl implements UserService {
     public PageResult<UserBO> listPage(UserQueryDTO userQueryDTO, PageParam pageParam) {
         IPage<UserBO> userBOPage = userMapper.selectPage(convertPage(pageParam), userQueryDTO);
         return convertPageResult(userBOPage);
+    }
+
+    /**
+     * 抛出自定义异常
+     */
+    @Override
+    public void testException() {
+        if (true) {
+            throw ExceptionManager.createByCode("USER_1000");
+        }
     }
 
 }
