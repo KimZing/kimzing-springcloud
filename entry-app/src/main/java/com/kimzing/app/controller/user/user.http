@@ -1,5 +1,11 @@
 ### 基础信息
-@host=http://localhost:9002/app/user
+@base=http://localhost:9002/app
+@host={{base}}/user
+### 测试User直接抛出异常
+GET {{base}}/exception/user
+
+### 测试Order调用User抛出异常
+GET {{base}}/exception/user/order
 
 ### 保存用户
 POST {{host}}
