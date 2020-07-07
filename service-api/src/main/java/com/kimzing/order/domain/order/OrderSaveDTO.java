@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -26,8 +27,8 @@ public class OrderSaveDTO implements Serializable {
     @ApiModelProperty(value = "用户ID")
     private Integer userId;
 
-    @NotNull(message = "")
-    @ApiModelProperty(value = "ORDER_1002")
+    @DecimalMin(value = "0", message = "ORDER_1002")
+    @ApiModelProperty(value = "订单总价")
     private BigDecimal totalPrice;
 
     @NotNull(message = "ORDER_1003")
