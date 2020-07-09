@@ -6,7 +6,8 @@
     <!-- 从 Spring Boot 配置文件中，读取 spring.application.name 应用名 -->
     <springProperty name="app" scope="context" source="spring.application.name" />
     <springProperty name="profile" scope="context" source="spring.profiles.active" />
-    <springProperty name="logstashAddress" scope="context" source="logstash.address" />
+    <!-- logstash日志收集地址 -->
+    <property name="logstashAddress" scope="context" value="127.0.0.1:5670" />
     <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %green([%thread]) %clr(${LOG_LEVEL_PATTERN:-%5p}) %cyan(%logger{50}) - %msg %n"/>
     <!-- 日志文件的路径 -->
     <property name="LOG_FILE" value="${user.home}/log/${app}.log"/>​
@@ -37,16 +38,17 @@
     </appender>
 
     <!-- ELK输出 -->
+    <!--
     <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <!--  这是logstash服务器地址 端口-->
         <destination>${logstashAddress}</destination>
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
             <includeContext>false</includeContext>
             <customFields>{"app": "${app}", "profile": "${profile}"}</customFields>
         </encoder>
     </appender>
+    -->
 
-    <!-- 开发环境，独有的配置 -->
+    <!-- 开发环境 -->
     <springProfile name="dev">
         <root level="INFO">
             <appender-ref ref="console"/>
@@ -55,7 +57,7 @@
         <!--<logger name="com.kimzing.controller" level="DEBUG"/>-->
     </springProfile>
 
-    <!-- 测试环境，独有的配置 -->
+    <!-- 测试环境 -->
     <springProfile name="sit">
         <root level="INFO">
             <appender-ref ref="console"/>
@@ -63,21 +65,21 @@
         </root>
     </springProfile>
 
-    <!-- 验收环境，独有的配置 -->
+    <!-- 验收环境 -->
     <springProfile name="uat">
         <root level="WARN">
             <appender-ref ref="console"/>
             <appender-ref ref="file"/>
-            <appender-ref ref="logstash"/>
+            <!--<appender-ref ref="logstash"/>-->
         </root>
     </springProfile>
 
-    <!-- 生产环境，独有的配置 -->
+    <!-- 生产环境 -->
     <springProfile name="pro">
         <root level="WARN">
             <appender-ref ref="console"/>
             <appender-ref ref="file"/>
-            <appender-ref ref="logstash"/>
+            <!--<appender-ref ref="logstash"/>-->
         </root>
     </springProfile>
 
