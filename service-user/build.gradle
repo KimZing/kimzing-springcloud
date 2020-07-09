@@ -1,7 +1,5 @@
 description '用户服务'
 
 dependencies {
-    implementation 'com.baomidou:mybatis-plus-boot-starter:3.1.2'
-    implementation 'org.flywaydb:flyway-core'
-    runtimeOnly 'mysql:mysql-connector-java'
+
 }
