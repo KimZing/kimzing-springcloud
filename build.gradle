@@ -102,6 +102,11 @@ configure(entryProjects) {
 
 // 开发项目公共配置
 configure(businessProjects + entryProjects) {
+    configurations {
+        // 排除tomcat，使用undertow容器
+        implementation.exclude module: 'spring-boot-starter-tomcat'
+    }
+
     dependencies {
         // 公共api模块
         implementation project(':service-api')
@@ -111,6 +116,7 @@ configure(businessProjects + entryProjects) {
         implementation 'com.alibaba.cloud:spring-cloud-starter-dubbo'
         // webmvc
         implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.boot:spring-boot-starter-undertow'
         // openfeign接口调用
         implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
         // JSR303校验
