@@ -115,6 +115,8 @@ configure(businessProjects + entryProjects) {
         implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
         // JSR303校验
         implementation 'org.springframework.boot:spring-boot-starter-validation'
+        // 日志输出到ELK体系
+        runtime 'net.logstash.logback:logstash-logback-encoder:6.1'
         // 生成配置解析
         annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     }
