@@ -29,6 +29,9 @@ public class UserBO implements Serializable {
     @ApiModelProperty(value = "用户名")
     private String username;
 
+    @ApiModelProperty(value = "邮箱")
+    private String email;
+
     @ApiModelProperty(value = "年龄")
     private Integer age;
 

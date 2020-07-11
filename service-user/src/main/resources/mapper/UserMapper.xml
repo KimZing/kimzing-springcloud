@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kimzing.user.repository.user.UserMapper">
-    <sql id="all_column">id,deleted,creator,modifier,create_time,modify_time,username, age, amount, gender</sql>
-    <sql id="po_column">username, age, amount, gender</sql>
+    <sql id="all_column">id,deleted,creator,modifier,create_time,modify_time,username, email, age, amount, gender</sql>
+    <sql id="po_column">username, email, age, amount, gender</sql>
 
     <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
         INSERT INTO `user`(<include refid="po_column"></include>)
-        VALUES(#{username},#{age},#{amount},#{gender});
+        VALUES(#{username},#{email},#{age},#{amount},#{gender});
     </insert>
 
     <insert id="insertBatch">
         INSERT INTO `user` (<include refid="po_column"></include>) VALUES
         <foreach item="item" collection="list" open="(" close=")" separator=",">
-            #{username},#{age},#{amount},#{gender}
+            #{username},#{email},#{age},#{amount},#{gender}
         </foreach>
     </insert>
 
@@ -20,6 +20,7 @@
         UPDATE `user`
         <set>
             <if test="username != null">username = #{username},</if>
+            <if test="email != null">email = #{email},</if>
             <if test="age != null">age = #{age},</if>
             <if test="amount != null">amount = #{amount},</if>
             <if test="gender != null">gender = #{gender},</if>

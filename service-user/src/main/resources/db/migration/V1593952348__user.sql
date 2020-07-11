@@ -2,10 +2,11 @@ CREATE TABLE IF NOT EXISTS `user`
 (
     `id`          int(11)        NOT NULL AUTO_INCREMENT COMMENT '用户ID',
     `username`    varchar(20)    NOT NULL COMMENT '用户名',
+    `email`       varchar(50)    NOT NULL COMMENT '邮箱',
     `age`         int(2)         NOT NULL COMMENT '年龄',
     `amount`      decimal(10, 2) NOT NULL COMMENT '金额',
     `gender`      varchar(10)    NOT NULL COMMENT '性别',
-    `deleted`      int(1)    NOT NULL DEFAULT 0 COMMENT '是否删除 0:未删除 1:已删除',
+    `deleted`     int(1)         NOT NULL DEFAULT 0 COMMENT '是否删除 0:未删除 1:已删除',
     `creator`     varchar(20)             DEFAULT NULL COMMENT '创建人',
     `modifier`    varchar(20)             DEFAULT NULL COMMENT '更新人',
     `create_time` datetime       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',

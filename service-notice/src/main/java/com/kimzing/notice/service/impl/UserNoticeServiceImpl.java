@@ -26,11 +26,11 @@ public class UserNoticeServiceImpl implements UserNoticeService {
     private String from;
 
     @Override
-    public void sendEmailToAdmin(UserCreateEvent userCreateEvent) {
+    public void sendEmailToUser(UserCreateEvent userCreateEvent) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         simpleMailMessage.setFrom(from);
-        simpleMailMessage.setTo("kimzing@163.com");
-        simpleMailMessage.setSubject("新用户创建提醒");
+        simpleMailMessage.setTo(userCreateEvent.getEmail());
+        simpleMailMessage.setSubject("注册成功!");
         simpleMailMessage.setText(JsonUtil.beanToJson(userCreateEvent));
         javaMailSender.send(simpleMailMessage);
     }

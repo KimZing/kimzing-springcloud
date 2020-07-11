@@ -25,8 +25,8 @@ public class UserCreateListener implements RocketMQListener<UserCreateEvent> {
 
     @Override
     public void onMessage(UserCreateEvent userCreateEvent) {
-        log.info("向管理员发送用户创建成功邮件: [{}]", userCreateEvent);
-        userNoticeService.sendEmailToAdmin(userCreateEvent);
+        log.info("向用户发送注册成功邮件: [{}]", userCreateEvent);
+        userNoticeService.sendEmailToUser(userCreateEvent);
     }
 
 }

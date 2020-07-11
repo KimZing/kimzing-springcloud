@@ -31,6 +31,12 @@ public class UserPO extends AbstractPO implements Serializable{
     private String username;
 
     /**
+     * 邮箱
+     */
+    @TableField("email")
+    private String email;
+
+    /**
      * 年龄
      */
     @TableField("age")

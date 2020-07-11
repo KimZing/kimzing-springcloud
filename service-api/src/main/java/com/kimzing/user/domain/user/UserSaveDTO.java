@@ -7,9 +7,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 import org.hibernate.validator.constraints.Range;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
@@ -32,10 +30,15 @@ public class UserSaveDTO implements Serializable {
     @ApiModelProperty(value = "用户名", example = "KimZing")
     private String username;
 
+    @Email(message = "USER_1007")
+    @ApiModelProperty(value = "邮箱", example = "kimzing@163.com")
+    private String email;
+
     @Range(min = 1, max = 200, message = "USER_1003")
     @ApiModelProperty(value = "年龄", example = "20")
     private Integer age;
 
+    @DecimalMin(value = "0", message = "USER_1006")
     @ApiModelProperty(value = "金额", example = "10000")
     private BigDecimal amount;
 

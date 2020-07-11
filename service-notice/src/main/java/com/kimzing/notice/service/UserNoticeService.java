@@ -10,6 +10,6 @@ import com.kimzing.user.domain.user.UserCreateEvent;
  */
 public interface UserNoticeService {
 
-    void sendEmailToAdmin(UserCreateEvent userCreateEvent);
+    void sendEmailToUser(UserCreateEvent userCreateEvent);
 
 }
