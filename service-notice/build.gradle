@@ -1,0 +1,5 @@
+description '消息提醒服务'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+}

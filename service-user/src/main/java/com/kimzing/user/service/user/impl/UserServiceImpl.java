@@ -3,7 +3,7 @@ package com.kimzing.user.service.user.impl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.kimzing.user.domain.car.CarPO;
 import com.kimzing.user.domain.user.*;
-import com.kimzing.user.listener.event.UserCreatedEvent;
+import com.kimzing.user.publisher.UserPublisher;
 import com.kimzing.user.repository.car.CarMapper;
 import com.kimzing.user.repository.user.UserMapper;
 import com.kimzing.user.service.user.UserService;
@@ -11,7 +11,6 @@ import com.kimzing.utils.bean.BeanUtil;
 import com.kimzing.utils.exception.ExceptionManager;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
-import com.kimzing.utils.spring.SpringContextUtil;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,6 +35,9 @@ public class UserServiceImpl implements UserService {
     @Resource
     CarMapper carMapper;
 
+    @Resource
+    UserPublisher userPublisher;
+
     /**
      * 保存用户信息
      */
@@ -47,11 +49,9 @@ public class UserServiceImpl implements UserService {
         List<CarPO> carPOList = BeanUtil.mapperList(userSaveDTO.getCarList(), CarPO.class);
         carMapper.insertBatch(userPO.getId(), carPOList);
 
-        // 发布创建事件
-        SpringContextUtil.getApplicationContext()
-                .publishEvent(new UserCreatedEvent()
-                        .setId(userPO.getId())
-                        .setUsername(userPO.getUsername()));
+        // 发布用户创建消息
+        UserCreateEvent userCreateEvent = BeanUtil.mapperBean(userPO, UserCreateEvent.class);
+        userPublisher.publishUserCreateEvent(userCreateEvent);
     }
 
     /**

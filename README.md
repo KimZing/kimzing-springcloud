@@ -116,7 +116,7 @@ flyway的sql使用
 容器内事件的使用方式
 springboot admin动态查看日志功能
 日志logback收集日志
-
+消息队列的使用
 
 ## 项目规约
 
@@ -166,6 +166,7 @@ nacos-server-addr: localhost:8848
 nacos-username: dev
 nacos-password: 123456
 active: dev
+rocketmq需手动指定自己ip 否则无法获取正确的地址进行连接
 
 ## TODO
 
