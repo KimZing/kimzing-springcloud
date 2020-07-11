@@ -9,9 +9,10 @@ package com.kimzing.order.domain.order;
 public enum OrderStatusEnum {
     CREATED("已创建"),
     PAYED("已支付"),
-    DENDED("已发货"),
+    SENDED("已发货"),
     RECEIVED("已收货"),
-    FINISHED("已完成");
+    FINISHED("已完成"),
+    CANCEL("已取消");
 
 
     private String name;

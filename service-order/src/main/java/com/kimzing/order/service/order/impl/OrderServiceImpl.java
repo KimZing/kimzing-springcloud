@@ -2,6 +2,7 @@ package com.kimzing.order.service.order.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.kimzing.order.domain.order.*;
+import com.kimzing.order.publisher.OrderPublisher;
 import com.kimzing.order.repository.order.OrderMapper;
 import com.kimzing.order.service.order.OrderService;
 import com.kimzing.user.service.user.UserService;
@@ -32,6 +33,9 @@ public class OrderServiceImpl implements OrderService {
     @Resource
     OrderMapper orderMapper;
 
+    @Resource
+    OrderPublisher orderPublisher;
+
     /**
      * 保存订单信息
      */
@@ -40,6 +44,13 @@ public class OrderServiceImpl implements OrderService {
     public void save(OrderSaveDTO orderSaveDTO) {
         OrderPO orderPO = BeanUtil.mapperBean(orderSaveDTO, OrderPO.class);
         orderMapper.insert(orderPO);
+
+        // 发布订单创建事件, 其他相关消费组进行业务处理
+        OrderCreateEvent orderCreateEvent = new OrderCreateEvent().setId(orderPO.getId()).setUserId(orderPO.getUserId());
+        orderPublisher.publishOrderCreateEvent(orderCreateEvent);
+        // 发布延时事件，将超时的订单进行取消
+        OrderCheckEvent orderCheckEvent = new OrderCheckEvent().setId(orderPO.getId());
+        orderPublisher.publishOrderCheckEvent(orderCheckEvent);
     }
 
     /**

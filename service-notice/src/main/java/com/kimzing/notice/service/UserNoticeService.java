@@ -1,5 +1,6 @@
 package com.kimzing.notice.service;
 
+import com.kimzing.order.domain.order.OrderCreateEvent;
 import com.kimzing.user.domain.user.UserCreateEvent;
 
 /**
@@ -10,6 +11,7 @@ import com.kimzing.user.domain.user.UserCreateEvent;
  */
 public interface UserNoticeService {
 
-    void sendEmailToUser(UserCreateEvent userCreateEvent);
+    void registerSuccess(UserCreateEvent userCreateEvent);
 
+    void orderSucess(OrderCreateEvent orderCreateEvent);
 }

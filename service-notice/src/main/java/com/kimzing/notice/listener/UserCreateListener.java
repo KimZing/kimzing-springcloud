@@ -1,4 +1,4 @@
-package com.kimzing.notice.listener.user;
+package com.kimzing.notice.listener;
 
 import com.kimzing.notice.service.UserNoticeService;
 import com.kimzing.user.domain.user.UserCreateEvent;
@@ -26,7 +26,7 @@ public class UserCreateListener implements RocketMQListener<UserCreateEvent> {
     @Override
     public void onMessage(UserCreateEvent userCreateEvent) {
         log.info("向用户发送注册成功邮件: [{}]", userCreateEvent);
-        userNoticeService.sendEmailToUser(userCreateEvent);
+        userNoticeService.registerSuccess(userCreateEvent);
     }
 
 }
