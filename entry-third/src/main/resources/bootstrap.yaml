@@ -1,6 +1,8 @@
 spring:
   application:
     name: entry-third
+    version: @version@
+    description: @description@
   profiles:
     active: dev
   cloud:

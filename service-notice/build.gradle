@@ -3,3 +3,7 @@ description '消息提醒服务'
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-mail'
 }
+
+processResources {
+    filter org.apache.tools.ant.filters.ReplaceTokens, tokens: [description: this.description, version: this.version]
+}

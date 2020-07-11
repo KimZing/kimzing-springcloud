@@ -1,6 +1,8 @@
 spring:
   application:
     name: service-notice
+    version: @version@
+    description: @description@
   profiles:
     active: dev
   cloud:

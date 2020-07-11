@@ -3,3 +3,7 @@ description '聚合服务-第三方调用入口'
 dependencies {
 
 }
+
+processResources {
+    filter org.apache.tools.ant.filters.ReplaceTokens, tokens: [description: this.description, version: this.version]
+}

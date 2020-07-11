@@ -3,3 +3,7 @@ description '用户服务'
 dependencies {
 
 }
+
+processResources {
+    filter org.apache.tools.ant.filters.ReplaceTokens, tokens: [description: this.description, version: this.version]
+}
