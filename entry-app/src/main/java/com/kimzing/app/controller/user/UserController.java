@@ -37,8 +37,8 @@ public class UserController {
 
     @ApiOperation(value = "保存用户信息")
     @PostMapping
-    public void save(@RequestBody UserSaveDTO userSaveDTO) {
-        userService.save(userSaveDTO);
+    public UserBO save(@RequestBody UserSaveDTO userSaveDTO) {
+        return userService.save(userSaveDTO);
     }
 
     @ApiOperation(value = "移除用户信息")

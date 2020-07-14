@@ -48,8 +48,8 @@ public class ${table.controllerName} {
 
     @ApiOperation(value = "保存${table.comment!}")
     @PostMapping
-    public void save(@RequestBody ${table.name?cap_first}SaveDTO ${table.name}SaveDTO) {
-        ${table.serviceName?uncap_first}.save(${table.name}SaveDTO);
+    public ${table.name?cap_first}BO save(@RequestBody ${table.name?cap_first}SaveDTO ${table.name}SaveDTO) {
+        return ${table.serviceName?uncap_first}.save(${table.name}SaveDTO);
     }
 
     @ApiOperation(value = "移除${table.comment!}")

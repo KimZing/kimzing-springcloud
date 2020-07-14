@@ -41,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void save(OrderSaveDTO orderSaveDTO) {
+    public OrderBO save(OrderSaveDTO orderSaveDTO) {
         OrderPO orderPO = BeanUtil.mapperBean(orderSaveDTO, OrderPO.class);
         orderMapper.insert(orderPO);
 
@@ -51,6 +51,8 @@ public class OrderServiceImpl implements OrderService {
         // 发布延时事件，将超时的订单进行取消
         OrderCheckEvent orderCheckEvent = new OrderCheckEvent().setId(orderPO.getId());
         orderPublisher.publishOrderCheckEvent(orderCheckEvent);
+
+        return BeanUtil.mapperBean(orderPO, OrderBO.class);
     }
 
     /**

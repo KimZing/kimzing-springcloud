@@ -15,6 +15,7 @@ import org.apache.dubbo.config.annotation.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.List;
 
 import static com.kimzing.utils.page.MPPageUtil.convertPage;
@@ -43,7 +44,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void save(UserSaveDTO userSaveDTO) {
+    public UserBO save(UserSaveDTO userSaveDTO) {
         UserPO userPO = BeanUtil.mapperBean(userSaveDTO, UserPO.class);
         userMapper.insert(userPO);
         List<CarPO> carPOList = BeanUtil.mapperList(userSaveDTO.getCarList(), CarPO.class);
@@ -52,6 +53,8 @@ public class UserServiceImpl implements UserService {
         // 发布用户创建消息
         UserCreateEvent userCreateEvent = BeanUtil.mapperBean(userPO, UserCreateEvent.class);
         userPublisher.publishUserCreateEvent(userCreateEvent);
+
+        return BeanUtil.mapperBean(userPO, UserBO.class);
     }
 
     /**
@@ -106,6 +109,26 @@ public class UserServiceImpl implements UserService {
         if (true) {
             throw ExceptionManager.createByCode("USER_1000");
         }
+    }
+
+    /**
+     * 扣除用户余额
+     * @param userId
+     * @param totalPrice
+     * @return
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Boolean reduceAmount(Integer userId, BigDecimal totalPrice) {
+        UserBO userBO = get(userId);
+        if (userBO == null) {
+            throw ExceptionManager.createByCode("USER_1008");
+        }
+        if (userBO.getAmount().compareTo(totalPrice) < 1) {
+            throw ExceptionManager.createByCode("USER_1009");
+        }
+        Integer rows = userMapper.reduceAmount(userId, totalPrice);
+        return rows > 0;
     }
 
 }

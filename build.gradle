@@ -6,11 +6,11 @@ plugins {
 
 ext {
     // SpringCloud公共组件项目
-    serverProjects = subprojects.findAll {it.name.startsWith('server-')}
+    serverProjects = subprojects.findAll { it.name.startsWith('server-') }
     // 网关服务
     gatewayProjects = project(":gateway")
     // 入口聚合项目
-    entryProjects = subprojects.findAll {it.name.startsWith('entry-')}
+    entryProjects = subprojects.findAll { it.name.startsWith('entry-') }
     // 业务开发项目
     businessProjects = subprojects.findAll { it.name.startsWith('service-') } - project(':service-api')
     // 版本声明
@@ -126,6 +126,8 @@ configure(businessProjects + entryProjects) {
         implementation project(':service-api')
         // 自定义starter, 提供各种功能
         implementation 'com.kimzing:kimzing-springboot-starter:1.0.0'
+        // 分布式事物支持
+        implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-seata'
         // dubbo依赖
         implementation 'com.alibaba.cloud:spring-cloud-starter-dubbo'
         // webmvc

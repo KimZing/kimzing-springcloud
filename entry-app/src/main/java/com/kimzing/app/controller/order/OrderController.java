@@ -1,17 +1,21 @@
 package com.kimzing.app.controller.order;
 
 
-import org.springframework.web.bind.annotation.*;
-import org.apache.dubbo.config.annotation.Reference;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import com.kimzing.web.resolver.json.JsonParam;
+import com.kimzing.app.aggregation.OrderAggregation;
+import com.kimzing.order.domain.order.OrderBO;
+import com.kimzing.order.domain.order.OrderQueryDTO;
+import com.kimzing.order.domain.order.OrderSaveDTO;
+import com.kimzing.order.domain.order.OrderUpdateDTO;
+import com.kimzing.order.service.order.OrderService;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
-import com.kimzing.order.service.order.OrderService;
-import com.kimzing.order.domain.order.*;
+import com.kimzing.web.resolver.json.JsonParam;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
+import javax.annotation.Resource;
 
 /**
  * 订单信息接口层.
@@ -27,10 +31,13 @@ public class OrderController {
     @Reference
     OrderService orderService;
 
+    @Resource
+    OrderAggregation orderAggregation;
+
     @ApiOperation(value = "保存订单信息")
     @PostMapping
     public void save(@RequestBody OrderSaveDTO orderSaveDTO) {
-        orderService.save(orderSaveDTO);
+        orderAggregation.createOrderAndPay(orderSaveDTO);
     }
 
     @ApiOperation(value = "移除订单信息")

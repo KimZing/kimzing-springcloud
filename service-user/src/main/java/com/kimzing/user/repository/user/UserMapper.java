@@ -8,6 +8,7 @@ import com.kimzing.user.domain.user.UserQueryDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -49,4 +50,8 @@ public interface UserMapper {
      */
     IPage<UserBO> selectPage(Page<UserBO> page, @Param("query") UserQueryDTO userQueryDTO);
 
+    /**
+     * 扣减用户余额
+     */
+    Integer reduceAmount(@Param("userId") Integer userId, @Param("totalPrice") BigDecimal totalPrice);
 }

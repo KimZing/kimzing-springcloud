@@ -32,6 +32,10 @@
         UPDATE `user` SET deleted = 1 WHERE id = #{id}
     </update>
 
+    <update id="reduceAmount">
+        UPDATE `user` SET amount = amount - #{totalPrice} WHERE id = #{userId};
+    </update>
+
     <select id="selectById" resultMap="resultWithCarList" resultType="com.kimzing.user.domain.user.UserBO">
         SELECT <include refid="all_column"></include> FROM `user` WHERE id = #{id} AND deleted = 0
     </select>

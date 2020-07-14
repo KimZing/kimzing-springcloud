@@ -5,6 +5,7 @@ import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
 
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 
 /**
  * 用户信息 服务接口
@@ -17,7 +18,7 @@ public interface UserService {
     /**
      * 保存用户信息
      */
-    void save(UserSaveDTO userSaveDTO);
+    UserBO save(UserSaveDTO userSaveDTO);
 
     /**
      * 移除用户信息
@@ -44,4 +45,11 @@ public interface UserService {
      */
     void testException();
 
+    /**
+     * 扣除用户约
+     * @param userId
+     * @param totalPrice
+     * @return
+     */
+    Boolean reduceAmount(Integer userId, BigDecimal totalPrice);
 }

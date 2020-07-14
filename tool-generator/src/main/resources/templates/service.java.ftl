@@ -21,7 +21,7 @@ public interface ${table.serviceName} {
     /**
      * 保存${table.comment!}
      */
-    void save(${table.name?cap_first}SaveDTO ${table.name}SaveDTO);
+    ${table.name?cap_first}BO save(${table.name?cap_first}SaveDTO ${table.name}SaveDTO);
 
     /**
      * 移除${table.comment!}

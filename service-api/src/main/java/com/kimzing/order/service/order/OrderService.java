@@ -15,7 +15,7 @@ public interface OrderService {
     /**
      * 保存订单信息
      */
-    void save(OrderSaveDTO orderSaveDTO);
+    OrderBO save(OrderSaveDTO orderSaveDTO);
 
     /**
      * 移除订单信息

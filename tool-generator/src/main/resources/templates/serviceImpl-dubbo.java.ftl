@@ -38,9 +38,11 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void save(${table.name?cap_first}SaveDTO ${table.name}SaveDTO) {
+    public ${table.name?cap_first}BO save(${table.name?cap_first}SaveDTO ${table.name}SaveDTO) {
         ${entity} ${entity?uncap_first} = BeanUtil.mapperBean(${table.name}SaveDTO, ${entity}.class);
         ${table.mapperName?uncap_first}.insert(${entity?uncap_first});
+
+        return BeanUtil.mapperBean(${entity?uncap_first}, ${table.name?cap_first}BO.class);
     }
 
     /**
