@@ -37,8 +37,4 @@ public interface OrderService {
      */
     PageResult<OrderBO> listPage(OrderQueryDTO orderQueryDTO, PageParam pageParam);
 
-    /**
-     * 通过User服务抛出自定义异常
-     */
-    void testException();
 }

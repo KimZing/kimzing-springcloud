@@ -28,6 +28,12 @@ public class OrderListener implements RocketMQListener<OrderCheckEvent> {
     @Override
     public void onMessage(OrderCheckEvent message) {
         OrderBO orderBO = orderService.get(message.getId());
+        log.info("检查订单[{}]状态,订单信息:[{}]", message.getId(), orderBO);
+
+        if (orderBO == null) {
+            log.warn("订单[{}]不存在", message.getId());
+            return;
+        }
         if (orderBO.getStatus() == OrderStatusEnum.CREATED) {
             orderService.update(new OrderUpdateDTO().setId(message.getId()).setStatus(OrderStatusEnum.CANCEL));
             log.info("订单[{}]超时未支付已取消", message.getId());

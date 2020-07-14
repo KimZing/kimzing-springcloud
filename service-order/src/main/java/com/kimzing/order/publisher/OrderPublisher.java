@@ -1,7 +1,6 @@
 package com.kimzing.order.publisher;
 
 import com.kimzing.order.domain.order.OrderCheckEvent;
-import com.kimzing.order.domain.order.OrderCreateEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
@@ -24,21 +23,6 @@ public class OrderPublisher {
     @Resource
     RocketMQTemplate rocketMQTemplate;
 
-
-    public void publishOrderCreateEvent(OrderCreateEvent orderCreateEvent) {
-        rocketMQTemplate.asyncSend(OrderCreateEvent.TOPIC, orderCreateEvent, new SendCallback() {
-            @Override
-            public void onSuccess(SendResult sendResult) {
-                log.info("消息[{}]发送成功: [{}]", orderCreateEvent, sendResult);
-            }
-
-            @Override
-            public void onException(Throwable e) {
-                log.error("消息[{}]发送失败: [{}]", orderCreateEvent, e);
-            }
-        });
-    }
-
     public void publishOrderCheckEvent(OrderCheckEvent orderCheckEvent) {
         rocketMQTemplate.asyncSend(OrderCheckEvent.TOPIC, MessageBuilder.withPayload(orderCheckEvent).build(),
                 new SendCallback() {
@@ -51,6 +35,6 @@ public class OrderPublisher {
                     public void onException(Throwable e) {
                         log.error("消息[{}]发送失败: [{}]", orderCheckEvent, e);
                     }
-                }, 3000, 4);
+                }, 3000, 3);
     }
 }

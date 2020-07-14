@@ -41,11 +41,6 @@ public interface UserService {
     PageResult<UserBO> listPage(UserQueryDTO userQueryDTO, PageParam pageParam);
 
     /**
-     * 抛出自定义异常
-     */
-    void testException();
-
-    /**
      * 扣除用户约
      * @param userId
      * @param totalPrice

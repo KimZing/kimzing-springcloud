@@ -127,7 +127,7 @@ configure(businessProjects + entryProjects) {
         // 自定义starter, 提供各种功能
         implementation 'com.kimzing:kimzing-springboot-starter:1.0.0'
         // 分布式事物支持
-        implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-seata'
+        implementation 'io.seata:seata-spring-boot-starter:1.2.0'
         // dubbo依赖
         implementation 'com.alibaba.cloud:spring-cloud-starter-dubbo'
         // webmvc

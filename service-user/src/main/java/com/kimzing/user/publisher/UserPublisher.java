@@ -23,7 +23,7 @@ public class UserPublisher {
     RocketMQTemplate rocketMQTemplate;
 
     /**
-     * 用户创建消息
+     * 用户创建消息,演示异步消息发布
      */
     public void publishUserCreateEvent(UserCreateEvent userCreateEvent) {
         rocketMQTemplate.asyncSend(UserCreateEvent.TOPIC, userCreateEvent,

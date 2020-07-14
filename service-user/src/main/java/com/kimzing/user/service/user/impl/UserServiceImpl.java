@@ -102,16 +102,6 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 抛出自定义异常
-     */
-    @Override
-    public void testException() {
-        if (true) {
-            throw ExceptionManager.createByCode("USER_1000");
-        }
-    }
-
-    /**
      * 扣除用户余额
      * @param userId
      * @param totalPrice
@@ -124,7 +114,7 @@ public class UserServiceImpl implements UserService {
         if (userBO == null) {
             throw ExceptionManager.createByCode("USER_1008");
         }
-        if (userBO.getAmount().compareTo(totalPrice) < 1) {
+        if (userBO.getAmount().compareTo(totalPrice) < 0) {
             throw ExceptionManager.createByCode("USER_1009");
         }
         Integer rows = userMapper.reduceAmount(userId, totalPrice);

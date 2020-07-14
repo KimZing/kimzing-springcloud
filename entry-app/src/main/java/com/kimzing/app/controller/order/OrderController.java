@@ -34,7 +34,7 @@ public class OrderController {
     @Resource
     OrderAggregation orderAggregation;
 
-    @ApiOperation(value = "保存订单信息")
+    @ApiOperation(value = "创建订单并支付")
     @PostMapping
     public void save(@RequestBody OrderSaveDTO orderSaveDTO) {
         orderAggregation.createOrderAndPay(orderSaveDTO);

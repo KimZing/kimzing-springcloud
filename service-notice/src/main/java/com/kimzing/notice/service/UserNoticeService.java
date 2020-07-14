@@ -13,5 +13,4 @@ public interface UserNoticeService {
 
     void registerSuccess(UserCreateEvent userCreateEvent);
 
-    void orderSucess(OrderCreateEvent orderCreateEvent);
 }

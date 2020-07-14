@@ -26,7 +26,12 @@ public class OrderAggregation {
     OrderService orderService;
 
     /**
-     * 创建订单并进行支付，如果失败则全部失败
+     * 创建订单并进行支付，如果失败则全部失败，演示分布式事物
+     * <p>
+     *     1. 用户不存在，全局回滚
+     *     2. 用户余额不足，全局回滚
+     *     3. 用户状态正常且余额充足，正常支付
+     * </p>
      * @param orderSaveDTO
      */
     @GlobalTransactional
