@@ -9,7 +9,7 @@ import com.kimzing.web.resolver.json.JsonParam;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
 import ${package.Service}.${table.serviceName};
-import ${package.Entity}.*;
+import com.kimzing.${cfg.moduleName}.domain.${cfg.packageName}.*;
 
 <#if restControllerStyle>
 import org.springframework.web.bind.annotation.RestController;

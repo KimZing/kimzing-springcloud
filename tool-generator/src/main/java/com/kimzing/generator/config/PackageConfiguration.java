@@ -22,7 +22,7 @@ public class PackageConfiguration {
         packageConfig.setServiceImpl("service." + packageName + ".impl");
         packageConfig.setMapper("repository." + packageName);
         packageConfig.setEntity("repository." + packageName);
-        packageConfig.setXml("mapper." + packageName);
+        packageConfig.setXml("mapper");
 
         return packageConfig;
     }

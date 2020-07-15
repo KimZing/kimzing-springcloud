@@ -1,4 +1,4 @@
-package ${package.Entity}.${cfg.packageName};
+package com.kimzing.${cfg.moduleName}.doamin.${cfg.packageName};
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;

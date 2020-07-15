@@ -26,6 +26,7 @@ public class InjectionConfiguration {
             @Override
             public void initMap() {
                 Map<String, Object> map = new HashMap<>();
+                map.put("moduleName", moduleName);
                 map.put("packageName", packageName);
                 this.setMap(map);
             }
@@ -39,8 +40,8 @@ public class InjectionConfiguration {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                return generaPath + "/src/main/resources/mapper/" + packageName
-                        + "/" + StringUtil.upperFirstChar(tableInfo.getName()) + "Mapper" + StringPool.DOT_XML;
+                return generaPath + "/src/main/resources/mapper/"
+                        + StringUtil.upperFirstChar(tableInfo.getName()) + "Mapper" + StringPool.DOT_XML;
             }
         });
 

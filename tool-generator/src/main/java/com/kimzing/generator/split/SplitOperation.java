@@ -71,15 +71,10 @@ public class SplitOperation {
 
     public static void splitService() throws IOException {
         FileUtil.deleteDir(new File(service + common + File.separator + "controller"));
+        FileUtil.deleteDir(new File(service + common + File.separator + "domain"));
         Files.walk(Paths.get(service + common + File.separator + "service" + File.separator + packageName))
                 .forEach(p -> {
                     if (p.getFileName().toString().endsWith("Service.java")) {
-                        FileUtil.deleteFile(p.toFile());
-                    }
-                });
-        Files.walk(Paths.get(service + common + File.separator + "domain" + File.separator + packageName))
-                .forEach(p -> {
-                    if (!p.getFileName().toString().endsWith("PO.java")) {
                         FileUtil.deleteFile(p.toFile());
                     }
                 });

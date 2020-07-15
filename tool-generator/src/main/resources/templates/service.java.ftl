@@ -1,6 +1,6 @@
 package ${package.Service};
 
-import ${package.Entity}.*;
+import com.kimzing.${cfg.moduleName}.domain.${cfg.packageName}.*;
 <#--import ${superServiceClassPackage};-->
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
