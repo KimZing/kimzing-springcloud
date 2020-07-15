@@ -113,6 +113,10 @@ Bean容器管理，粘合其他框架
   |-- domain                 # 聚合对象
     |-- 【模块】              # 对应的模块
       |-- *BO                # 聚合业务中返回的聚合对象，以BO结尾
+|-- resources
+  |-- bootstrap.yaml         # 启动配置文件
+  |-- exception.properties   # 异常Code码和message对应信息文件
+  |-- logback-spring.xml     # logback日志配置文件
 ```
 
 #### `service-api`结构规范
@@ -151,6 +155,16 @@ Bean容器管理，粘合其他框架
   |-- service                # 业务服务代码编写层
     |-- 【功能】              # 对应的功能名
       |-- impl               # 功能接口实现类
+|-- resources
+  |-- db.migration           # flyway脚本文件
+    |-- afterMigrateError.sql # 异常回退脚本
+    |-- V1__seata.sql        # seata分布式事物SQL脚本
+    |-- V时间戳_*.sql         # 数据库表sql或修补脚本
+  |-- mapper                 # Mapper数据库DML文件
+    |-- 【功能】Mapper.xml    # 具体功能的DML文件
+  |-- bootstrap.yaml         # 启动配置文件
+  |-- exception.properties   # 异常Code码和message对应信息文件
+  |-- logback-spring.xml     # logback日志配置文件
 ```
 
 ## 框架功能使用(包含对应功能示例)
