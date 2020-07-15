@@ -1,6 +1,7 @@
 package com.kimzing.order.publisher;
 
 import com.kimzing.order.domain.order.OrderCheckEvent;
+import com.kimzing.utils.log.LogUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
@@ -28,12 +29,12 @@ public class OrderPublisher {
                 new SendCallback() {
                     @Override
                     public void onSuccess(SendResult sendResult) {
-                        log.info("消息[{}]发送成功: [{}]", orderCheckEvent, sendResult);
+                        LogUtil.info("消息[{}]发送成功: [{}]", orderCheckEvent, sendResult);
                     }
 
                     @Override
                     public void onException(Throwable e) {
-                        log.error("消息[{}]发送失败: [{}]", orderCheckEvent, e);
+                        LogUtil.error("消息[{}]发送失败: [{}]", orderCheckEvent, e);
                     }
                 }, 3000, 3);
     }

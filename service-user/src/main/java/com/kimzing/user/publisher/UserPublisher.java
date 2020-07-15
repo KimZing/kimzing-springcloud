@@ -1,6 +1,7 @@
 package com.kimzing.user.publisher;
 
 import com.kimzing.user.domain.user.UserCreateEvent;
+import com.kimzing.utils.log.LogUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
@@ -30,12 +31,12 @@ public class UserPublisher {
                 new SendCallback() {
                     @Override
                     public void onSuccess(SendResult sendResult) {
-                        log.info("消息[{}]发送成功: [{}]", userCreateEvent, sendResult);
+                        LogUtil.info("消息[{}]发送成功: [{}]", userCreateEvent, sendResult);
                     }
 
                     @Override
                     public void onException(Throwable e) {
-                        log.error("消息[{}]发送失败: [{}]", userCreateEvent, e);
+                        LogUtil.error("消息[{}]发送失败: [{}]", userCreateEvent, e);
                     }
                 });
     }

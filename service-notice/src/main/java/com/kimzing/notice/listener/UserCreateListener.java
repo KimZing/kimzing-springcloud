@@ -2,6 +2,7 @@ package com.kimzing.notice.listener;
 
 import com.kimzing.notice.service.UserNoticeService;
 import com.kimzing.user.domain.user.UserCreateEvent;
+import com.kimzing.utils.log.LogUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
@@ -25,7 +26,7 @@ public class UserCreateListener implements RocketMQListener<UserCreateEvent> {
 
     @Override
     public void onMessage(UserCreateEvent userCreateEvent) {
-        log.info("向用户发送注册成功邮件: [{}]", userCreateEvent);
+        LogUtil.info("向用户发送注册成功邮件: [{}]", userCreateEvent);
         userNoticeService.registerSuccess(userCreateEvent);
     }
 

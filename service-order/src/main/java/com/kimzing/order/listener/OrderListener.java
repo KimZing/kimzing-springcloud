@@ -5,6 +5,7 @@ import com.kimzing.order.domain.order.OrderCheckEvent;
 import com.kimzing.order.domain.order.OrderStatusEnum;
 import com.kimzing.order.domain.order.OrderUpdateDTO;
 import com.kimzing.order.service.order.OrderService;
+import com.kimzing.utils.log.LogUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
@@ -28,15 +29,15 @@ public class OrderListener implements RocketMQListener<OrderCheckEvent> {
     @Override
     public void onMessage(OrderCheckEvent message) {
         OrderBO orderBO = orderService.get(message.getId());
-        log.info("检查订单[{}]状态,订单信息:[{}]", message.getId(), orderBO);
+        LogUtil.info("检查订单[{}]状态,订单信息:[{}]", message.getId(), orderBO);
 
         if (orderBO == null) {
-            log.warn("订单[{}]不存在", message.getId());
+            LogUtil.warn("订单[{}]不存在", message.getId());
             return;
         }
         if (orderBO.getStatus() == OrderStatusEnum.CREATED) {
             orderService.update(new OrderUpdateDTO().setId(message.getId()).setStatus(OrderStatusEnum.CANCEL));
-            log.info("订单[{}]超时未支付已取消", message.getId());
+            LogUtil.info("订单[{}]超时未支付已取消", message.getId());
         }
     }
 
