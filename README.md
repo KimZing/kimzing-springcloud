@@ -247,6 +247,8 @@ Controller层日志，普通方法日志
 ### 15. 消息队列的使用方式
 发送方，接收方
 
+### 16. 远程调试功能
+
 
 ## 项目规约
 
@@ -309,12 +311,25 @@ entry从9001开始
 
 ## 项目部署
 
+### 基础组件部署
+ 
+rocketmq部署文档
+nacos部署文档
+seata部署文档
+mysql部署文档
+redis部署文档
+ELK部署文档
+nginx部署文档
+
+### Jenkins部署
+
+### 项目环境参数
+
 需要传入不同环境的 
 nacos-server-addr: localhost:8848
 nacos-username: dev
 nacos-password: 123456
 active: dev
-rocketmq需手动指定自己ip 否则无法获取正确的地址进行连接
 Dockerfile
 
 ## QA
