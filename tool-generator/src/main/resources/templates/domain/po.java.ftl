@@ -1,4 +1,4 @@
-package com.kimzing.${cfg.moduleName}.doamin.${cfg.packageName};
+package ${package.Entity};
 
 <#list table.importPackages as pkg>
 import ${pkg};
