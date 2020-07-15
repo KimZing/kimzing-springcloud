@@ -2,6 +2,7 @@ package com.kimzing.app.domain.user;
 
 import com.kimzing.order.domain.order.OrderBO;
 import com.kimzing.user.domain.user.UserBO;
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -15,6 +16,7 @@ import java.util.List;
  */
 @Data
 @Accessors(chain = true)
+@ApiModel(value="用户信息及订单聚合对象", description="包含用户及订单列表的信息")
 public class UserOrderBO {
 
     /**
