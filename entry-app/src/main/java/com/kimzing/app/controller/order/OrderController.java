@@ -1,7 +1,7 @@
 package com.kimzing.app.controller.order;
 
 
-import com.kimzing.app.aggregation.OrderAggregation;
+import com.kimzing.app.aggregation.order.OrderAggregation;
 import com.kimzing.order.domain.order.OrderBO;
 import com.kimzing.order.domain.order.OrderQueryDTO;
 import com.kimzing.order.domain.order.OrderSaveDTO;

@@ -3,7 +3,6 @@ package com.kimzing.user.repository.user;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.kimzing.user.domain.user.UserBO;
-import com.kimzing.user.domain.user.UserPO;
 import com.kimzing.user.domain.user.UserQueryDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

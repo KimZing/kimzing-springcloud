@@ -1,7 +1,6 @@
 package com.kimzing.user.repository.car;
 
 import com.kimzing.user.domain.car.CarBO;
-import com.kimzing.user.domain.car.CarPO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.kimzing.user.domain.user;
+package com.kimzing.user.repository.car;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -9,9 +9,10 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 /**
- * 用户信息实体
+ * 用户车辆信息实体
  *
  * @author KimZing
  * @since 2020-07-05
@@ -19,39 +20,33 @@ import java.math.BigDecimal;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("user")
-public class UserPO extends AbstractPO implements Serializable{
+@TableName("car")
+public class CarPO extends AbstractPO implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 用户名
+     * 所属用户ID
      */
-    @TableField("username")
-    private String username;
+    @TableField("user_id")
+    private Integer userId;
 
     /**
-     * 邮箱
+     * 车辆品牌
      */
-    @TableField("email")
-    private String email;
+    @TableField("brand")
+    private String brand;
 
     /**
-     * 年龄
+     * 车辆价格
      */
-    @TableField("age")
-    private Integer age;
+    @TableField("price")
+    private BigDecimal price;
 
     /**
-     * 金额
+     * 购买时间
      */
-    @TableField("amount")
-    private BigDecimal amount;
-
-    /**
-     * 性别
-     */
-    @TableField("gender")
-    private GenderEnum gender;
+    @TableField("buy_time")
+    private LocalDateTime buyTime;
 
 }

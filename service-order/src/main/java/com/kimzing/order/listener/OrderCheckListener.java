@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RocketMQMessageListener(topic = OrderCheckEvent.TOPIC, consumerGroup = "order-order-check-group")
-public class OrderListener implements RocketMQListener<OrderCheckEvent> {
+public class OrderCheckListener implements RocketMQListener<OrderCheckEvent> {
 
     @Reference
     OrderService orderService;

@@ -1,4 +1,4 @@
-package com.kimzing.app.aggregation;
+package com.kimzing.app.aggregation.user;
 
 import com.kimzing.app.domain.user.UserOrderBO;
 import com.kimzing.order.domain.order.OrderBO;

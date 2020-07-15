@@ -21,7 +21,7 @@ public class PackageConfiguration {
         packageConfig.setService("service." + packageName);
         packageConfig.setServiceImpl("service." + packageName + ".impl");
         packageConfig.setMapper("repository." + packageName);
-        packageConfig.setEntity("domain." + packageName);
+        packageConfig.setEntity("repository." + packageName);
         packageConfig.setXml("mapper." + packageName);
 
         return packageConfig;

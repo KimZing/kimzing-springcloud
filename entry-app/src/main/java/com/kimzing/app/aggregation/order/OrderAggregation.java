@@ -1,4 +1,4 @@
-package com.kimzing.app.aggregation;
+package com.kimzing.app.aggregation.order;
 
 import com.kimzing.order.domain.order.OrderBO;
 import com.kimzing.order.domain.order.OrderSaveDTO;

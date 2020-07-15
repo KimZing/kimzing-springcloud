@@ -1,11 +1,12 @@
 package com.kimzing.user.service.user.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.kimzing.user.domain.car.CarPO;
+import com.kimzing.user.repository.car.CarPO;
 import com.kimzing.user.domain.user.*;
 import com.kimzing.user.publisher.UserPublisher;
 import com.kimzing.user.repository.car.CarMapper;
 import com.kimzing.user.repository.user.UserMapper;
+import com.kimzing.user.repository.user.UserPO;
 import com.kimzing.user.service.user.UserService;
 import com.kimzing.utils.bean.BeanUtil;
 import com.kimzing.utils.exception.ExceptionManager;
