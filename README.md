@@ -167,6 +167,13 @@ Bean容器管理，粘合其他框架
   |-- logback-spring.xml     # logback日志配置文件
 ```
 
+## 项目启动配置
+
+### Idea插件
+
+1. lombok插件
+项目中大量使用了Lombok插件自动生成Setter/Getter,以及链式调用代码，需确保安装了Lombok插件，并开启该插件的注解功能
+
 ## 框架功能使用(包含对应功能示例)
 
 ### 1. 工具集
@@ -375,6 +382,8 @@ public PageResult<UserBO> listPage(UserQueryDTO userQueryDTO, PageParam pagePara
 
 ### 4. 下游服务已经启动了，为什么上游服务还是调用不到？
 
+> 首先实验下重启下游服务，可能是没注册上去，注册信息不同步
+
 第一种情况要检查dubbo接口是否标注了version版本，标注的话要查看上游服务是否填写了版本及版本是否对应。
 第二种情况要检查nacos的服务配置中是否对下游服务进行了订阅。
 第三种情况是在windows平台下，要将防火墙关闭，否则相应的端口是访问不到的，自然无法进行访问服务了。
@@ -389,3 +398,11 @@ public PageResult<UserBO> listPage(UserQueryDTO userQueryDTO, PageParam pagePara
 这是因为windows默认在运行时添加了过多的启动参数，将其进行调整即可。
 打开运行列表(右上角的运行程序选择)-> Edit Configurations -> Templates -> Spring Boot -> Shorten Command Line -> 选择`JAR manifest`->点击ok应用即可
 然后删除运行列表中的所有运行项，重新运行main方法即可
+
+### 7. 源代码中文乱码或输出乱码
+
+项目统一使用UTF-8编码，编译阶段对于非资源文件已经在`gradle.properties`指定了jvm参数`-Dfile.encoding=utf-8`
+而对于Java文件同样在根项目`build.gradle`文件中指定了`tasks.withType(JavaCompile)`任务进行UTF-8编码
+
+所以这时候乱码需要检查Idea的编码格式设置是否正确
+将`File->Settings->Editor->File Encodings`中的编码全部设置为UTF-8编码

@@ -53,6 +53,11 @@ allprojects {
         testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
     }
 
+    // 设置编码为UTF-8 否则在其他编码时，java文件中的中文会乱码
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
 }
 
 // SpringCloud生态项目配置
