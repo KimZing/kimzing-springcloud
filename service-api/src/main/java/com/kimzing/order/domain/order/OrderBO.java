@@ -7,6 +7,7 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 /**
  * 订单信息业务对象
@@ -29,6 +30,9 @@ public class OrderBO implements Serializable {
 
     @ApiModelProperty(value = "订单总价")
     private BigDecimal totalPrice;
+
+    @ApiModelProperty(value = "订单创建时间")
+    private LocalDateTime createTime;
 
     @ApiModelProperty(value = "状态")
     private OrderStatusEnum status;

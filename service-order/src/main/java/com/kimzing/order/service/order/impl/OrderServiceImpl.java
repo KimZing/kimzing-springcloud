@@ -42,8 +42,8 @@ public class OrderServiceImpl implements OrderService {
         orderMapper.insert(orderPO);
 
         // 发布延时消息(30min)，将超时的订单进行取消
-        OrderCheckEvent orderCheckEvent = new OrderCheckEvent().setId(orderPO.getId());
-        orderPublisher.publishOrderCheckEvent(orderCheckEvent);
+        OrderCheckCancelEvent orderCheckCancelEvent = new OrderCheckCancelEvent().setId(orderPO.getId());
+        orderPublisher.publishOrderCheckCancelEvent(orderCheckCancelEvent);
 
         return BeanUtil.mapperBean(orderPO, OrderBO.class);
     }

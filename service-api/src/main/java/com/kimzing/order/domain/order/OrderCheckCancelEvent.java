@@ -11,12 +11,12 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class OrderCheckEvent {
+public class OrderCheckCancelEvent {
 
     /**
      * 主题
      */
-    public static final String TOPIC = "order-check";
+    public static final String TOPIC = "order-check-cancel";
 
     private Integer id;
 

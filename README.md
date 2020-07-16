@@ -144,6 +144,8 @@ Bean容器管理，粘合其他框架
   |-- common                 # 配置及工具
     |-- config               # 服务自身独有的配置，仅该项目自身需要，通用的则放在通用Starter中
     |-- utils                # 服务自身独有的工具，仅该项目自身需要，通用工具则放在通用工具集中
+  |-- job                    # 任务调度(定时任务，通过xxljob进行调度)
+    |-- 【功能】Job           # 以Job结尾，相关功能的定时任务写在一个类里，以不同方法做区分
   |-- listener               # 消息监听
     |-- *Listener            # 消息监听bean,以Listener结尾，不同事件有不同的Listener，如UserCreateListener，UserUpdateListener
   |-- publisher              # 消息发布
@@ -269,6 +271,10 @@ Controller层日志，普通方法日志
 发送方，接收方
 
 ### 16. 远程调试功能
+
+### 17. 定时任务的使用方式
+1. 临时性任务，使用在线GLUE进行编写
+2. 业务性任务，使用内置Bean方式进行编写
 
 
 ## 项目规约
