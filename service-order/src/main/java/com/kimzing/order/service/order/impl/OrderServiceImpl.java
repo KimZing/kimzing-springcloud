@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.kimzing.order.domain.order.*;
 import com.kimzing.order.publisher.OrderPublisher;
 import com.kimzing.order.repository.order.OrderMapper;
+import com.kimzing.order.repository.order.OrderPO;
 import com.kimzing.order.service.order.OrderService;
 import com.kimzing.utils.bean.BeanUtil;
 import com.kimzing.utils.page.PageParam;

@@ -1,7 +1,8 @@
-package com.kimzing.order.domain.order;
+package com.kimzing.order.repository.order;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.kimzing.order.domain.order.OrderStatusEnum;
 import com.kimzing.utils.po.AbstractPO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
