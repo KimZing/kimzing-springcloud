@@ -1,7 +1,7 @@
 description '生产者服务'
 
 dependencies {
-
+    implementation 'com.xuxueli:xxl-job-core:2.2.0'
 }
 
 processResources {
