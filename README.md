@@ -377,8 +377,15 @@ public PageResult<UserBO> listPage(UserQueryDTO userQueryDTO, PageParam pagePara
 
 第一种情况要检查dubbo接口是否标注了version版本，标注的话要查看上游服务是否填写了版本及版本是否对应。
 第二种情况要检查nacos的服务配置中是否对下游服务进行了订阅。
+第三种情况是在windows平台下，要将防火墙关闭，否则相应的端口是访问不到的，自然无法进行访问服务了。
 
 ### 5. 控制台一直报错`no available service 'default' found, please make sure registry config corre`?
 
 分布式事物框架seata报的错，因为在seata-server中没有对该服务进行配置，可以到nacos的`seata`命名空间中添加如下条目
 `vgroupMapping.${你的应用名称}-group = "default"`
+
+### 6. Windows启动main方法时报错`Error running 'XXXApplication': Command line is too long`
+
+这是因为windows默认在运行时添加了过多的启动参数，将其进行调整即可。
+打开运行列表(右上角的运行程序选择)-> Edit Configurations -> Templates -> Spring Boot -> Shorten Command Line -> 选择`JAR manifest`->点击ok应用即可
+然后删除运行列表中的所有运行项，重新运行main方法即可

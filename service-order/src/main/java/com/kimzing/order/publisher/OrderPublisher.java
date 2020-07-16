@@ -36,6 +36,6 @@ public class OrderPublisher {
                     public void onException(Throwable e) {
                         LogUtil.error("消息[{}]发送失败: [{}]", orderCheckEvent, e);
                     }
-                }, 3000, 3);
+                }, 3000, 5);
     }
 }
