@@ -1,7 +1,7 @@
 description '用户服务'
 
 dependencies {
-
+    implementation 'org.redisson:redisson-spring-boot-starter:3.13.1'
 }
 
 processResources {

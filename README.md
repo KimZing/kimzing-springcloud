@@ -182,60 +182,7 @@ Bean容器管理，粘合其他框架
 项目中的各个模块均依赖了`com.kimzing:kimzing-utils:1.0.0`依赖，该依赖封装了常用的工具类，在项目中要避免重复造轮子，统一使用该依赖中的工具，
 如没有提供相应工具，则联系管理员进行添加，如果是该项目需要的特定工具类，则可以自己添加在项目的`common/utils`包下。
 
-包含工具类如下：其中加粗为常用工具
-
-- AESUtil
-AES加解密
-- Base64Util
-Base64编码与解码
-- **BeanUtil**
-对象映射工具，提供对象转换功能，如将UserPO转换为UserBO，减少开发者Setter/Getter的工作量
-- CoordinateUtil
-经纬度工具，计算两个经纬度之间的距离
-- **DateUtil**
-LocalDateTime工具类，对日期进行相关操作，包含与Date的转换，日期格式化，计算两个日期差，计算N天后的日期
-- EmailUtil
-邮件工具，配置信息后可进行邮件发送
-- ExcelUtil
-根据集合对象生产成Excel文件，或根据Excel读取对应的集合对象
-- **ExceptionManager**
-创建自定义异常,项目中会自动解析该异常Code，并获取对应异常message
-- FileUtil
-文件相关操作
-- HexUtil
-字节转换
-- ImageUtil
-图片操作，目前提供放大缩小功能
-- **JsonUtil.java**
-Json字符串与对象的相互转换，基于Gson封装
-- **LogUtil**
-日志打印工具，项目中统一使用该工具进行日志打印，方便日后进行统一调整更改
-- **MD5Util**
-MD5加解密，包含对文件的MD5计算和校验
-- NumberUtil
-大小端字节转换，int、short与byte数组的相互转换
-- **MPPageUtil**
-分页辅助工具，将PageParam与PageResult与MybatisPlus中的分页进行转换
-- ChinesUtil
-汉字拼音相关操作
-- PropertiesUtil
-Property文件读取操作
-- RandomUtil
-生成随机的数字或字符串
-- ClassUtil
-反射相关操作
-- RegexUtil
-正则判断工具，包含常用正则判断及正则匹配
-- **SpringContextUtil**
-Spring容器操作，可获取容器中的对象
-- **SpringPropertyUtil**
-获取Spring管理的属性
-- **StringUtil**
-字符串操作，包含判空、去除空格、截取、替换、首字母大小写等操作
-- SystemUtil
-获取系统相关信息
-- ZipUtil
-文件压缩与解压缩
+**工欲善其事必先利其器，务必仔细阅读工具项目的文档，避免重复造轮子[工具类说明](https://github.com/KimZing/kimzing-utils)， 欢迎start**
 
 ### 2. 自定义异常的使用方式
 
