@@ -6,7 +6,7 @@
 编写前端展示页面
 认证系统
 限流熔断
-redis+mq+es
+mq+es
 
 ## 项目简介
 
@@ -25,6 +25,7 @@ redis+mq+es
 - DONE-所有项目的配置由配置中心统一管理，公共的配置统一抽离
 - DONE-日志配置文件可收集
 - DONE-支持分布式事务
+- DONE- 实现更规范的缓存模式
 - DONE-分布式任务调度系统
 - TODO-具备线上调试功能
 - TODO-对调用链路能够进行查看并排错
@@ -151,6 +152,8 @@ Bean容器管理，粘合其他框架
     |-- *Publisher           # 消息发布bean，以Pulisher结尾,每个功能仅有一个发布bean，如UserPublisher，OrderPublisher
   |-- repository             # 数据持久层
     |-- 【功能】              # 对应的功能名
+      |-- *CachePO           # 缓存对象实体，同时继承父类`AbstractPO`的公共字段  
+      |-- *CacheRepository]  # 缓存接口，添加@Repository注解
       |-- *PO                # 持久化对象实体，完全对应数据库表结构，同时继承父类`AbstractPO`的公共字段  
       |-- *Mapper            # Mybatis的数据仓储接口，添加@Mapper注解，在连表等操作时允许直接返回自定义数据结构的BO对象
   |-- service                # 业务服务代码编写层
