@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * 用户信息实体
+ * 用户缓存实体
  *
  * @author KimZing
  * @since 2020-07-05
