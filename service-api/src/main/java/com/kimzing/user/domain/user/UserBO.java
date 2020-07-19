@@ -1,6 +1,7 @@
 package com.kimzing.user.domain.user;
 
 import com.kimzing.user.domain.car.CarBO;
+import com.kimzing.utils.po.AbstractBO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -19,12 +20,9 @@ import java.util.List;
 @Data
 @Accessors(chain = true)
 @ApiModel(value="用户信息业务对象", description="用户信息")
-public class UserBO implements Serializable {
+public class UserBO extends AbstractBO implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value = "用户信息ID")
-    private Integer id;
 
     @ApiModelProperty(value = "用户名")
     private String username;

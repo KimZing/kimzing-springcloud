@@ -1,10 +1,12 @@
 package com.kimzing.user.service.user.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.kimzing.user.repository.car.CarPO;
 import com.kimzing.user.domain.user.*;
 import com.kimzing.user.publisher.UserPublisher;
 import com.kimzing.user.repository.car.CarMapper;
+import com.kimzing.user.repository.car.CarPO;
+import com.kimzing.user.repository.user.UserCachePO;
+import com.kimzing.user.repository.user.UserCacheRepository;
 import com.kimzing.user.repository.user.UserMapper;
 import com.kimzing.user.repository.user.UserPO;
 import com.kimzing.user.service.user.UserService;
@@ -38,6 +40,9 @@ public class UserServiceImpl implements UserService {
     CarMapper carMapper;
 
     @Resource
+    UserCacheRepository userCacheRepository;
+
+    @Resource
     UserPublisher userPublisher;
 
     /**
@@ -66,6 +71,9 @@ public class UserServiceImpl implements UserService {
     public void remove(Integer id) {
         userMapper.delete(id);
         carMapper.deleteByUserId(id);
+
+        // 删除缓存
+        userCacheRepository.delete(id);
     }
 
     /**
@@ -81,6 +89,9 @@ public class UserServiceImpl implements UserService {
         if (carPOList != null && !carPOList.isEmpty()) {
             carMapper.updateListByUserId(userId, carPOList);
         }
+
+        // 删除缓存
+        userCacheRepository.delete(userUpdateDTO.getId());
     }
 
     /**
@@ -89,7 +100,18 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(readOnly = true)
     public UserBO get(Integer id) {
-        return userMapper.selectById(id);
+        // 查询缓存, 缓存不存在查询数据库
+        UserCachePO userCachePO = userCacheRepository.get(id);
+        if (userCachePO != null) {
+            return BeanUtil.mapperBean(userCachePO, UserBO.class);
+        }
+
+        // 查询数据库并更新缓存
+        UserBO userBO = userMapper.selectById(id);
+        if (userBO != null) {
+            userCacheRepository.insert(BeanUtil.mapperBean(userBO, UserCachePO.class));
+        }
+        return userBO;
     }
 
     /**
@@ -104,6 +126,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 扣除用户余额
+     *
      * @param userId
      * @param totalPrice
      * @return

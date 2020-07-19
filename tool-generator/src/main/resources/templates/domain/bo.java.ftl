@@ -3,6 +3,7 @@ package com.kimzing.${cfg.moduleName}.doamin.${cfg.packageName};
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
 import java.math.BigDecimal;
+import com.kimzing.utils.po.AbstractBO;
 
 <#if swagger2>
 import io.swagger.annotations.ApiModel;
@@ -31,14 +32,12 @@ import lombok.experimental.Accessors;
 <#if swagger2>
 @ApiModel(value="${table.comment!}业务对象", description="${table.comment!}")
 </#if>
-public class ${table.name?cap_first}BO implements Serializable {
+public class ${table.name?cap_first}BO extends AbstractBO implements Serializable {
 
 <#if entitySerialVersionUID>
     private static final long serialVersionUID = 1L;
 </#if>
 
-    @ApiModelProperty(value = "${table.comment!}ID")
-    private Integer id;
 <#-- ----------  BEGIN 字段循环遍历  ---------->
 <#list table.fields as field>
     <#if field.keyFlag>

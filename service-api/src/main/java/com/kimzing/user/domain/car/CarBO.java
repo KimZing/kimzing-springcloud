@@ -1,6 +1,7 @@
 package com.kimzing.user.domain.car;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.kimzing.utils.po.AbstractBO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -19,12 +20,9 @@ import java.time.LocalDateTime;
 @Data
 @Accessors(chain = true)
 @ApiModel(value="用户车辆信息业务对象", description="用户车辆信息")
-public class CarBO implements Serializable {
+public class CarBO extends AbstractBO implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value = "用户车辆信息ID")
-    private Integer id;
 
     @ApiModelProperty(value = "所属用户ID")
     private Integer userId;

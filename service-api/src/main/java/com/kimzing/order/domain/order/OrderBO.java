@@ -1,5 +1,6 @@
 package com.kimzing.order.domain.order;
 
+import com.kimzing.utils.po.AbstractBO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -18,12 +19,9 @@ import java.time.LocalDateTime;
 @Data
 @Accessors(chain = true)
 @ApiModel(value="订单信息业务对象", description="订单信息")
-public class OrderBO implements Serializable {
+public class OrderBO extends AbstractBO implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value = "订单信息ID")
-    private Integer id;
 
     @ApiModelProperty(value = "用户ID")
     private Integer userId;
