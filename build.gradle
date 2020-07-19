@@ -100,7 +100,14 @@ configure(serverProjects + gatewayProjects + entryProjects + businessProjects) {
 // 聚合项目公共配置
 configure(entryProjects) {
 
+    configurations {
+        // 排除sentinel中的xml，防止返回xml格式数据
+        implementation.exclude module: 'jackson-dataformat-xml'
+    }
+
     dependencies {
+        implementation "com.alibaba.cloud:spring-cloud-starter-alibaba-sentinel"
+        implementation  "com.alibaba.csp:sentinel-datasource-nacos"
         implementation 'com.github.xiaoymin:knife4j-spring-boot-starter:2.0.4'
     }
 

@@ -37,7 +37,7 @@ public class UserBO extends AbstractBO implements Serializable {
     private BigDecimal amount;
 
     @ApiModelProperty(value = "性别")
-    private String gender;
+    private GenderEnum gender;
 
     @ApiModelProperty(value = "车辆信息")
     private List<CarBO> carList;

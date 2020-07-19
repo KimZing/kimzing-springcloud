@@ -1,12 +1,10 @@
 package com.kimzing.app.controller.user;
 
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.kimzing.app.aggregation.user.UserAggregation;
 import com.kimzing.app.domain.user.UserOrderBO;
-import com.kimzing.user.domain.user.UserBO;
-import com.kimzing.user.domain.user.UserQueryDTO;
-import com.kimzing.user.domain.user.UserSaveDTO;
-import com.kimzing.user.domain.user.UserUpdateDTO;
+import com.kimzing.user.domain.user.*;
 import com.kimzing.user.service.user.UserService;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
@@ -17,6 +15,7 @@ import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 
 /**
  * 用户信息接口层.
@@ -55,8 +54,22 @@ public class UserController {
 
     @ApiOperation(value = "查询单个用户信息")
     @GetMapping("/{id}")
+    @SentinelResource(value = "获取用户信息", fallback = "getFallbacktUser")
     public UserBO get(@PathVariable("id") Integer id) {
         return userService.get(id);
+    }
+
+    /**
+     * 模拟：请求失败时，返回默认用户信息
+     * @param id
+     * @return
+     */
+    public UserBO getFallbacktUser(Integer id) {
+        UserBO userBO = new UserBO().setAge(0).setUsername("default")
+                .setAmount(new BigDecimal("0"))
+                .setGender(GenderEnum.SECRET);
+        userBO.setId(-1);
+        return userBO;
     }
 
     @ApiOperation(value = "分页条件查询用户信息")
