@@ -89,23 +89,26 @@ public class InjectionConfiguration {
             }
         });
 
-        focList.add(new FileOutConfig("/templates/domain/cache-po.java.ftl") {
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                return generaPath + "/src/main/java/" + packageParent.replace(".", "/") + "/" + moduleName
-                        + "/repository/" + packageName + "/" + StringUtil.upperFirstChar(tableInfo.getName()) + "CachePO.java";
-            }
-        });
+        // 是否生成缓存模板
+        if (cache) {
+            focList.add(new FileOutConfig("/templates/domain/cache-po.java.ftl") {
+                @Override
+                public String outputFile(TableInfo tableInfo) {
+                    // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+                    return generaPath + "/src/main/java/" + packageParent.replace(".", "/") + "/" + moduleName
+                            + "/repository/" + packageName + "/" + StringUtil.upperFirstChar(tableInfo.getName()) + "CachePO.java";
+                }
+            });
 
-        focList.add(new FileOutConfig("/templates/cache-repository.java.ftl") {
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                return generaPath + "/src/main/java/" + packageParent.replace(".", "/") + "/" + moduleName
-                        + "/repository/" + packageName + "/" + StringUtil.upperFirstChar(tableInfo.getName()) + "CacheRepository.java";
-            }
-        });
+            focList.add(new FileOutConfig("/templates/cache-repository.java.ftl") {
+                @Override
+                public String outputFile(TableInfo tableInfo) {
+                    // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+                    return generaPath + "/src/main/java/" + packageParent.replace(".", "/") + "/" + moduleName
+                            + "/repository/" + packageName + "/" + StringUtil.upperFirstChar(tableInfo.getName()) + "CacheRepository.java";
+                }
+            });
+        }
 
         injectionConfig.setFileOutConfigList(focList);
         return injectionConfig;

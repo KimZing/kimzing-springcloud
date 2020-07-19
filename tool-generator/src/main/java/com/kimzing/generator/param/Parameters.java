@@ -26,6 +26,7 @@ public class Parameters {
     public static Boolean controller =  Boolean.valueOf(properties.get("controller"));
     public static Boolean service =  Boolean.valueOf(properties.get("service"));
     public static Boolean serviceImpl =  Boolean.valueOf(properties.get("serviceImpl"));
+    public static Boolean cache =  Boolean.valueOf(properties.get("cache"));
     public static Boolean mapper =  Boolean.valueOf(properties.get("mapper"));
     public static Boolean entity =  Boolean.valueOf(properties.get("entity"));
     public static Boolean xml =  Boolean.valueOf(properties.get("xml"));
