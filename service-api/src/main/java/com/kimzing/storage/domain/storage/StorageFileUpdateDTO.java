@@ -23,6 +23,12 @@ public class StorageFileUpdateDTO implements Serializable {
     @ApiModelProperty(value = "文件存储信息ID")
     private Integer id;
 
+    @ApiModelProperty(value = "存储桶")
+    private String bucket;
+
+    @ApiModelProperty(value = "存储路径")
+    private String path;
+
     @ApiModelProperty(value = "文件名")
     private String name;
 
@@ -31,8 +37,5 @@ public class StorageFileUpdateDTO implements Serializable {
 
     @ApiModelProperty(value = "文件url")
     private String url;
-
-    @ApiModelProperty(value = "存储桶")
-    private String bucket;
 
 }

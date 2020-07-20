@@ -7,6 +7,8 @@ import com.kimzing.storage.client.UploadResponse;
 import com.kimzing.storage.domain.storage.StorageFileCreateEvent;
 import com.kimzing.storage.publisher.StoragePublisher;
 import com.kimzing.utils.bean.BeanUtil;
+import com.kimzing.utils.exception.CustomException;
+import com.kimzing.utils.log.LogUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,9 +47,12 @@ public class UploadController {
                     + "最终生成的文件路径为user-header/vip/20200721121023-zhangsan.jpg")
     @PostMapping(value = "/upload/default")
     public UploadResponse upload(@RequestParam String bucket,
-                                 @RequestParam String path,
+                                 @RequestParam(required = false) String path,
                                  @LogIgnore @RequestParam("file") MultipartFile file) throws IOException {
-        createBucketIfNotExist(bucket);
+        createBucketIfNotExistAndSetPolicy(bucket);
+        if ("null".equals(path)) {
+            path = null;
+        }
 
         MinioObjectInfo minioObjectInfo = minioService.upload(bucket, path, file);
         UploadResponse uploadResponse = BeanUtil.mapperBean(minioObjectInfo, UploadResponse.class);
@@ -69,11 +74,14 @@ public class UploadController {
                     + "最终生成的文件路径为user-header/vip/20200721121023-zhangsan.jpg")
     @PostMapping(value = "/upload/diy")
     public UploadResponse upload(@RequestParam String bucket,
-                                 @RequestParam String path,
+                                 @RequestParam(required = false) String path,
                                  @RequestParam String filename,
                                  @RequestParam String contentType,
                                  @LogIgnore @RequestParam("file") MultipartFile file) throws IOException {
-        createBucketIfNotExist(bucket);
+        createBucketIfNotExistAndSetPolicy(bucket);
+        if ("null".equals(path)) {
+            path = null;
+        }
 
         MinioObjectInfo minioObjectInfo = minioService.upload(bucket, path, filename, contentType, file.getInputStream());
         UploadResponse uploadResponse = BeanUtil.mapperBean(minioObjectInfo, UploadResponse.class);
@@ -86,8 +94,14 @@ public class UploadController {
         return uploadResponse;
     }
 
-    private void createBucketIfNotExist(String bucket) {
+    private void createBucketIfNotExistAndSetPolicy(String bucket) {
+        // 每次都去判断会浪费性能，可以通过本地缓存和文件监听来做优化
         minioService.makeBucket(bucket);
+        try {
+            minioService.setBucketPolicyToReadOnly(bucket);
+        } catch (CustomException e) {
+            LogUtil.error(e.getMessage());
+        }
     }
 
 }

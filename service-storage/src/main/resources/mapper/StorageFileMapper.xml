@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kimzing.storage.repository.storage.StorageFileMapper">
-    <sql id="all_column">id,deleted,creator,modifier,create_time,modify_time,name,content_type,url,bucket</sql>
-    <sql id="po_column">name,content_type,url,bucket</sql>
+    <sql id="all_column">id,deleted,creator,modifier,create_time,modify_time,bucket,path,name,content_type,url</sql>
+    <sql id="po_column">bucket,path,name,content_type,url</sql>
 
     <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
         INSERT INTO `storage_file`(<include refid="po_column"></include>)
-        VALUES(#{name},#{contentType},#{url},#{bucket});
+        VALUES(#{bucket},#{path},#{name},#{contentType},#{url});
     </insert>
 
     <insert id="insertBatch">
         INSERT INTO `storage_file` (<include refid="po_column"></include>) VALUES
         <foreach item="item" collection="list" open="(" close=")" separator=",">
-            #{item.name},#{item.contentType},#{item.url},#{item.bucket}
+            #{item.bucket},#{item.path},#{item.name},#{item.contentType},#{item.url}
         </foreach>
     </insert>
 
     <update id="update">
         UPDATE `storage_file`
         <set>
+            <if test="bucket != null">bucket = #{bucket},</if>
+            <if test="path != null">path = #{path},</if>
             <if test="name != null">name = #{name},</if>
             <if test="contentType != null">content_type = #{contentType},</if>
             <if test="url != null">url = #{url},</if>
-            <if test="bucket != null">bucket = #{bucket},</if>
         </set>
         WHERE id = #{id};
     </update>
@@ -38,10 +39,11 @@
     <select id="selectPage" resultType="com.kimzing.storage.domain.storage.StorageFileBO">
         SELECT <include refid="all_column"></include> FROM `storage_file`
         <where>
+                <if test="query.bucket != null">AND bucket = #{query.bucket}</if>
+                <if test="query.path != null">AND path = #{query.path}</if>
                 <if test="query.name != null">AND name = #{query.name}</if>
                 <if test="query.contentType != null">AND content_type = #{query.contentType}</if>
                 <if test="query.url != null">AND url = #{query.url}</if>
-                <if test="query.bucket != null">AND bucket = #{query.bucket}</if>
         </where>
     </select>
 

@@ -23,6 +23,18 @@ public class StorageFilePO extends AbstractPO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
+     * 存储桶
+     */
+    @TableField("bucket")
+    private String bucket;
+
+    /**
+     * 存储路径
+     */
+    @TableField("path")
+    private String path;
+
+    /**
      * 文件名
      */
     @TableField("name")
@@ -39,11 +51,5 @@ public class StorageFilePO extends AbstractPO implements Serializable {
      */
     @TableField("url")
     private String url;
-
-    /**
-     * 存储桶
-     */
-    @TableField("bucket")
-    private String bucket;
 
 }

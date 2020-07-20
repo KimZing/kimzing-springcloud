@@ -39,7 +39,6 @@ public class StorageFileServiceImpl implements StorageFileService {
     public StorageFileBO save(StorageFileSaveDTO storageFileSaveDTO) {
         StorageFilePO storageFilePO = BeanUtil.mapperBean(storageFileSaveDTO, StorageFilePO.class);
         storageFileMapper.insert(storageFilePO);
-
         return BeanUtil.mapperBean(storageFilePO, StorageFileBO.class);
     }
 
