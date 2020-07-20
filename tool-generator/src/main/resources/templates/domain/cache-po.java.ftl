@@ -30,11 +30,11 @@ import java.io.Serializable;
     </#if>
 </#if>
 <#if superEntityClass??>
-public class ${table.name?cap_first}CachePO extends ${superEntityClass}<#if activeRecord><${entity}></#if> implements Serializable {
+public class ${cfg.classPrefixName?cap_first}CachePO extends ${superEntityClass}<#if activeRecord><${entity}></#if> implements Serializable {
 <#elseif activeRecord>
-public class ${table.name?cap_first}CachePO extends Model<${entity}> {
+public class ${cfg.classPrefixName?cap_first}CachePO extends Model<${entity}> {
 <#else>
-public class ${table.name?cap_first}CachePO implements Serializable {
+public class ${cfg.classPrefixName?cap_first}CachePO implements Serializable {
 </#if>
 
 <#if entitySerialVersionUID>

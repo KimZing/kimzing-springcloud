@@ -39,11 +39,11 @@
         UPDATE `${table.name}` SET deleted = 1 WHERE id = <#noparse>#</#noparse>{id}
     </delete>
 
-    <select id="selectById" resultType="com.kimzing.order.domain.order.OrderBO">
+    <select id="selectById" resultType="com.kimzing.${cfg.moduleName}.domain.${cfg.packageName}.${cfg.classPrefixName?cap_first}BO">
         SELECT <include refid="all_column"></include> FROM `${table.name}` WHERE id = <#noparse>#</#noparse>{id} AND deleted = 0
     </select>
 
-    <select id="selectPage" resultType="com.kimzing.order.domain.order.OrderBO">
+    <select id="selectPage" resultType="com.kimzing.${cfg.moduleName}.domain.${cfg.packageName}.${cfg.classPrefixName?cap_first}BO">
         SELECT <include refid="all_column"></include> FROM `${table.name}`
         <where>
             <#list table.fields as field>

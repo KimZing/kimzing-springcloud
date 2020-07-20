@@ -2,6 +2,7 @@ package com.kimzing.generator.param;
 
 import com.kimzing.generator.generator.CodeGenerator;
 import com.kimzing.utils.property.PropertiesUtil;
+import com.kimzing.utils.string.StringUtil;
 
 import java.io.File;
 import java.util.Map;
@@ -41,7 +42,8 @@ public class Parameters {
     public static String url = properties.get("url");
     public static String username = properties.get("username");
     public static String password = properties.get("password");
-    public static String[] tables = properties.get("tables").split(",");
+    public static String table = properties.get("table");
+    public static String classPrefixName = StringUtil.toCamelCase(table);
     public static String[] superEntityColumns = properties.get("superEntityColumns").split(",");
 
 }

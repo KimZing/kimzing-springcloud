@@ -39,11 +39,11 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public ${table.name?cap_first}BO save(${table.name?cap_first}SaveDTO ${table.name}SaveDTO) {
-        ${entity} ${entity?uncap_first} = BeanUtil.mapperBean(${table.name}SaveDTO, ${entity}.class);
+    public ${cfg.classPrefixName?cap_first}BO save(${cfg.classPrefixName?cap_first}SaveDTO ${cfg.classPrefixName}SaveDTO) {
+        ${entity} ${entity?uncap_first} = BeanUtil.mapperBean(${cfg.classPrefixName}SaveDTO, ${entity}.class);
         ${table.mapperName?uncap_first}.insert(${entity?uncap_first});
 
-        return BeanUtil.mapperBean(${entity?uncap_first}, ${table.name?cap_first}BO.class);
+        return BeanUtil.mapperBean(${entity?uncap_first}, ${cfg.classPrefixName?cap_first}BO.class);
     }
 
     /**
@@ -60,8 +60,8 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void update(${table.name?cap_first}UpdateDTO ${table.name}UpdateDTO) {
-        ${entity} ${entity?uncap_first} = BeanUtil.mapperBean(${table.name}UpdateDTO, ${entity}.class);
+    public void update(${cfg.classPrefixName?cap_first}UpdateDTO ${cfg.classPrefixName}UpdateDTO) {
+        ${entity} ${entity?uncap_first} = BeanUtil.mapperBean(${cfg.classPrefixName}UpdateDTO, ${entity}.class);
         ${table.mapperName?uncap_first}.update(${entity?uncap_first});
     }
 
@@ -70,7 +70,7 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
      */
     @Override
     @Transactional(readOnly = true)
-    public ${table.name?cap_first}BO get(Integer id) {
+    public ${cfg.classPrefixName?cap_first}BO get(Integer id) {
         return ${table.mapperName?uncap_first}.selectById(id);
     }
 
@@ -79,9 +79,9 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
      */
     @Override
     @Transactional(readOnly = true)
-    public PageResult<${table.name?cap_first}BO> listPage(${table.name?cap_first}QueryDTO ${table.name}QueryDTO, PageParam pageParam) {
-        IPage<${table.name?cap_first}BO> ${table.name}BOPage = ${table.mapperName?uncap_first}.selectPage(convertPage(pageParam), ${table.name}QueryDTO);
-        return convertPageResult(${table.name}BOPage);
+    public PageResult<${cfg.classPrefixName?cap_first}BO> listPage(${cfg.classPrefixName?cap_first}QueryDTO ${cfg.classPrefixName}QueryDTO, PageParam pageParam) {
+        IPage<${cfg.classPrefixName?cap_first}BO> ${cfg.classPrefixName}BOPage = ${table.mapperName?uncap_first}.selectPage(convertPage(pageParam), ${cfg.classPrefixName}QueryDTO);
+        return convertPageResult(${cfg.classPrefixName}BOPage);
     }
 
 }

@@ -18,7 +18,7 @@ interface ${table.mapperName} : ${superMapperClass}<${entity}>
 <#else>
 @Repository
 <#--public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {-->
-public class ${table.name?cap_first}CacheRepository {
+public class ${cfg.classPrefixName?cap_first}CacheRepository {
 
     public static final String PREFIX = "${table.name}:";
 
@@ -28,8 +28,8 @@ public class ${table.name?cap_first}CacheRepository {
     /**
      * 插入${table.comment!}缓存
      */
-    public void insert(${table.name?cap_first}CachePO ${table.name}CachePO) {
-        kfcRedisTemplate.opsForValue().set(PREFIX + ${table.name}CachePO.getId(), ${table.name}CachePO);
+    public void insert(${cfg.classPrefixName?cap_first}CachePO ${cfg.classPrefixName}CachePO) {
+        kfcRedisTemplate.opsForValue().set(PREFIX + ${cfg.classPrefixName}CachePO.getId(), ${cfg.classPrefixName}CachePO);
     }
 
     /**
@@ -42,8 +42,8 @@ public class ${table.name?cap_first}CacheRepository {
     /**
      * 读取${table.comment!}缓存
      */
-    public ${table.name?cap_first}CachePO get(Integer id) {
-        return kfcRedisTemplate.get(PREFIX + id, UserCachePO.class);
+    public ${cfg.classPrefixName?cap_first}CachePO get(Integer id) {
+        return kfcRedisTemplate.get(PREFIX + id, ${cfg.classPrefixName?cap_first}CachePO.class);
     }
 
 }

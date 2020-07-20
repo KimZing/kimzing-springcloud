@@ -21,7 +21,7 @@ public interface ${table.serviceName} {
     /**
      * 保存${table.comment!}
      */
-    ${table.name?cap_first}BO save(${table.name?cap_first}SaveDTO ${table.name}SaveDTO);
+    ${cfg.classPrefixName?cap_first}BO save(${cfg.classPrefixName?cap_first}SaveDTO ${cfg.classPrefixName}SaveDTO);
 
     /**
      * 移除${table.comment!}
@@ -31,16 +31,16 @@ public interface ${table.serviceName} {
     /**
      * 更新${table.comment!}
      */
-    void update(${table.name?cap_first}UpdateDTO ${table.name}UpdateDTO);
+    void update(${cfg.classPrefixName?cap_first}UpdateDTO ${cfg.classPrefixName}UpdateDTO);
 
     /**
      * 查询单个${table.comment!}
      */
-    ${table.name?cap_first}BO get(@NotNull(message = "${table.name?upper_case}_1001") Integer id);
+    ${cfg.classPrefixName?cap_first}BO get(@NotNull(message = "${table.name?upper_case}_1001") Integer id);
 
     /**
      * 分页条件查询${table.comment!}
      */
-    PageResult<${table.name?cap_first}BO> listPage(${table.name?cap_first}QueryDTO ${table.name}QueryDTO, PageParam pageParam);
+    PageResult<${cfg.classPrefixName?cap_first}BO> listPage(${cfg.classPrefixName?cap_first}QueryDTO ${cfg.classPrefixName}QueryDTO, PageParam pageParam);
 }
 </#if>

@@ -22,12 +22,14 @@ import static com.kimzing.generator.param.Parameters.*;
 public class InjectionConfiguration {
 
     public static InjectionConfig getInjectionConfig() {
+
         InjectionConfig injectionConfig = new InjectionConfig() {
             @Override
             public void initMap() {
                 Map<String, Object> map = new HashMap<>();
                 map.put("moduleName", moduleName);
                 map.put("packageName", packageName);
+                map.put("classPrefixName", classPrefixName);
                 this.setMap(map);
             }
         };
@@ -41,7 +43,7 @@ public class InjectionConfiguration {
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
                 return generaPath + "/src/main/resources/mapper/"
-                        + StringUtil.upperFirstChar(tableInfo.getName()) + "Mapper" + StringPool.DOT_XML;
+                        + StringUtil.upperFirstChar(classPrefixName) + "Mapper" + StringPool.DOT_XML;
             }
         });
 
@@ -58,7 +60,7 @@ public class InjectionConfiguration {
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
                 return generaPath + "/src/main/java/" + packageParent.replace(".", "/") + "/" + moduleName
-                        + "/domain/" + packageName + "/" + StringUtil.upperFirstChar(tableInfo.getName()) + "SaveDTO.java";
+                        + "/domain/" + packageName + "/" + StringUtil.upperFirstChar(classPrefixName) + "SaveDTO.java";
             }
         });
 
@@ -67,7 +69,7 @@ public class InjectionConfiguration {
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
                 return generaPath + "/src/main/java/" + packageParent.replace(".", "/") + "/" + moduleName
-                        + "/domain/" + packageName + "/" + StringUtil.upperFirstChar(tableInfo.getName()) + "UpdateDTO.java";
+                        + "/domain/" + packageName + "/" + StringUtil.upperFirstChar(classPrefixName) + "UpdateDTO.java";
             }
         });
 
@@ -76,7 +78,7 @@ public class InjectionConfiguration {
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
                 return generaPath + "/src/main/java/" + packageParent.replace(".", "/") + "/" + moduleName
-                        + "/domain/" + packageName + "/" + StringUtil.upperFirstChar(tableInfo.getName()) + "QueryDTO.java";
+                        + "/domain/" + packageName + "/" + StringUtil.upperFirstChar(classPrefixName) + "QueryDTO.java";
             }
         });
 
@@ -85,7 +87,7 @@ public class InjectionConfiguration {
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
                 return generaPath + "/src/main/java/" + packageParent.replace(".", "/") + "/" + moduleName
-                        + "/domain/" + packageName + "/" + StringUtil.upperFirstChar(tableInfo.getName()) + "BO.java";
+                        + "/domain/" + packageName + "/" + StringUtil.upperFirstChar(classPrefixName) + "BO.java";
             }
         });
 
@@ -96,7 +98,7 @@ public class InjectionConfiguration {
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
                     return generaPath + "/src/main/java/" + packageParent.replace(".", "/") + "/" + moduleName
-                            + "/repository/" + packageName + "/" + StringUtil.upperFirstChar(tableInfo.getName()) + "CachePO.java";
+                            + "/repository/" + packageName + "/" + StringUtil.upperFirstChar(classPrefixName) + "CachePO.java";
                 }
             });
 
@@ -105,7 +107,7 @@ public class InjectionConfiguration {
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
                     return generaPath + "/src/main/java/" + packageParent.replace(".", "/") + "/" + moduleName
-                            + "/repository/" + packageName + "/" + StringUtil.upperFirstChar(tableInfo.getName()) + "CacheRepository.java";
+                            + "/repository/" + packageName + "/" + StringUtil.upperFirstChar(classPrefixName) + "CacheRepository.java";
                 }
             });
         }

@@ -45,12 +45,12 @@ public interface ${table.mapperName} {
     /**
      * 根据ID查询${table.comment!}
      */
-    ${table.name?cap_first}BO selectById(Integer id);
+    ${cfg.classPrefixName?cap_first}BO selectById(Integer id);
 
     /**
      * 条件分页查询${table.comment!}
      */
-    IPage<${table.name?cap_first}BO> selectPage(Page<${table.name?cap_first}BO> page, @Param("query") ${table.name?cap_first}QueryDTO ${table.name}QueryDTO);
+    IPage<${cfg.classPrefixName?cap_first}BO> selectPage(Page<${cfg.classPrefixName?cap_first}BO> page, @Param("query") ${cfg.classPrefixName?cap_first}QueryDTO ${cfg.classPrefixName}QueryDTO);
 
 }
 </#if>

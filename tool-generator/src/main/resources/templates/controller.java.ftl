@@ -48,8 +48,8 @@ public class ${table.controllerName} {
 
     @ApiOperation(value = "保存${table.comment!}")
     @PostMapping
-    public ${table.name?cap_first}BO save(@RequestBody ${table.name?cap_first}SaveDTO ${table.name}SaveDTO) {
-        return ${table.serviceName?uncap_first}.save(${table.name}SaveDTO);
+    public ${cfg.classPrefixName?cap_first}BO save(@RequestBody ${cfg.classPrefixName?cap_first}SaveDTO ${cfg.classPrefixName}SaveDTO) {
+        return ${table.serviceName?uncap_first}.save(${cfg.classPrefixName}SaveDTO);
     }
 
     @ApiOperation(value = "移除${table.comment!}")
@@ -60,20 +60,20 @@ public class ${table.controllerName} {
 
     @ApiOperation(value = "更新${table.comment!}")
     @PutMapping
-    public void update(@RequestBody ${table.name?cap_first}UpdateDTO ${table.name}UpdateDTO) {
-        ${table.serviceName?uncap_first}.update(${table.name}UpdateDTO);
+    public void update(@RequestBody ${cfg.classPrefixName?cap_first}UpdateDTO ${cfg.classPrefixName}UpdateDTO) {
+        ${table.serviceName?uncap_first}.update(${cfg.classPrefixName}UpdateDTO);
     }
 
     @ApiOperation(value = "查询单个${table.comment!}")
     @GetMapping("/{id}")
-    public ${table.name?cap_first}BO get(@PathVariable("id") Integer id) {
+    public ${cfg.classPrefixName?cap_first}BO get(@PathVariable("id") Integer id) {
         return ${table.serviceName?uncap_first}.get(id);
     }
 
     @ApiOperation(value = "分页条件查询${table.comment!}")
     @GetMapping("/list")
-    public PageResult<${table.name?cap_first}BO> listPage(@JsonParam ${table.name?cap_first}QueryDTO ${table.name}QueryDTO, @ModelAttribute PageParam pageParam) {
-        return ${table.serviceName?uncap_first}.listPage(${table.name}QueryDTO, pageParam);
+    public PageResult<${cfg.classPrefixName?cap_first}BO> listPage(@JsonParam ${cfg.classPrefixName?cap_first}QueryDTO ${cfg.classPrefixName}QueryDTO, @ModelAttribute PageParam pageParam) {
+        return ${table.serviceName?uncap_first}.listPage(${cfg.classPrefixName}QueryDTO, pageParam);
     }
 
 }

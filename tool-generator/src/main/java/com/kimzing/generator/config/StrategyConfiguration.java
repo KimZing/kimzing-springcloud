@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.kimzing.utils.po.AbstractPO;
 
 import static com.kimzing.generator.param.Parameters.superEntityColumns;
-import static com.kimzing.generator.param.Parameters.tables;
+import static com.kimzing.generator.param.Parameters.table;
 
 /**
  * 策略配置.
@@ -25,7 +25,7 @@ public class StrategyConfiguration {
         strategy.setEntityLombokModel(true);
         // 写于父类中的公共字段
         strategy.setSuperEntityColumns(superEntityColumns);
-        strategy.setInclude(tables);
+        strategy.setInclude(table);
         strategy.setChainModel(true);
         strategy.setEntityTableFieldAnnotationEnable(true);
         strategy.setRestControllerStyle(true);
