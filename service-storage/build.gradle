@@ -1,7 +1,7 @@
 description '存储服务'
 
 dependencies {
-
+    implementation 'io.minio:minio:7.1.0'
 }
 
 processResources {
