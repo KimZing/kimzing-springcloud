@@ -64,6 +64,8 @@ Bean容器管理，粘合其他框架
 消息队列，支持事物消息、延时消息
 - Redis
 缓存数据
+- Minio
+文件存储
 
 ## 服务信息
 
@@ -95,6 +97,7 @@ Bean容器管理，粘合其他框架
   |-- server-admin            # SpringBoot Admin监控服务
   |-- service-api             # 接口及Domain的公共依赖模块
   |-- service-order           # 订单服务
+  |-- service-storage         # 存储服务
   |-- service-user            # 用户服务
   |-- tool-generator          # 代码生成工具
 ```
@@ -108,6 +111,9 @@ Bean容器管理，粘合其他框架
   |-- aggregation            # 聚合业务
     |-- 【模块】              # 对应的模块
       |-- *Aggregation       # 聚合的业务代码，类似于Service，不过为了更清晰的概念使用Aggregation进行命名
+  |-- common                 # 配置及工具
+    |-- config               # 服务自身独有的配置，仅该项目自身需要。
+    |-- utils                # 服务自身独有的工具，仅该项目自身需要。
   |-- controller             # web入口
     |-- 【模块】              # 对应的模块
       |-- *Controller        # web入口，按照业务进行划分不同的controller，内聚的业务可以直接调用下层dubbo接口并直接返回BO对象，\
@@ -377,6 +383,8 @@ public PageResult<UserBO> listPage(UserQueryDTO userQueryDTO, PageParam pagePara
 ## 遇到的那些问题
 
 ### 全局结果封装返回String类型出错
+
+### 全局结果封装导致内部feign调用返回空问题
 
 ### web日志打印引用对象出错
 
