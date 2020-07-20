@@ -1,10 +1,11 @@
 CREATE TABLE IF NOT EXISTS `storage_file`
 (
     `id`           int(11)      NOT NULL AUTO_INCREMENT COMMENT '存储文件ID',
-    `name`         varchar(100)  NOT NULL COMMENT '文件名',
+    `bucket`       varchar(50)  NOT NULL COMMENT '存储桶',
+    `path`         varchar(100) DEFAULT NULL COMMENT '存储路径',
+    `name`         varchar(100) NOT NULL COMMENT '文件名',
     `content_type` varchar(50)  NOT NULL COMMENT '文件类型',
     `url`          varchar(500) NOT NULL COMMENT '文件url',
-    `bucket`       varchar(50)  NOT NULL COMMENT '存储桶',
     `deleted`      int(1)       NOT NULL DEFAULT 0 COMMENT '是否删除 0:未删除 1:已删除',
     `creator`      varchar(20)           DEFAULT NULL COMMENT '创建人',
     `modifier`     varchar(20)           DEFAULT NULL COMMENT '更新人',
