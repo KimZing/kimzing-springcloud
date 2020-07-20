@@ -5,6 +5,7 @@ import com.kimzing.utils.po.AbstractBO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
@@ -19,6 +20,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true)
 @ApiModel(value="用户车辆信息业务对象", description="用户车辆信息")
 public class CarBO extends AbstractBO implements Serializable {
 

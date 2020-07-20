@@ -2,7 +2,6 @@ package com.kimzing.user.publisher;
 
 import com.kimzing.user.domain.user.UserCreateEvent;
 import com.kimzing.utils.log.LogUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
@@ -16,7 +15,6 @@ import javax.annotation.Resource;
  * @author KimZing - kimzing@163.com
  * @since 2020/7/11 17:22
  */
-@Slf4j
 @Component
 public class UserPublisher {
 

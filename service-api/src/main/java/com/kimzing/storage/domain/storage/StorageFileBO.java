@@ -4,6 +4,7 @@ import com.kimzing.utils.po.AbstractBO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
@@ -16,6 +17,7 @@ import java.io.Serializable;
  */
 @Data
 @Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true)
 @ApiModel(value="文件存储信息业务对象", description="文件存储信息")
 public class StorageFileBO extends AbstractBO implements Serializable {
 

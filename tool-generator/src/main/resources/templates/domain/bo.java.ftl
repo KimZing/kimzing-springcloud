@@ -15,6 +15,7 @@ import lombok.Data;
     <#if chainModel>
 import lombok.experimental.Accessors;
     </#if>
+import lombok.EqualsAndHashCode;
 </#if>
 
 /**
@@ -28,6 +29,7 @@ import lombok.experimental.Accessors;
     <#if chainModel>
 @Accessors(chain = true)
     </#if>
+@EqualsAndHashCode(callSuper = true)
 </#if>
 <#if swagger2>
 @ApiModel(value="${table.comment!}业务对象", description="${table.comment!}")

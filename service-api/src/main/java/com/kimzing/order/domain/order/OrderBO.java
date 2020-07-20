@@ -4,6 +4,7 @@ import com.kimzing.utils.po.AbstractBO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
@@ -18,6 +19,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true)
 @ApiModel(value="订单信息业务对象", description="订单信息")
 public class OrderBO extends AbstractBO implements Serializable {
 

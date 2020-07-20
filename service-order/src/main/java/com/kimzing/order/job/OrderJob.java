@@ -5,12 +5,12 @@ import com.kimzing.order.domain.order.OrderQueryDTO;
 import com.kimzing.order.domain.order.OrderStatusEnum;
 import com.kimzing.order.service.order.OrderService;
 import com.kimzing.utils.date.DateUtil;
+import com.kimzing.utils.log.LogUtil;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
 import com.xxl.job.core.biz.model.ReturnT;
 import com.xxl.job.core.handler.annotation.XxlJob;
 import com.xxl.job.core.log.XxlJobLogger;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -31,7 +31,6 @@ import java.time.temporal.ChronoUnit;
  * @author KimZing - kimzing@163.com
  * @since 2020/7/17 02:00
  */
-@Slf4j
 @Component
 public class OrderJob {
 
@@ -54,10 +53,10 @@ public class OrderJob {
         pageParam.setPageSize(1000);
         PageResult<OrderBO> orderBOPageResult = orderService.listPage(new OrderQueryDTO(), pageParam);
         orderBOPageResult.getData().forEach(order -> {
-            log.info("检查订单:[{}], 创建时间:[{}], 当前状态:[{}]", order.getId(), order.getCreateTime(), order.getStatus());
+            LogUtil.info("检查订单:[{}], 创建时间:[{}], 当前状态:[{}]", order.getId(), order.getCreateTime(), order.getStatus());
             if (DateUtil.betweenTwoTime(order.getCreateTime(), LocalDateTime.now(), ChronoUnit.MINUTES) > 30
             && order.getStatus() == OrderStatusEnum.CREATED) {
-                log.info("订单[{}]状态异常, 发送告警邮件！", order.getId());
+                LogUtil.info("订单[{}]状态异常, 发送告警邮件！", order.getId());
             }
         });
         XxlJobLogger.log("====>结束订单状态检查");
@@ -65,11 +64,11 @@ public class OrderJob {
     }
 
     public void init() {
-        log.info("=========>init");
+        LogUtil.info("=========>init");
     }
 
     public void destroy() {
-        log.info("<=========destroy");
+        LogUtil.info("<=========destroy");
     }
 
 }

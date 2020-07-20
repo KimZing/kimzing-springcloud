@@ -2,7 +2,6 @@ package com.kimzing.order.publisher;
 
 import com.kimzing.order.domain.order.OrderCheckCancelEvent;
 import com.kimzing.utils.log.LogUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
@@ -17,7 +16,6 @@ import javax.annotation.Resource;
  * @author KimZing - kimzing@163.com
  * @since 2020/7/11 23:03
  */
-@Slf4j
 @Component
 public class OrderPublisher {
 

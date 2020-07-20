@@ -6,7 +6,6 @@ import com.kimzing.order.domain.order.OrderStatusEnum;
 import com.kimzing.order.domain.order.OrderUpdateDTO;
 import com.kimzing.order.service.order.OrderService;
 import com.kimzing.utils.log.LogUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Component;
  * @author KimZing - kimzing@163.com
  * @since 2020/7/11 23:26
  */
-@Slf4j
 @Component
 @RocketMQMessageListener(topic = OrderCheckCancelEvent.TOPIC, consumerGroup = "order-check-cancel-group")
 public class OrderCheckCancelListener implements RocketMQListener<OrderCheckCancelEvent> {

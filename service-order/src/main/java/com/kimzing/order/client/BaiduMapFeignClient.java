@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @author KimZing - kimzing@163.com
  * @since 2020/7/2 00:53
  */
-@FeignClient(name = "百度地图", url = "${baidu.map.url}")
+@FeignClient(name = "baidu", url = "${baidu.map.url}")
 public interface BaiduMapFeignClient {
 
     /**
