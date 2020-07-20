@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `storage_file`
 (
     `id`           int(11)      NOT NULL AUTO_INCREMENT COMMENT '存储文件ID',
-    `name`         int(11)      NOT NULL COMMENT '文件名',
+    `name`         varchar(100)  NOT NULL COMMENT '文件名',
     `content_type` varchar(50)  NOT NULL COMMENT '文件类型',
     `url`          varchar(500) NOT NULL COMMENT '文件url',
     `bucket`       varchar(50)  NOT NULL COMMENT '存储桶',

@@ -24,7 +24,7 @@ public class StorageFileUpdateDTO implements Serializable {
     private Integer id;
 
     @ApiModelProperty(value = "文件名")
-    private Integer name;
+    private String name;
 
     @ApiModelProperty(value = "文件类型")
     private String contentType;

@@ -1,14 +1,11 @@
 package com.kimzing.storage.domain.storage;
 
-import java.time.LocalDateTime;
-import java.math.BigDecimal;
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
 
 /**
  * 文件存储信息保存
@@ -24,7 +21,7 @@ public class StorageFileSaveDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "文件名")
-    private Integer name;
+    private String name;
 
     @ApiModelProperty(value = "文件类型")
     private String contentType;

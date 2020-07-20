@@ -22,7 +22,7 @@ public class StorageFileQueryDTO implements Serializable {
 
 
     @ApiModelProperty(value = "文件名")
-    private Integer name;
+    private String name;
 
     @ApiModelProperty(value = "文件类型")
     private String contentType;

@@ -4,6 +4,8 @@ import com.kimzing.log.LogIgnore;
 import com.kimzing.minio.MinioObjectInfo;
 import com.kimzing.minio.MinioService;
 import com.kimzing.storage.client.UploadResponse;
+import com.kimzing.storage.domain.storage.StorageFileCreateEvent;
+import com.kimzing.storage.publisher.StoragePublisher;
 import com.kimzing.utils.bean.BeanUtil;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,10 +28,19 @@ public class UploadController {
     @Resource
     MinioService minioService;
 
+    @Resource
+    StoragePublisher storagePublisher;
+
     @PostMapping(value = "/upload")
     public UploadResponse upload(@LogIgnore @RequestParam("file") MultipartFile file) {
         MinioObjectInfo minioObjectInfo = minioService.upload(file);
         UploadResponse uploadResponse = BeanUtil.mapperBean(minioObjectInfo, UploadResponse.class);
+
+        // 发布文件上传事件，以供异步保存上传的文件信息
+        StorageFileCreateEvent storageFileCreateEvent =
+                BeanUtil.mapperBean(uploadResponse, StorageFileCreateEvent.class);
+        storagePublisher.publishStorageFileCreateEvent(storageFileCreateEvent);
+
         return uploadResponse;
     }
 }

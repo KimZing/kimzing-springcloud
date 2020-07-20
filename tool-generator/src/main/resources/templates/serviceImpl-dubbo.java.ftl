@@ -42,7 +42,6 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
     public ${cfg.classPrefixName?cap_first}BO save(${cfg.classPrefixName?cap_first}SaveDTO ${cfg.classPrefixName}SaveDTO) {
         ${entity} ${entity?uncap_first} = BeanUtil.mapperBean(${cfg.classPrefixName}SaveDTO, ${entity}.class);
         ${table.mapperName?uncap_first}.insert(${entity?uncap_first});
-
         return BeanUtil.mapperBean(${entity?uncap_first}, ${cfg.classPrefixName?cap_first}BO.class);
     }
 

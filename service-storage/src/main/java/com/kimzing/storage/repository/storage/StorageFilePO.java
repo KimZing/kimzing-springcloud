@@ -26,7 +26,7 @@ public class StorageFilePO extends AbstractPO implements Serializable {
      * 文件名
      */
     @TableField("name")
-    private Integer name;
+    private String name;
 
     /**
      * 文件类型
