@@ -369,3 +369,11 @@ public PageResult<UserBO> listPage(UserQueryDTO userQueryDTO, PageParam pagePara
 
 所以这时候乱码需要检查Idea的编码格式设置是否正确
 将`File->Settings->Editor->File Encodings`中的编码全部设置为UTF-8编码
+
+## 遇到的那些问题
+
+### 全局结果封装返回String类型出错
+
+### web日志打印引用对象出错
+
+### dubbo异常传递处理
