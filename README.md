@@ -28,6 +28,7 @@ es
 - DONE-分布式任务调度系统
 - DONE-消息队列功能
 - DONE-具备熔断降级动态化配置能力，能够对接口级别进行限流降级
+- DONE-分布式文件存储服务
 - TODO-具备线上调试功能
 - TODO-对调用链路能够进行查看并排错
 - TODO-集成JWT与oauth2认证功能
@@ -76,6 +77,7 @@ Bean容器管理，粘合其他框架
 |service-user         | http://localhost:8001/        | 8001 | 用户服务                            |
 |service-order        | http://localhost:8002/        | 8002 | 订单服务                            |
 |service-notice       | http://localhost:8003/        | 8003 | 提醒服务，包含各种通知、站内信         |
+|service-storage       | http://localhost:8004/        | 8004 | 文件存储服务                        |
 
 ## 项目结构说明
 
@@ -232,6 +234,8 @@ Controller层日志，普通方法日志
 ### 20. 布隆过滤器
 
 ### 21. 熔断降级Sentinel的使用
+
+### 22. 文件存储服务
 
 
 ## 项目规约
