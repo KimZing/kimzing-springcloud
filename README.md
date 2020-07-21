@@ -42,7 +42,7 @@ es
 dubbo用于内部服务间调用，openfeign用于调用外部调用
 - Seata
 用于处理分布式事务
-- Sential
+- Sentinel
 用于限流熔断，防止服务压力过大，造成雪崩
 - SpringMVC
 聚合服务中使用SpringMVC框架，同时更改运行容器为undertow
