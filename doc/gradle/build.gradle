@@ -53,8 +53,6 @@ dependencies {
     implementation 'io.seata:seata-spring-boot-starter:1.2.0'
     // mybatisPlus数据库操作
     implementation 'com.baomidou:mybatis-plus-boot-starter:3.1.2'
-    // druid数据源集成
-    implementation 'com.alibaba:druid-spring-boot-starter:1.1.23'
     // sql脚本管理
     implementation 'org.flywaydb:flyway-core'
     // mysql连接驱动
@@ -85,6 +83,10 @@ dependencies {
     implementation  "com.alibaba.csp:sentinel-datasource-nacos"
     // admin监控客户端
     implementation 'de.codecentric:spring-boot-admin-starter-client'
+    // 链路跟踪
+    implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
+    implementation 'io.zipkin.brave:brave-instrumentation-dubbo'
+    implementation 'io.zipkin.brave:brave-instrumentation-mysql8'
     // nacos 配置查找
     implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config'
     // nacos 注册发现

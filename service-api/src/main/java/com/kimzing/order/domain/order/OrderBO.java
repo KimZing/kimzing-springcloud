@@ -1,5 +1,6 @@
 package com.kimzing.order.domain.order;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.kimzing.utils.po.AbstractBO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -32,6 +33,7 @@ public class OrderBO extends AbstractBO implements Serializable {
     private BigDecimal totalPrice;
 
     @ApiModelProperty(value = "订单创建时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
 
     @ApiModelProperty(value = "状态")

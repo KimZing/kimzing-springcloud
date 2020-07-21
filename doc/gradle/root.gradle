@@ -122,8 +122,6 @@ configure(businessProjects) {
     dependencies {
         // mybatisPlus数据库操作
         implementation 'com.baomidou:mybatis-plus-boot-starter:3.1.2'
-        // druid数据源集成
-        implementation 'com.alibaba:druid-spring-boot-starter:1.1.23'
         // sql脚本管理
         implementation 'org.flywaydb:flyway-core'
         // mysql连接驱动

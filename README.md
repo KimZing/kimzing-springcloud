@@ -6,6 +6,7 @@
 编写前端展示页面
 认证系统
 es
+mongodb
 
 ## 项目简介
 
@@ -29,8 +30,8 @@ es
 - DONE-消息队列功能
 - DONE-具备熔断降级动态化配置能力，能够对接口级别进行限流降级
 - DONE-分布式文件存储服务
-- TODO-具备线上调试功能
-- TODO-对调用链路能够进行查看并排错
+- DONE-具备线上调试功能
+- DONE-对调用链路能够进行查看并排错
 - TODO-集成JWT与oauth2认证功能
 - TODO-具备权限管理系统
 - TODO-具备自动化部署能力
@@ -50,8 +51,8 @@ dubbo用于内部服务间调用，openfeign用于调用外部调用
 Bean容器管理，粘合其他框架
 - MybatisPlus
 提供对数据库的操作ORM操作，同时使用其分页和慢SQL监控功能
-- Druid
-数据库连接池，同时提供SQL监控功能
+- Hikari
+数据库连接池，简单即高效
 - SpringBoot Admin
 服务监控，可查看服务运行状态(CPU/内存/线程等)，查看环境变量，修改日志等级
 - SpringCloud Gateway
@@ -66,6 +67,9 @@ Bean容器管理，粘合其他框架
 缓存数据
 - Minio
 文件存储
+- Arthas
+线上调试
+
 
 ## 服务信息
 
@@ -243,6 +247,23 @@ Controller层日志，普通方法日志
 
 ### 22. 文件存储服务
 
+### 23. Arthas线上调试
+
+`wget https://alibaba.github.io/arthas/arthas-boot.jar`
+
+```bash
+java -jar arthas-boot.jar
+```
+
+dashboard 仪表盘
+webconsole: http://127.0.0.1:3658/
+watch 查看方法调用返回
+jad 反编译对应类
+stop
+
+### 24. zipkin对gateway/web/feign/mysql的链路追踪
+
+mysql需要配置拦截器，注意版本的使用，这是个大坑
 
 ## 项目规约
 
@@ -316,6 +337,10 @@ mysql部署文档
 redis部署文档
 ELK部署文档
 nginx部署文档
+minio部署文档
+sentinel部署文档
+xxljob部署文档
+
 
 ### Jenkins部署
 

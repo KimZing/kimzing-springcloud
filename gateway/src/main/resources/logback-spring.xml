@@ -8,7 +8,7 @@
     <springProperty name="profile" scope="context" source="spring.profiles.active" />
     <!-- logstash日志收集地址 -->
     <property name="logstashAddress" scope="context" value="127.0.0.1:5670" />
-    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %green([%thread]) %clr(${LOG_LEVEL_PATTERN:-%5p}) %cyan(%logger{50}) - %msg %n"/>
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} [%X{X-B3-TraceId:-},%X{X-B3-SpanId:-}] %green([%thread]) %clr(${LOG_LEVEL_PATTERN:-%5p}) %cyan(%logger{50}) - %msg %n"/>
     <!-- 日志文件的路径 -->
     <property name="LOG_FILE" value="${user.home}/logs/${app}.log"/>​
 

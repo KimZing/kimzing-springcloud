@@ -47,6 +47,8 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok'
     // admin监控客户端
     implementation 'de.codecentric:spring-boot-admin-starter-client'
+    // 链路跟踪
+    implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
     // nacos 配置查找
     implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config'
     // nacos 注册发现
