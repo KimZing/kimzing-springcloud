@@ -5,10 +5,11 @@ import com.kimzing.storage.domain.storage.StorageFileSaveDTO;
 import com.kimzing.storage.service.storage.StorageFileService;
 import com.kimzing.utils.bean.BeanUtil;
 import com.kimzing.utils.log.LogUtil;
-import org.apache.dubbo.config.annotation.Reference;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * .
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Component;
 @RocketMQMessageListener(topic = StorageFileCreateEvent.TOPIC, consumerGroup = "storage-file-create-group")
 public class StorageFileCreateListener implements RocketMQListener<StorageFileCreateEvent> {
 
-    @Reference
+    @Resource
     StorageFileService storageFileService;
 
     @Override

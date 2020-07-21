@@ -1,158 +1,24 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.3.0.RELEASE' apply false
-    id 'io.spring.dependency-management' version '1.0.9.RELEASE' apply false
 }
 
-ext {
-    // SpringCloud公共组件项目
-    serverProjects = subprojects.findAll { it.name.startsWith('server-') }
-    // 网关服务
-    gatewayProjects = project(":gateway")
-    // 入口聚合项目
-    entryProjects = subprojects.findAll { it.name.startsWith('entry-') }
-    // 业务开发项目
-    businessProjects = subprojects.findAll { it.name.startsWith('service-') } - project(':service-api')
-    // 版本声明
-    springBootAdminVersion = '2.2.3'
-    springCloudAlibabaVersion = '2.2.1.RELEASE'
-    springCloudVersion = 'Hoxton.SR4'
-}
+group 'com.kimzing'
+version '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+description 'SpringCloud框架实践'
 
-// 所有项目公共配置
-allprojects {
-    apply plugin: 'java'
-
-    group 'com.kimzing'
-    version '0.0.1-SNAPSHOT'
-    sourceCompatibility = '1.8'
-
-    configurations {
-        // 使compileOnly包含annotationProcessor的集合
-        compileOnly {
-            extendsFrom annotationProcessor
-        }
-        // 使testCompileOnly包含testAnnotationProcessor的集合
-        testCompileOnly {
-            extendsFrom testAnnotationProcessor
-        }
-    }
-
-    repositories {
-        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url 'http://mvn.kimzing.com/nexus/content/repositories/releases/' }
-        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
-        mavenCentral()
-    }
-
-    dependencies {
-        // 自定义工具项目, 提供各种工具
-        implementation 'com.kimzing:kimzing-utils:1.0.0'
-        // lombok
-        annotationProcessor 'org.projectlombok:lombok:1.18.12'
-        testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
-    }
-
-    // 设置编码为UTF-8 否则在其他编码时，java文件中的中文会乱码
-    tasks.withType(JavaCompile) {
-        options.encoding = "UTF-8"
-    }
+dependencies {
 
 }
 
-// SpringCloud生态项目配置
-configure(serverProjects + gatewayProjects + entryProjects + businessProjects) {
-    apply plugin: 'org.springframework.boot'
-    apply plugin: 'io.spring.dependency-management'
-
-    dependencies {
-        // 健康监测
-        implementation 'org.springframework.boot:spring-boot-starter-actuator'
-        // admin监控客户端
-        implementation 'de.codecentric:spring-boot-admin-starter-client'
-        // nacos 配置查找
-        implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config'
-        // nacos 注册发现
-        implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery'
-        // 测试依赖
-        testImplementation('org.springframework.boot:spring-boot-starter-test') {
-            // 排除对老版本测试的兼容
-            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-        }
-    }
-
-    // 依赖管理
-    dependencyManagement {
-        imports {
-            mavenBom "de.codecentric:spring-boot-admin-dependencies:${springBootAdminVersion}"
-            mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
-            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-        }
-    }
-
-    test {
-        // 使用junit5
-        useJUnitPlatform()
-    }
-
+repositories {
+    maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'http://mvn.kimzing.com/nexus/content/repositories/releases/' }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    mavenCentral()
 }
 
-// 聚合项目公共配置
-configure(entryProjects) {
-
-    configurations {
-        // 排除sentinel中的xml，防止返回xml格式数据
-        implementation.exclude module: 'jackson-dataformat-xml'
-    }
-
-    dependencies {
-        implementation "com.alibaba.cloud:spring-cloud-starter-alibaba-sentinel"
-        implementation  "com.alibaba.csp:sentinel-datasource-nacos"
-        implementation 'com.github.xiaoymin:knife4j-spring-boot-starter:2.0.4'
-    }
-
-}
-
-// 开发项目配置
-configure(businessProjects) {
-
-    dependencies {
-        implementation 'com.baomidou:mybatis-plus-boot-starter:3.1.2'
-        implementation 'com.alibaba:druid-spring-boot-starter:1.1.23'
-        implementation 'org.flywaydb:flyway-core'
-        runtimeOnly 'mysql:mysql-connector-java'
-        implementation 'org.apache.rocketmq:rocketmq-spring-boot-starter:2.1.0'
-    }
-
-}
-
-// 开发项目及聚合项目公共配置
-configure(businessProjects + entryProjects) {
-    configurations {
-        // 排除tomcat，使用undertow容器
-        implementation.exclude module: 'spring-boot-starter-tomcat'
-    }
-
-    dependencies {
-        // 公共api模块
-        implementation project(':service-api')
-        // 自定义starter, 提供各种功能
-        implementation 'com.kimzing:kimzing-springboot-starter:1.0.0'
-        // 分布式事物支持
-        implementation 'io.seata:seata-spring-boot-starter:1.2.0'
-        // dubbo依赖
-        implementation 'com.alibaba.cloud:spring-cloud-starter-dubbo'
-        // webmvc
-        implementation 'org.springframework.boot:spring-boot-starter-web'
-        implementation 'org.springframework.boot:spring-boot-starter-undertow'
-        // openfeign接口调用
-        implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-        // JSR303校验
-        implementation 'org.springframework.boot:spring-boot-starter-validation'
-        // 日志输出到ELK体系
-        runtime 'net.logstash.logback:logstash-logback-encoder:6.1'
-        // 生成配置解析
-        annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    }
-
+// 设置编码为UTF-8 否则在其他编码时，java文件中的中文会乱码
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
 }

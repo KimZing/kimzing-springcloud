@@ -1,9 +1,61 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.3.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+}
+
+group 'com.kimzing'
+version '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
 description '服务监控'
 
+ext {
+    springBootAdminVersion = '2.2.3'
+    springCloudAlibabaVersion = '2.2.1.RELEASE'
+    springCloudVersion = 'Hoxton.SR4'
+}
+
 dependencies {
+    // 监控服务端
     implementation 'de.codecentric:spring-boot-admin-starter-server'
-    // 安全访问
+    // 权限
     implementation 'org.springframework.boot:spring-boot-starter-security'
-    // 发送邮件通知
+    // 邮件功能
     implementation 'org.springframework.boot:spring-boot-starter-mail'
+    // admin监控客户端
+    implementation 'de.codecentric:spring-boot-admin-starter-client'
+    // nacos 配置查找
+    implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config'
+    // nacos 注册发现
+    implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery'
+    // 日志输出到ELK体系
+    runtime 'net.logstash.logback:logstash-logback-encoder:6.1'
+    // 健康监测
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    // 测试
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        // 排除对老版本测试的兼容
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+// 依赖管理
+dependencyManagement {
+    imports {
+        mavenBom "de.codecentric:spring-boot-admin-dependencies:${springBootAdminVersion}"
+        mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+repositories {
+    maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'http://mvn.kimzing.com/nexus/content/repositories/releases/' }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    mavenCentral()
+}
+
+// 设置编码为UTF-8 否则在其他编码时，java文件中的中文会乱码
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
 }

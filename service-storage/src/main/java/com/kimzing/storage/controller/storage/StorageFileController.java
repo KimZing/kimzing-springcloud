@@ -2,7 +2,6 @@ package com.kimzing.storage.controller.storage;
 
 
 import org.springframework.web.bind.annotation.*;
-import org.apache.dubbo.config.annotation.Reference;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import com.kimzing.web.resolver.json.JsonParam;
@@ -12,6 +11,8 @@ import com.kimzing.storage.service.storage.StorageFileService;
 import com.kimzing.storage.domain.storage.*;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * 文件存储信息接口层.
@@ -24,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/storage")
 public class StorageFileController {
 
-    @Reference
+    @Resource
     StorageFileService storageFileService;
 
     @ApiOperation(value = "保存文件存储信息")

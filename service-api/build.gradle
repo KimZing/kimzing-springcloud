@@ -1,4 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'com.kimzing'
+version '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
 description '公共API'
+
+configurations {
+    // 使compileOnly包含annotationProcessor的集合
+    compileOnly {extendsFrom annotationProcessor}
+    // 使testCompileOnly包含testAnnotationProcessor的集合
+    testCompileOnly {extendsFrom testAnnotationProcessor}
+}
+
 
 dependencies {
     // 用作日期格式化注解
@@ -10,4 +25,21 @@ dependencies {
     compileOnly 'org.hibernate:hibernate-validator:6.1.5.Final'
     // FeignClient注解
     compileOnly 'org.springframework.cloud:spring-cloud-openfeign-core:2.2.2.RELEASE'
+    // 工具项目
+    implementation 'com.kimzing:kimzing-utils:1.0.0'
+    // lombok
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+}
+
+repositories {
+    maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'http://mvn.kimzing.com/nexus/content/repositories/releases/' }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    mavenCentral()
+}
+
+// 设置编码为UTF-8 否则在其他编码时，java文件中的中文会乱码
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
 }

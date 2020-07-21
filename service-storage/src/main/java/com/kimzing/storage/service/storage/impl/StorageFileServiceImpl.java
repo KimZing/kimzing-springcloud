@@ -11,7 +11,7 @@ import com.kimzing.storage.service.storage.StorageFileService;
 import com.kimzing.utils.bean.BeanUtil;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
-import org.apache.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
@@ -25,7 +25,7 @@ import static com.kimzing.utils.page.MPPageUtil.convertPageResult;
  * @author KimZing
  * @since 2020-07-20
  */
-@Service(protocol = "dubbo", timeout = 2000)
+@Service
 public class StorageFileServiceImpl implements StorageFileService {
 
     @Resource
