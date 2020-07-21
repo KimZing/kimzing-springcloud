@@ -2,6 +2,8 @@ FROM registry.cn-hangzhou.aliyuncs.com/kimzing/openjdk:1.8.0_252
 
 MAINTAINER kimzing kimzing@163.com
 
+COPY --from=hengyunabc/arthas:latest /opt/arthas/arthas-boot.jar /arthas-boot.jar
+
 COPY build/libs/*.jar /application.jar
 
 RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
