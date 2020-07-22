@@ -7,7 +7,7 @@ plugins {
 group 'com.kimzing'
 version '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
-description '商品服务'
+description '产品服务'
 
 configurations {
     // 排除tomcat容器

@@ -105,7 +105,7 @@ Bean容器管理，粘合其他框架
   |-- server-admin            # SpringBoot Admin监控服务
   |-- service-api             # 接口及Domain的公共依赖模块
   |-- service-order           # 订单服务
-  |-- service-product         # 商品服务
+  |-- service-product         # 产品服务
   |-- service-user            # 用户服务
   |-- tool-generator          # 代码生成工具
   |-- tool-template           # 项目模板

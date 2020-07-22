@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `user`
     `modify_time` datetime       NOT NUll DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
     PRIMARY KEY (`id`),
 #   TODO 建表时要将添加必要索引
-    KEY `index_username` (`username`) USING BTREE COMMENT '用户名'
+    KEY `index_deleted` (`deleted`) USING BTREE COMMENT '是否删除'
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_general_ci
