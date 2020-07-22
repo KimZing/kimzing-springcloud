@@ -5,7 +5,7 @@
 编写前端展示页面
 认证系统
 es
-mongodb
+业务日志使用mongodb存储
 
 
 ## 项目简介
@@ -80,8 +80,9 @@ Bean容器管理，粘合其他框架
 |entry-app            | http://localhost:9003/app     | 9002 | app端入口                          
 |entry-third          | http://localhost:9003/third   | 9003 | 第三方接口                          |
 |gateway              | http://localhost:8080/        | 8080 | 网关负载                           |
-|infra-notice       | http://localhost:8003/          | 8003 | 提醒服务，包含各种通知、站内信         |
-|infra-storage       | http://localhost:8004/         | 8004 | 文件存储服务                        |
+|infra-notice         | http://localhost:8003/        | 8003 | 提醒服务，包含各种通知、站内信         |
+|infra-storage        | http://localhost:8004/        | 8004 | 文件存储服务                        |
+|infra-search         | http://localhost:8005/        | 8005 | 搜索服务                            |
 |service-user         | http://localhost:8001/        | 8001 | 用户服务                            |
 |service-order        | http://localhost:8002/        | 8002 | 订单服务                            |
 

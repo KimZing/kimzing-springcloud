@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <!-- 引入 Spring Boot 默认的 logback XML 配置文件  -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <!-- 从 Spring Boot 配置文件中，读取 spring.application.name 应用名 -->
+    <springProperty name="app" scope="context" source="spring.application.name" />
+    <springProperty name="profile" scope="context" source="spring.profiles.active" />
+    <!-- logstash日志收集地址 -->
+    <property name="logstashAddress" scope="context" value="127.0.0.1:5670" />
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} [%X{X-B3-TraceId:-},%X{X-B3-SpanId:-}] %green([%thread]) %clr(${LOG_LEVEL_PATTERN:-%5p}) %cyan(%logger{50}) - %msg %n"/>
+    <!-- 日志文件的路径 -->
+    <property name="LOG_FILE" value="${user.home}/logs/${app}.log"/>​
+
+    <!-- 控制台 Appender -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 日志的格式化 -->
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 日志文件 Appender -->
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}</file>
+        <!--滚动策略，基于时间 + 大小的分包策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+            <maxHistory>7</maxHistory>
+            <maxFileSize>20MB</maxFileSize>
+        </rollingPolicy>
+        <!-- 日志的格式化 -->
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <!-- ELK输出 -->
+    <!--
+    <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>${logstashAddress}</destination>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <includeContext>false</includeContext>
+            <customFields>{"app": "${app}", "profile": "${profile}"}</customFields>
+        </encoder>
+    </appender>
+    -->
+
+    <!-- 开发环境 -->
+    <springProfile name="dev">
+        <root level="INFO">
+            <appender-ref ref="console"/>
+        </root>
+        <!--设置独立的日志级别-->
+        <!--<logger name="com.kimzing.controller" level="DEBUG"/>-->
+    </springProfile>
+
+    <!-- 测试环境 -->
+    <springProfile name="sit">
+        <root level="INFO">
+            <appender-ref ref="console"/>
+            <appender-ref ref="file"/>
+        </root>
+    </springProfile>
+
+    <!-- 验收环境 -->
+    <springProfile name="uat">
+        <root level="WARN">
+            <appender-ref ref="console"/>
+            <appender-ref ref="file"/>
+            <!--<appender-ref ref="logstash"/>-->
+        </root>
+    </springProfile>
+
+    <!-- 生产环境 -->
+    <springProfile name="pro">
+        <root level="WARN">
+            <appender-ref ref="console"/>
+            <appender-ref ref="file"/>
+            <!--<appender-ref ref="logstash"/>-->
+        </root>
+    </springProfile>
+
+</configuration>
