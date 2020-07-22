@@ -1,5 +1,5 @@
 # TODO 修改业务表名
-CREATE TABLE IF NOT EXISTS `template`
+CREATE TABLE IF NOT EXISTS `user`
 (
 #   id为固定字段，请勿修改
     `id`          int(11)        NOT NULL AUTO_INCREMENT COMMENT '用户ID',
@@ -23,4 +23,4 @@ CREATE TABLE IF NOT EXISTS `template`
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_general_ci
 #   TODO 修改业务描述
-    COMMENT '模板信息信息';
+    COMMENT '用户信息';
