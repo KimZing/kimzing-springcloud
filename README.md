@@ -76,15 +76,16 @@ Bean容器管理，粘合其他框架
 |        服务名        |                主页           |  端口 |             描述                  |
 |---------------------|-------------------------------|------|-----------------------------------|
 |server-admin         | http://localhost:7001/        | 7001 | springboot服务监控                 |
-|entry-admin          | http://localhost:9001/admin   | 9001 | 后台管理入口                        |
-|entry-app            | http://localhost:9003/app     | 9002 | app端入口                          
-|entry-third          | http://localhost:9003/third   | 9003 | 第三方接口                          |
 |gateway              | http://localhost:8080/        | 8080 | 网关负载                           |
-|infra-notice         | http://localhost:8003/        | 8003 | 提醒服务，包含各种通知、站内信         |
-|infra-storage        | http://localhost:8004/        | 8004 | 文件存储服务                        |
-|infra-search         | http://localhost:8005/        | 8005 | 搜索服务                            |
-|service-user         | http://localhost:8001/        | 8001 | 用户服务                            |
-|service-order        | http://localhost:8002/        | 8002 | 订单服务                            |
+|infra-notice         | http://localhost:8001/        | 8001 | 提醒服务，包含各种通知、站内信        |
+|infra-search         | http://localhost:8002/        | 8002 | 搜索服务                           |
+|infra-storage        | http://localhost:8003/        | 8003 | 文件存储服务                        |
+|service-order        | http://localhost:8081/        | 8081 | 订单服务                           |
+|service-product      | http://localhost:8082/        | 8082 | 订单服务                           |
+|service-user         | http://localhost:8083/        | 8083 | 用户服务                           |
+|entry-admin          | http://localhost:9001/admin   | 9001 | 后台管理入口                        |
+|entry-app            | http://localhost:9002/app     | 9002 | app端入口                          |
+|entry-third          | http://localhost:9003/third   | 9003 | 第三方接口                          |
 
 ## 项目结构说明
 
@@ -104,6 +105,7 @@ Bean容器管理，粘合其他框架
   |-- server-admin            # SpringBoot Admin监控服务
   |-- service-api             # 接口及Domain的公共依赖模块
   |-- service-order           # 订单服务
+  |-- service-product         # 商品服务
   |-- service-user            # 用户服务
   |-- tool-generator          # 代码生成工具
   |-- tool-template           # 项目模板
