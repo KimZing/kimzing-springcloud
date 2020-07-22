@@ -1,6 +1,6 @@
 spring:
   application:
-    name: service-notice
+    name: infra-notice
     version: @version@
     description: @description@
   profiles:

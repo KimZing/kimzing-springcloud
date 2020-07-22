@@ -1,6 +1,5 @@
 package com.kimzing.notice.service;
 
-import com.kimzing.order.domain.order.OrderCreateEvent;
 import com.kimzing.user.domain.user.UserCreateEvent;
 
 /**

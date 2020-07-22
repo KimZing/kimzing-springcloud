@@ -1,4 +1,4 @@
-# service-notice
+# infra-notice
 
 消息提醒服务
 

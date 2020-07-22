@@ -1,6 +1,6 @@
 spring:
   application:
-    name: service-storage
+    name: infra-storage
     version: @version@
     description: @description@
   profiles:

@@ -8,6 +8,7 @@
 es
 mongodb
 
+
 ## 项目简介
 
 对SpringCloud官方及SpringCloud Alibab提供的组件进行选择组合，同时集成开源工具及自定义starter，提高开发效率。
@@ -76,14 +77,14 @@ Bean容器管理，粘合其他框架
 |        服务名        |                主页           |  端口 |             描述                  |
 |---------------------|-------------------------------|------|-----------------------------------|
 |server-admin         | http://localhost:7001/        | 7001 | springboot服务监控                 |
-|gateway              | http://localhost:8080/        | 8080 | 网关负载                           |
 |entry-admin          | http://localhost:9001/admin   | 9001 | 后台管理入口                        |
-|entry-app            | http://localhost:9003/app     | 9002 | app端入口                          |
+|entry-app            | http://localhost:9003/app     | 9002 | app端入口                          
 |entry-third          | http://localhost:9003/third   | 9003 | 第三方接口                          |
+|gateway              | http://localhost:8080/        | 8080 | 网关负载                           |
+|infra-notice       | http://localhost:8003/          | 8003 | 提醒服务，包含各种通知、站内信         |
+|infra-storage       | http://localhost:8004/         | 8004 | 文件存储服务                        |
 |service-user         | http://localhost:8001/        | 8001 | 用户服务                            |
 |service-order        | http://localhost:8002/        | 8002 | 订单服务                            |
-|service-notice       | http://localhost:8003/        | 8003 | 提醒服务，包含各种通知、站内信         |
-|service-storage       | http://localhost:8004/        | 8004 | 文件存储服务                        |
 
 ## 项目结构说明
 
@@ -98,10 +99,11 @@ Bean容器管理，粘合其他框架
   |-- entry-app               # APP端聚合服务，所有APP请求都经过该服务
   |-- entry-third             # 第三方聚合服务，提供给第三方的接口，如微信回调，数据暴露接口均从该服务进行暴露
   |-- gateway                 # 网关服务，对聚合服务做负载，同时会提供用户校验和日志记录功能
+  |-- infra-storage           # 存储服务
+  |-- infra-notice            # 用户提醒服务
   |-- server-admin            # SpringBoot Admin监控服务
   |-- service-api             # 接口及Domain的公共依赖模块
   |-- service-order           # 订单服务
-  |-- service-storage         # 存储服务
   |-- service-user            # 用户服务
   |-- tool-generator          # 代码生成工具
 ```
@@ -147,6 +149,8 @@ Bean容器管理，粘合其他框架
        |-- 【功能】           # 对应的功能名
          |-- *Service        # 功能接口
 ```
+
+#### `infra-【模块】`结构规范
 
 #### `service-【模块】`结构规范
 

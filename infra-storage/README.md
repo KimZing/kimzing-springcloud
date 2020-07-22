@@ -1,4 +1,4 @@
-# service-storage
+# infra-storage
 
 文件存储下载服务
 

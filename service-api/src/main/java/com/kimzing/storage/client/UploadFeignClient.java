@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @author KimZing - kimzing@163.com
  * @since 2020/7/20 13:19
  */
-@FeignClient("service-storage")
+@FeignClient("infra-storage")
 public interface UploadFeignClient {
 
     @PostMapping(value = "/storage/upload/default", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
