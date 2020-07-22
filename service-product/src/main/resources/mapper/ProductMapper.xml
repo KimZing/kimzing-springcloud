@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kimzing.product.repository.product.ProductMapper">
+    <sql id="all_column">id,deleted,creator,modifier,create_time,modify_time,title,sub_title,price,image,album_images,sales,stock,low_stock,keywords,detail_pc,detail_mobile,publish_status</sql>
+    <sql id="po_column">title,sub_title,price,image,album_images,sales,stock,low_stock,keywords,detail_pc,detail_mobile,publish_status</sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        INSERT INTO `product`(<include refid="po_column"></include>)
+        VALUES(#{title},#{subTitle},#{price},#{image},#{albumImages},#{sales},#{stock},#{lowStock},#{keywords},#{detailPc},#{detailMobile},#{publishStatus});
+    </insert>
+
+    <insert id="insertBatch">
+        INSERT INTO `product` (<include refid="po_column"></include>) VALUES
+        <foreach item="item" collection="list" open="(" close=")" separator=",">
+            #{item.title},#{item.subTitle},#{item.price},#{item.image},#{item.albumImages},#{item.sales},#{item.stock},#{item.lowStock},#{item.keywords},#{item.detailPc},#{item.detailMobile},#{item.publishStatus}
+        </foreach>
+    </insert>
+
+    <update id="update">
+        UPDATE `product`
+        <set>
+            <if test="title != null">title = #{title},</if>
+            <if test="subTitle != null">sub_title = #{subTitle},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="image != null">image = #{image},</if>
+            <if test="albumImages != null">album_images = #{albumImages},</if>
+            <if test="sales != null">sales = #{sales},</if>
+            <if test="stock != null">stock = #{stock},</if>
+            <if test="lowStock != null">low_stock = #{lowStock},</if>
+            <if test="keywords != null">keywords = #{keywords},</if>
+            <if test="detailPc != null">detail_pc = #{detailPc},</if>
+            <if test="detailMobile != null">detail_mobile = #{detailMobile},</if>
+            <if test="publishStatus != null">publish_status = #{publishStatus},</if>
+        </set>
+        WHERE id = #{id};
+    </update>
+
+    <delete id="delete">
+        UPDATE `product` SET deleted = 1 WHERE id = #{id}
+    </delete>
+
+    <select id="selectById" resultType="com.kimzing.product.domain.product.ProductBO">
+        SELECT <include refid="all_column"></include> FROM `product` WHERE id = #{id} AND deleted = 0
+    </select>
+
+    <select id="selectPage" resultType="com.kimzing.product.domain.product.ProductBO">
+        SELECT <include refid="all_column"></include> FROM `product`
+        <where>
+                <if test="query.title != null">AND title = #{query.title}</if>
+                <if test="query.subTitle != null">AND sub_title = #{query.subTitle}</if>
+                <if test="query.price != null">AND price = #{query.price}</if>
+                <if test="query.image != null">AND image = #{query.image}</if>
+                <if test="query.albumImages != null">AND album_images = #{query.albumImages}</if>
+                <if test="query.sales != null">AND sales = #{query.sales}</if>
+                <if test="query.stock != null">AND stock = #{query.stock}</if>
+                <if test="query.lowStock != null">AND low_stock = #{query.lowStock}</if>
+                <if test="query.keywords != null">AND keywords = #{query.keywords}</if>
+                <if test="query.detailPc != null">AND detail_pc = #{query.detailPc}</if>
+                <if test="query.detailMobile != null">AND detail_mobile = #{query.detailMobile}</if>
+                <if test="query.publishStatus != null">AND publish_status = #{query.publishStatus}</if>
+        </where>
+    </select>
+
+</mapper>

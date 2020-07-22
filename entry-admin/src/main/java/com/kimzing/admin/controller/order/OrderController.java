@@ -1,10 +1,9 @@
-package com.kimzing.app.controller.order;
+package com.kimzing.admin.controller.order;
 
 
-import com.kimzing.app.aggregation.order.OrderAggregation;
 import com.kimzing.order.domain.order.OrderBO;
 import com.kimzing.order.domain.order.OrderQueryDTO;
-import com.kimzing.order.domain.order.OrderSaveDTO;
+import com.kimzing.order.domain.order.OrderUpdateDTO;
 import com.kimzing.order.service.order.OrderService;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
@@ -13,8 +12,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
 
 /**
  * 订单信息接口层.
@@ -30,13 +27,16 @@ public class OrderController {
     @Reference
     OrderService orderService;
 
-    @Resource
-    OrderAggregation orderAggregation;
+    @ApiOperation(value = "移除订单信息")
+    @DeleteMapping("/{id}")
+    public void remove(@PathVariable("id") Integer id) {
+        orderService.remove(id);
+    }
 
-    @ApiOperation(value = "创建订单并支付")
-    @PostMapping
-    public void save(@RequestBody OrderSaveDTO orderSaveDTO) {
-        orderAggregation.createOrderAndPay(orderSaveDTO);
+    @ApiOperation(value = "更新订单信息")
+    @PutMapping
+    public void update(@RequestBody OrderUpdateDTO orderUpdateDTO) {
+        orderService.update(orderUpdateDTO);
     }
 
     @ApiOperation(value = "查询单个订单信息")
