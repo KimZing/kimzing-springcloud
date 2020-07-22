@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `product`
     `keywords`       varchar(255) COMMENT '关键字',
     `detail_pc`      text COMMENT 'PC端网页详情',
     `detail_mobile`  text COMMENT '移动端网页详情',
-    `publish_status` varchar(10)             DEFAULT 'UNPUBLISHED' COMMENT '上架状态：UNPUBLISHED->下架；PUBLISHED->上架',
+    `publish_status` varchar(15)             DEFAULT 'UNPUBLISHED' COMMENT '上架状态：UNPUBLISHED->下架；PUBLISHED->上架',
     `deleted`        int(1)         NOT NULL DEFAULT 0 COMMENT '是否删除 0:未删除 1:已删除',
     `creator`        varchar(20)             DEFAULT NULL COMMENT '创建人',
     `modifier`       varchar(20)             DEFAULT NULL COMMENT '更新人',
