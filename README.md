@@ -106,6 +106,7 @@ Bean容器管理，粘合其他框架
   |-- service-order           # 订单服务
   |-- service-user            # 用户服务
   |-- tool-generator          # 代码生成工具
+  |-- tool-template           # 项目模板
 ```
 
 ### 子项目结构规范说明
