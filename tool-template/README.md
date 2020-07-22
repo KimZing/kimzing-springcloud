@@ -17,6 +17,7 @@
   - 如果是dubbo项目，删除controller与domain包
 5. 重命名启动类，将启动类和测试类命名为需要的名称
 6. 如果不需要mysql存储，需删除resources/db与resources/mapper目录
+  - 需要mysql存储，需要将`V1593952348__create_user.sql`进行重命名，`V${时间戳/秒}__${动作}_${表名}.sql`, 并修改sql，修改说明已经在sql文件内以注释形式说明
 7. 修改bootstrap.yaml文件中的服务名称
 8. 在nacos中添加对应的配置文件,在对应环境分组下新建dataId为${spring.application.name}.yaml的配置，
    参考resources/nacos.yaml文件进行修改删除不需要的配置，`添加完成后删除resources/nacos.yaml文件`
