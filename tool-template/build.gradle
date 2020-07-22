@@ -1,0 +1,137 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.3.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+}
+
+group 'com.kimzing'
+version '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+description '项目描述'
+
+configurations {
+    // 排除tomcat容器
+    implementation.exclude module: 'spring-boot-starter-tomcat'
+    // 排除jackson xml，防止返回xml格式数据
+    implementation.exclude module: 'jackson-dataformat-xml'
+    // 使compileOnly包含annotationProcessor的集合
+    compileOnly {extendsFrom annotationProcessor}
+    // 使testCompileOnly包含testAnnotationProcessor的集合
+    testCompileOnly {extendsFrom testAnnotationProcessor}
+}
+
+ext {
+    springBootAdminVersion = '2.2.3'
+    springCloudAlibabaVersion = '2.2.1.RELEASE'
+    springCloudVersion = 'Hoxton.SR4'
+}
+
+dependencies {
+    // 网关
+    implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
+    // 监控服务端
+    implementation 'de.codecentric:spring-boot-admin-starter-server'
+    // 权限
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // dubbo调用
+    implementation 'com.alibaba.cloud:spring-cloud-starter-dubbo'
+    // webmvc
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-undertow'
+    // openfeign接口调用
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+
+    // rocketMQ消息队列
+    implementation 'org.apache.rocketmq:rocketmq-spring-boot-starter:2.1.0'
+    // xxl-job任务调度
+    implementation 'com.xuxueli:xxl-job-core:2.2.0'
+
+    // redis
+    implementation 'org.redisson:redisson-spring-boot-starter:3.13.1'
+    // 分布式事物
+    implementation 'io.seata:seata-spring-boot-starter:1.2.0'
+    // mybatisPlus数据库操作
+    implementation 'com.baomidou:mybatis-plus-boot-starter:3.1.2'
+    // sql脚本管理
+    implementation 'org.flywaydb:flyway-core'
+    // mysql连接驱动
+    runtimeOnly 'mysql:mysql-connector-java'
+
+    // 公共api模块
+    implementation project(':service-api')
+    // 工具项目
+    implementation 'com.kimzing:kimzing-utils:1.0.0'
+    // 自定义starter, 提供各种功能
+    implementation 'com.kimzing:kimzing-springboot-starter:1.0.0'
+
+    // knife4j swagger
+    implementation 'com.github.xiaoymin:knife4j-spring-boot-starter:2.0.4'
+    // 邮件功能
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    // minio分布式存储
+    implementation 'io.minio:minio:7.1.0'
+    // JSR303校验
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    // lombok
+    annotationProcessor 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    // sentinel限流降级
+    implementation "com.alibaba.cloud:spring-cloud-starter-alibaba-sentinel"
+    // sentinel对nacos数据源支持
+    implementation  "com.alibaba.csp:sentinel-datasource-nacos"
+    // admin监控客户端
+    implementation 'de.codecentric:spring-boot-admin-starter-client'
+    // 链路跟踪
+    implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
+    implementation 'io.zipkin.brave:brave-instrumentation-dubbo'
+    implementation 'io.zipkin.brave:brave-instrumentation-mysql8'
+    // nacos 配置查找
+    implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config'
+    // nacos 注册发现
+    implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery'
+
+    // 日志输出到ELK体系
+    runtime 'net.logstash.logback:logstash-logback-encoder:6.1'
+    // 生成配置解析
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    // 健康监测
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    // 测试
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        // 排除对老版本测试的兼容
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+// 依赖管理
+dependencyManagement {
+    imports {
+        mavenBom "de.codecentric:spring-boot-admin-dependencies:${springBootAdminVersion}"
+        mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+test {
+    // 使用junit5
+    useJUnitPlatform()
+}
+
+repositories {
+    maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'http://mvn.kimzing.com/nexus/content/repositories/releases/' }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    mavenCentral()
+}
+
+// 设置编码为UTF-8 否则在其他编码时，java文件中的中文会乱码
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+// 替换配置文件中的内容
+processResources {
+    filter org.apache.tools.ant.filters.ReplaceTokens, tokens: [description: this.description, version: this.version]
+}
