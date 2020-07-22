@@ -14,6 +14,7 @@
 2. 在setting.gradle中添加新建的项目模块并刷新gradle
 3. 修改build.gradle,根据项目功能需求去除不需要的配置项，并填写description项目描述
 4. 重命名包名称，使用shift+f6, 选择rename diractory，输入对应名称即可。注意测试包名同样步骤修改
+  - 如果是dubbo项目，删除controller与domain包
 5. 重命名启动类，将启动类和测试类命名为需要的名称
 6. 如果不需要mysql存储，需删除resources/db与resources/mapper目录
 7. 修改bootstrap.yaml文件中的服务名称
