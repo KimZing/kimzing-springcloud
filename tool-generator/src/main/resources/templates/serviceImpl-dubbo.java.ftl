@@ -27,7 +27,7 @@ open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperNam
 
 }
 <#else>
-@Service(protocol = "dubbo", timeout = 2000)
+@Service
 <#--public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {-->
 public class ${table.serviceImplName} implements ${table.serviceName} {
 

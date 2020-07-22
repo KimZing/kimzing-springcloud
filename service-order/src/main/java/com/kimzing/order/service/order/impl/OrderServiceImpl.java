@@ -23,7 +23,7 @@ import static com.kimzing.utils.page.MPPageUtil.convertPageResult;
  * @author KimZing
  * @since 2020-07-06
  */
-@Service(protocol = "dubbo", timeout = 2000)
+@Service
 public class OrderServiceImpl implements OrderService {
 
     @Resource
