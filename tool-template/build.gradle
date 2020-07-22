@@ -47,6 +47,10 @@ dependencies {
     // xxl-job任务调度
     implementation 'com.xuxueli:xxl-job-core:2.2.0'
 
+    // elasticesearch
+    implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+    // mongodb
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     // redis
     implementation 'org.redisson:redisson-spring-boot-starter:3.13.1'
     // 分布式事物
