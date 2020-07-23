@@ -83,7 +83,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     .el-menu-vertical {
-        min-height: 2000px;
+        min-height: 400px;
     }
     .el-menu-vertical:not(.el-menu--collapse) {
         width: 200px;
