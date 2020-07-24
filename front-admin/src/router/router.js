@@ -21,6 +21,7 @@ Router.prototype.push = function push(location) {
 export default new Router({
   mode: "history",
   routes: [
+    {path: '/404', component: () => import('@/views/404'), hidden: true},
     {
       path: "/",
       component: Layout,
@@ -68,5 +69,6 @@ export default new Router({
         },
       ]
     },
+    {path: '*', redirect: '/404', hidden: true}
   ]
 })
