@@ -23,3 +23,10 @@ yarn lint
 ### 自定义配置
 
 [Configuration Reference](https://cli.vuejs.org/config/).
+
+### 组件依赖
+vue vue-router sass  vuex axios 
+
+### 结构说明
+
+
