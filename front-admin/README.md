@@ -1,24 +1,25 @@
 # front-admin
 
-## Project setup
+## 依赖安装
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### 编译并启动项目
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+### 打包项目
 ```
 yarn build
 ```
 
-### Lints and fixes files
+### 检查规范
 ```
 yarn lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 自定义配置
+
+[Configuration Reference](https://cli.vuejs.org/config/).

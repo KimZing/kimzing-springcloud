@@ -24,7 +24,7 @@
         <span slot="title">添加商品</span>
       </el-menu-item>
     </el-submenu>
-    <el-submenu index="">
+    <el-submenu index="order">
       <template slot="title">
         <i class="el-icon-s-order"></i>
         <span slot="title">订单管理</span>
@@ -34,7 +34,7 @@
         <span slot="title">订单列表</span>
       </el-menu-item>
     </el-submenu>
-    <el-submenu index="">
+    <el-submenu index="security">
       <template slot="title">
         <i class="el-icon-lock"></i>
         <span slot="title">权限管理</span>

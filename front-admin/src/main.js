@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
+// 路由配置
 import router from './router/router'
+// elementui
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import '@/styles/index.scss' // global css
+// 全局CSS样式
+import '@/styles/index.scss'
 
 Vue.use(ElementUI);
 

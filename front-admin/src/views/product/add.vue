@@ -1,5 +1,5 @@
 <template>
-    <div>添加</div>
+    <div>添加产品</div>
 </template>
 
 <script>
