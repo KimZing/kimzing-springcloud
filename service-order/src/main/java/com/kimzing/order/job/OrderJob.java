@@ -52,7 +52,7 @@ public class OrderJob {
         pageParam.setPageNum(1);
         pageParam.setPageSize(1000);
         PageResult<OrderBO> orderBOPageResult = orderService.listPage(new OrderQueryDTO(), pageParam);
-        orderBOPageResult.getData().forEach(order -> {
+        orderBOPageResult.getList().forEach(order -> {
             LogUtil.info("检查订单:[{}], 创建时间:[{}], 当前状态:[{}]", order.getId(), order.getCreateTime(), order.getStatus());
             if (DateUtil.betweenTwoTime(order.getCreateTime(), LocalDateTime.now(), ChronoUnit.MINUTES) > 30
             && order.getStatus() == OrderStatusEnum.CREATED) {

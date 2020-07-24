@@ -46,6 +46,7 @@
     <select id="selectPage" resultType="com.kimzing.product.domain.product.ProductBO">
         SELECT <include refid="all_column"></include> FROM `product`
         <where>
+            <if test="query != null">
                 <if test="query.title != null">AND title = #{query.title}</if>
                 <if test="query.subTitle != null">AND sub_title = #{query.subTitle}</if>
                 <if test="query.price != null">AND price = #{query.price}</if>
@@ -58,6 +59,7 @@
                 <if test="query.detailPc != null">AND detail_pc = #{query.detailPc}</if>
                 <if test="query.detailMobile != null">AND detail_mobile = #{query.detailMobile}</if>
                 <if test="query.publishStatus != null">AND publish_status = #{query.publishStatus}</if>
+            </if>
         </where>
     </select>
 

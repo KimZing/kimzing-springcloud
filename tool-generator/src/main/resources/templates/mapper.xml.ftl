@@ -46,9 +46,11 @@
     <select id="selectPage" resultType="com.kimzing.${cfg.moduleName}.domain.${cfg.packageName}.${cfg.classPrefixName?cap_first}BO">
         SELECT <include refid="all_column"></include> FROM `${table.name}`
         <where>
+            <if test="query != null">
             <#list table.fields as field>
                 <if test="query.${field.propertyName} != null">AND ${field.columnName} = <#noparse>#</#noparse>{query.${field.propertyName}}</if>
             </#list>
+            </if>
         </where>
     </select>
 

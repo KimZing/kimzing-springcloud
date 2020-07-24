@@ -35,9 +35,11 @@
     <select id="selectPage" resultType="com.kimzing.order.domain.order.OrderBO">
         SELECT <include refid="all_column"></include> FROM `order`
         <where>
+            <if test="query != null">
                 <if test="query.userId != null">AND user_id = #{query.userId}</if>
                 <if test="query.totalPrice != null">AND total_price = #{query.totalPrice}</if>
                 <if test="query.status != null">AND status = #{query.status}</if>
+            </if>
         </where>
     </select>
 

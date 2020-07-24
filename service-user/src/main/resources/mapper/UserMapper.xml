@@ -43,12 +43,14 @@
     <select id="selectPage" resultMap="resultWithCarList" resultType="com.kimzing.user.domain.user.UserBO">
         SELECT <include refid="all_column"></include> FROM `user`
         <where>
+        <if test="query != null">
             <if test="query.ageFrom != null">AND age &gt;= #{query.ageFrom}</if>
             <if test="query.ageTo != null">AND age &lt;= #{query.ageTo}</if>
             <if test="query.gender != null">AND gender = #{query.gender}</if>
             <if test="query.carNumGreaterThan != null">AND id IN (SELECT c.user_id FROM `car` c WHERE c.deleted = 0
                 GROUP BY c.user_id HAVING COUNT(id) > #{query.carNumGreaterThan})
             </if>
+        </if>
         </where>
     </select>
 

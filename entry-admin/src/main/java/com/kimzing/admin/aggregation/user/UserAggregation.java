@@ -36,6 +36,6 @@ public class UserAggregation {
     public UserOrderBO getUserInfoWithOrderList(Integer id, PageParam pageParam) {
         UserBO userBO = userService.get(id);
         PageResult<OrderBO> orderBOPageResult = orderService.listPage(new OrderQueryDTO().setUserId(id), pageParam);
-        return new UserOrderBO().setUserInfo(userBO).setOrderList(orderBOPageResult.getData());
+        return new UserOrderBO().setUserInfo(userBO).setOrderList(orderBOPageResult.getList());
     }
 }

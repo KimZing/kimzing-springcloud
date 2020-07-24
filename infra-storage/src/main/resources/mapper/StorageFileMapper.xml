@@ -39,11 +39,13 @@
     <select id="selectPage" resultType="com.kimzing.storage.domain.storage.StorageFileBO">
         SELECT <include refid="all_column"></include> FROM `storage_file`
         <where>
+            <if test="query != null">
                 <if test="query.bucket != null">AND bucket = #{query.bucket}</if>
                 <if test="query.path != null">AND path = #{query.path}</if>
                 <if test="query.name != null">AND name = #{query.name}</if>
                 <if test="query.contentType != null">AND content_type = #{query.contentType}</if>
                 <if test="query.url != null">AND url = #{query.url}</if>
+            </if>
         </where>
     </select>
 
