@@ -11,20 +11,4 @@
 </script>
 
 <style scoped>
-  /*fade*/
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 0.28s;
-  }
-
-  .fade-enter,
-  .fade-leave-active {
-    opacity: 0;
-  }
-
-  /*fade*/
-  .breadcrumb-enter-active,
-  .breadcrumb-leave-active {
-    transition: all .5s;
-  }
 </style>
