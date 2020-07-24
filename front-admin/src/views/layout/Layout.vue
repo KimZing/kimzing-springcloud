@@ -21,23 +21,10 @@
   import {Sidebar, Navbar, Main} from "./components";
 
   export default {
-    data() {
-      return {
-      }
-    },
     components: {
       Sidebar,
       Navbar,
       Main,
     },
-    created() {
-    },
-    methods: {
-    }
   }
-
 </script>
-
-<style scoped>
-
-</style>
