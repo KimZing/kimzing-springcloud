@@ -35,7 +35,7 @@ public class ProductController {
 
     @ApiOperation(value = "分页条件查询产品信息")
     @GetMapping("/list")
-    public PageResult<ProductBO> listPage(@JsonParam ProductQueryDTO productQueryDTO, @ModelAttribute PageParam pageParam) {
+    public PageResult<ProductBO> listPage(@JsonParam(required = false) ProductQueryDTO productQueryDTO, @ModelAttribute PageParam pageParam) {
         return productService.listPage(productQueryDTO, pageParam);
     }
 

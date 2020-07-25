@@ -54,7 +54,7 @@ public class StorageFileController {
 
     @ApiOperation(value = "分页条件查询文件存储信息")
     @GetMapping("/list")
-    public PageResult<StorageFileBO> listPage(@JsonParam StorageFileQueryDTO storageFileQueryDTO, @ModelAttribute PageParam pageParam) {
+    public PageResult<StorageFileBO> listPage(@JsonParam(required = false) StorageFileQueryDTO storageFileQueryDTO, @ModelAttribute PageParam pageParam) {
         return storageFileService.listPage(storageFileQueryDTO, pageParam);
     }
 

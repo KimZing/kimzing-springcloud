@@ -47,7 +47,7 @@ public class OrderController {
 
     @ApiOperation(value = "分页条件查询订单信息")
     @GetMapping("/list")
-    public PageResult<OrderBO> listPage(@JsonParam OrderQueryDTO orderQueryDTO, @ModelAttribute PageParam pageParam) {
+    public PageResult<OrderBO> listPage(@JsonParam(required = false) OrderQueryDTO orderQueryDTO, @ModelAttribute PageParam pageParam) {
         return orderService.listPage(orderQueryDTO, pageParam);
     }
 

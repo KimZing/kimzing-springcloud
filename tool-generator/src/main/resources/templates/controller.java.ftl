@@ -72,7 +72,7 @@ public class ${table.controllerName} {
 
     @ApiOperation(value = "分页条件查询${table.comment!}")
     @GetMapping("/list")
-    public PageResult<${cfg.classPrefixName?cap_first}BO> listPage(@JsonParam ${cfg.classPrefixName?cap_first}QueryDTO ${cfg.classPrefixName}QueryDTO, @ModelAttribute PageParam pageParam) {
+    public PageResult<${cfg.classPrefixName?cap_first}BO> listPage(@JsonParam(required = false) ${cfg.classPrefixName?cap_first}QueryDTO ${cfg.classPrefixName}QueryDTO, @ModelAttribute PageParam pageParam) {
         return ${table.serviceName?uncap_first}.listPage(${cfg.classPrefixName}QueryDTO, pageParam);
     }
 

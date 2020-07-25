@@ -74,7 +74,7 @@ public class UserController {
 
     @ApiOperation(value = "分页条件查询用户信息")
     @GetMapping("/list")
-    public PageResult<UserBO> listPage(@JsonParam UserQueryDTO userQueryDTO, @ModelAttribute PageParam pageParam) {
+    public PageResult<UserBO> listPage(@JsonParam(required = false) UserQueryDTO userQueryDTO, @ModelAttribute PageParam pageParam) {
         return userService.listPage(userQueryDTO, pageParam);
     }
 
