@@ -1,5 +1,11 @@
 # front-admin
 
+## TODO
+
+- 面包屑拆离及其过渡效果
+- vuex全局存储状态
+
+
 ## 依赖安装
 ```
 yarn install

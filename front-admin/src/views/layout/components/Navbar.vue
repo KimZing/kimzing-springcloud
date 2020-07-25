@@ -1,7 +1,7 @@
 <template>
 <div>
-  <i :class="sideMenu.isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
-     @click="sideMenu.isCollapse=!sideMenu.isCollapse"></i>
+  <i :class="sidebar.opened ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
+     @click="toggleSideBar"></i>
   <el-breadcrumb separator-class="el-icon-arrow-right">
     <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
     <el-breadcrumb-item>活动管理</el-breadcrumb-item>
@@ -12,14 +12,23 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
+
   export default {
     data() {
       return {
-        sideMenu: {
-          isCollapse: false
-        }
       }
     },
+    computed: {
+      ...mapGetters([
+        'sidebar',
+      ])
+    },
+    methods: {
+      toggleSideBar() {
+        this.$store.dispatch('ToggleSideBar')
+      },
+    }
   }
 </script>
 

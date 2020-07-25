@@ -1,7 +1,7 @@
 <template>
   <el-menu default-active="1" class="el-menu-vertical"
-           :style="{'height': sideMenu.height}"
-           :collapse="sideMenu.isCollapse"
+           :style="{'height': height}"
+           :collapse="isCollapse"
            :router="true"
            background-color="#304156"
            text-color="#BFCBD9"
@@ -60,14 +60,22 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
+
   export default {
     data() {
       return {
         // 侧边栏展开收起状态及其样式配置
-        sideMenu: {
-          isCollapse: false,
-          height: window.innerHeight + 'px',
-        }
+        height: window.innerHeight + 'px',
+      }
+    },
+    computed: {
+      ...mapGetters([
+        'sidebar',
+      ]),
+      isCollapse() {
+        console.log(this.sidebar.opened)
+        return this.sidebar.opened
       }
     },
     created() {
@@ -85,7 +93,7 @@
         let that = this
         setTimeout(function () {
           that.timer = false
-          that.sideMenu.height = window.innerHeight + 'px';
+          that.height = window.innerHeight + 'px';
         }, 500)
       }
     }
