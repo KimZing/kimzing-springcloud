@@ -25,13 +25,13 @@ public class ProductPO extends AbstractPO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 商品标题
+     * 产品标题
      */
     @TableField("title")
     private String title;
 
     /**
-     * 商品副标题
+     * 产品副标题
      */
     @TableField("sub_title")
     private String subTitle;
@@ -43,7 +43,7 @@ public class ProductPO extends AbstractPO implements Serializable {
     private BigDecimal price;
 
     /**
-     * 商品主图
+     * 产品主图
      */
     @TableField("image")
     private String image;

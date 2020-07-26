@@ -1,10 +1,10 @@
 CREATE TABLE IF NOT EXISTS `product`
 (
     `id`             int(11)        NOT NULL AUTO_INCREMENT COMMENT '产品ID',
-    `title`          varchar(14)    NOT NULL COMMENT '商品标题',
-    `sub_title`      varchar(28) COMMENT '商品副标题',
+    `title`          varchar(14)    NOT NULL COMMENT '产品标题',
+    `sub_title`      varchar(28) COMMENT '产品副标题',
     `price`          decimal(10, 2) NOT NULL COMMENT '价格',
-    `image`          varchar(100)   NOT NULL COMMENT '商品主图',
+    `image`          varchar(100)   NOT NULL COMMENT '产品主图',
     `album_images`   varchar(500) COMMENT '专辑图片，以逗号分割',
     `sales`          int                     DEFAULT 0 COMMENT '销量',
     `stock`          int                     DEFAULT 0 COMMENT '库存',

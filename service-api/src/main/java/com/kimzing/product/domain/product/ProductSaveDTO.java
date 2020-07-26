@@ -21,16 +21,16 @@ public class ProductSaveDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "商品标题")
+    @ApiModelProperty(value = "产品标题")
     private String title;
 
-    @ApiModelProperty(value = "商品副标题")
+    @ApiModelProperty(value = "产品副标题")
     private String subTitle;
 
     @ApiModelProperty(value = "价格")
     private BigDecimal price;
 
-    @ApiModelProperty(value = "商品主图")
+    @ApiModelProperty(value = "产品主图")
     private String image;
 
     @ApiModelProperty(value = "专辑图片，以逗号分割")

@@ -13,15 +13,15 @@
     <el-submenu index="product">
       <template slot="title">
         <i class="el-icon-s-goods"></i>
-        <span slot="title">商品管理</span>
+        <span slot="title">产品管理</span>
       </template>
       <el-menu-item index="productList">
         <i class="el-icon-s-grid"></i>
-        <span slot="title">商品列表</span>
+        <span slot="title">产品列表</span>
       </el-menu-item>
       <el-menu-item index="addProduct">
         <i class="el-icon-circle-plus"></i>
-        <span slot="title">添加商品</span>
+        <span slot="title">添加产品</span>
       </el-menu-item>
     </el-submenu>
     <el-submenu index="order">

@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-//获取商品列表
+//获取产品列表
 export function getProductList(params) {
   return request({
     url:'/product/list',
