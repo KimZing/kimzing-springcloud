@@ -4,7 +4,7 @@ import { Message } from 'element-ui'
 // 创建axios实例
 const service = axios.create({
   // api的base_url
-  baseURL: "http://localhost:9001",
+  baseURL: "http://localhost:9001/admin",
   // 请求超时时间
   timeout: 10000
 })
