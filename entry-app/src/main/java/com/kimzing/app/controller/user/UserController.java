@@ -9,7 +9,7 @@ import com.kimzing.user.domain.user.UserUpdateDTO;
 import com.kimzing.user.service.user.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.dubbo.config.annotation.Reference;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -25,7 +25,7 @@ import java.math.BigDecimal;
 @RequestMapping("/user")
 public class UserController {
 
-    @Reference
+    @DubboReference
     UserService userService;
 
     @ApiOperation(value = "保存用户信息")

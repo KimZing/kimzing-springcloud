@@ -8,7 +8,7 @@ import com.kimzing.user.domain.user.UserBO;
 import com.kimzing.user.service.user.UserService;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
-import org.apache.dubbo.config.annotation.Reference;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.stereotype.Component;
 
 /**
@@ -20,10 +20,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserAggregation {
 
-    @Reference
+    @DubboReference
     OrderService orderService;
 
-    @Reference
+    @DubboReference
     UserService userService;
 
 

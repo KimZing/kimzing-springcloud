@@ -11,7 +11,7 @@ import com.kimzing.utils.page.PageResult;
 import com.kimzing.web.resolver.json.JsonParam;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.dubbo.config.annotation.Reference;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -27,7 +27,7 @@ import javax.annotation.Resource;
 @RequestMapping("/order")
 public class OrderController {
 
-    @Reference
+    @DubboReference
     OrderService orderService;
 
     @Resource

@@ -9,7 +9,7 @@ import com.kimzing.order.service.order.OrderService;
 import com.kimzing.utils.bean.BeanUtil;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
-import org.apache.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
@@ -23,7 +23,7 @@ import static com.kimzing.utils.page.MPPageUtil.convertPageResult;
  * @author KimZing
  * @since 2020-07-06
  */
-@Service
+@DubboService
 public class OrderServiceImpl implements OrderService {
 
     @Resource

@@ -14,7 +14,7 @@ import com.kimzing.utils.bean.BeanUtil;
 import com.kimzing.utils.exception.ExceptionManager;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
-import org.apache.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
@@ -30,7 +30,7 @@ import static com.kimzing.utils.page.MPPageUtil.convertPageResult;
  * @author KimZing
  * @since 2020-07-05
  */
-@Service
+@DubboService
 public class UserServiceImpl implements UserService {
 
     @Resource

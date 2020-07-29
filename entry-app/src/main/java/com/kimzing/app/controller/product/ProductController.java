@@ -1,17 +1,16 @@
 package com.kimzing.app.controller.product;
 
 
-import org.springframework.web.bind.annotation.*;
-import org.apache.dubbo.config.annotation.Reference;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import com.kimzing.web.resolver.json.JsonParam;
+import com.kimzing.product.domain.product.ProductBO;
+import com.kimzing.product.domain.product.ProductQueryDTO;
+import com.kimzing.product.service.product.ProductService;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;
-import com.kimzing.product.service.product.ProductService;
-import com.kimzing.product.domain.product.*;
-
-import org.springframework.web.bind.annotation.RestController;
+import com.kimzing.web.resolver.json.JsonParam;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 产品信息接口层.
@@ -24,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/product")
 public class ProductController {
 
-    @Reference
+    @DubboReference
     ProductService productService;
 
     @ApiOperation(value = "查询单个产品信息")

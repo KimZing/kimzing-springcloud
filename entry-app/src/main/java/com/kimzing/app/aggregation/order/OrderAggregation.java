@@ -7,7 +7,7 @@ import com.kimzing.order.domain.order.OrderUpdateDTO;
 import com.kimzing.order.service.order.OrderService;
 import com.kimzing.user.service.user.UserService;
 import io.seata.spring.annotation.GlobalTransactional;
-import org.apache.dubbo.config.annotation.Reference;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.stereotype.Component;
 
 /**
@@ -19,10 +19,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderAggregation {
 
-    @Reference
+    @DubboReference
     UserService userService;
 
-    @Reference
+    @DubboReference
     OrderService orderService;
 
     /**

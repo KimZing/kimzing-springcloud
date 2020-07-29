@@ -6,7 +6,7 @@ import com.kimzing.order.domain.order.OrderStatusEnum;
 import com.kimzing.order.domain.order.OrderUpdateDTO;
 import com.kimzing.order.service.order.OrderService;
 import com.kimzing.utils.log.LogUtil;
-import org.apache.dubbo.config.annotation.Reference;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
 import org.springframework.stereotype.Component;
@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 @RocketMQMessageListener(topic = OrderCheckCancelEvent.TOPIC, consumerGroup = "order-check-cancel-group")
 public class OrderCheckCancelListener implements RocketMQListener<OrderCheckCancelEvent> {
 
-    @Reference
+    @DubboReference
     OrderService orderService;
 
     @Override

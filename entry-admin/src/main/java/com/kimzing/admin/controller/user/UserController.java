@@ -11,7 +11,7 @@ import com.kimzing.utils.page.PageResult;
 import com.kimzing.web.resolver.json.JsonParam;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.dubbo.config.annotation.Reference;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 @RequestMapping("/user")
 public class UserController {
 
-    @Reference
+    @DubboReference
     UserService userService;
 
     @Resource

@@ -43,7 +43,7 @@ public class ${table.controllerName} extends ${superControllerClass} {
 public class ${table.controllerName} {
 </#if>
 
-    @Reference
+    @DubboReference
     ${table.serviceName} ${table.serviceName?uncap_first};
 
     @ApiOperation(value = "保存${table.comment!}")
