@@ -35,7 +35,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
     // dubbo调用
-    implementation 'com.alibaba.cloud:spring-cloud-starter-dubbo'
+    implementation 'org.apache.dubbo:dubbo-spring-boot-starter:2.7.7'
     // webmvc
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-undertow'
