@@ -68,7 +68,6 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
      * 查询单个${table.comment!}
      */
     @Override
-    @Transactional(readOnly = true)
     public ${cfg.classPrefixName?cap_first}BO get(Integer id) {
         return ${table.mapperName?uncap_first}.selectById(id);
     }

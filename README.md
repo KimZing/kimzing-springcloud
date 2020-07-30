@@ -417,6 +417,8 @@ public PageResult<UserBO> listPage(UserQueryDTO userQueryDTO, PageParam pagePara
 所以这时候乱码需要检查Idea的编码格式设置是否正确
 将`File->Settings->Editor->File Encodings`中的编码全部设置为UTF-8编码
 
+### 8. 查询方法为什么没有加事物注解@Transactional？
+
 ## 遇到的那些问题
 
 ### 全局结果封装返回String类型出错

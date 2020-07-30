@@ -65,7 +65,6 @@ public class ProductServiceImpl implements ProductService {
      * 查询单个产品信息
      */
     @Override
-    @Transactional(readOnly = true)
     public ProductBO get(Integer id) {
         return productMapper.selectById(id);
     }

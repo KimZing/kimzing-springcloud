@@ -98,7 +98,6 @@ public class UserServiceImpl implements UserService {
      * 查询单个用户信息
      */
     @Override
-    @Transactional(readOnly = true)
     public UserBO get(Integer id) {
         // 查询缓存, 缓存不存在查询数据库
         UserCachePO userCachePO = userCacheRepository.get(id);

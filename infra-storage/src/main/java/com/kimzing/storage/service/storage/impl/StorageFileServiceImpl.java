@@ -65,7 +65,6 @@ public class StorageFileServiceImpl implements StorageFileService {
      * 查询单个文件存储信息
      */
     @Override
-    @Transactional(readOnly = true)
     public StorageFileBO get(Integer id) {
         return storageFileMapper.selectById(id);
     }

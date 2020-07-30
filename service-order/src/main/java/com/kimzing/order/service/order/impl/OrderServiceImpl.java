@@ -71,7 +71,6 @@ public class OrderServiceImpl implements OrderService {
      * 查询单个订单信息
      */
     @Override
-    @Transactional(readOnly = true)
     public OrderBO get(Integer id) {
         return orderMapper.selectById(id);
     }
