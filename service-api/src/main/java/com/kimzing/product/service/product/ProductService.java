@@ -6,7 +6,7 @@ import com.kimzing.utils.page.PageResult;
 import javax.validation.constraints.NotNull;
 
 /**
- * 产品信息 服务接口
+ * 商品信息 服务接口
  *
  * @author KimZing
  * @since 2020-07-23
@@ -14,27 +14,27 @@ import javax.validation.constraints.NotNull;
 public interface ProductService {
 
     /**
-     * 保存产品信息
+     * 保存商品信息
      */
     ProductBO save(ProductSaveDTO productSaveDTO);
 
     /**
-     * 移除产品信息
+     * 移除商品信息
      */
     void remove(@NotNull(message = "PRODUCT_1001") Integer id);
 
     /**
-     * 更新产品信息
+     * 更新商品信息
      */
     void update(ProductUpdateDTO productUpdateDTO);
 
     /**
-     * 查询单个产品信息
+     * 查询单个商品信息
      */
     ProductBO get(@NotNull(message = "PRODUCT_1001") Integer id);
 
     /**
-     * 分页条件查询产品信息
+     * 分页条件查询商品信息
      */
     PageResult<ProductBO> listPage(ProductQueryDTO productQueryDTO, PageParam pageParam);
 }

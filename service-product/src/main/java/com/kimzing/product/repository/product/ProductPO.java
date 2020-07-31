@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * 产品信息实体
+ * 商品信息实体
  *
  * @author KimZing
  * @since 2020-07-23
@@ -25,13 +25,13 @@ public class ProductPO extends AbstractPO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 产品标题
+     * 商品标题
      */
     @TableField("title")
     private String title;
 
     /**
-     * 产品副标题
+     * 商品副标题
      */
     @TableField("sub_title")
     private String subTitle;
@@ -43,7 +43,7 @@ public class ProductPO extends AbstractPO implements Serializable {
     private BigDecimal price;
 
     /**
-     * 产品主图
+     * 商品主图
      */
     @TableField("image")
     private String image;

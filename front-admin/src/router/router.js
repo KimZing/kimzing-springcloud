@@ -32,12 +32,12 @@ export default new Router({
           path: "home",
           component: Home
         },
-        // 产品列表
+        // 商品列表
         {
           path: "productList",
           component: ProductIndex
         },
-        // 添加产品
+        // 添加商品
         {
           path: "addProduct",
           component: AddProduct

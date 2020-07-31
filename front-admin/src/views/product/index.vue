@@ -7,7 +7,7 @@
               v-loading="listLoading"
               border>
       <el-table-column type="selection" width="60" align="center"></el-table-column>
-      <el-table-column label="产品图片" width="120" align="center">
+      <el-table-column label="商品图片" width="120" align="center">
         <template slot-scope="scope"><img style="height: 80px" :src="scope.row.image"></template>
       </el-table-column>
       <el-table-column label="名称" align="center">

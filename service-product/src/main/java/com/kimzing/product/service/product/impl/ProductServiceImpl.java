@@ -20,7 +20,7 @@ import static com.kimzing.utils.page.MPPageUtil.convertPage;
 import static com.kimzing.utils.page.MPPageUtil.convertPageResult;
 
 /**
- * 产品信息 服务实现类
+ * 商品信息 服务实现类
  *
  * @author KimZing
  * @since 2020-07-23
@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
     ProductMapper productMapper;
 
     /**
-     * 保存产品信息
+     * 保存商品信息
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -43,7 +43,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     /**
-     * 移除产品信息
+     * 移除商品信息
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -52,7 +52,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     /**
-     * 更新产品信息
+     * 更新商品信息
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -62,7 +62,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     /**
-     * 查询单个产品信息
+     * 查询单个商品信息
      */
     @Override
     public ProductBO get(Integer id) {
@@ -70,7 +70,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     /**
-     * 分页条件查询产品信息
+     * 分页条件查询商品信息
      */
     @Override
     @Transactional(readOnly = true)

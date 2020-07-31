@@ -9,28 +9,28 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * 产品信息保存
+ * 商品信息保存
  *
  * @author KimZing
  * @since 2020-07-23
  */
 @Data
 @Accessors(chain = true)
-@ApiModel(value="产品信息保存", description="产品信息")
+@ApiModel(value="商品信息保存", description="商品信息")
 public class ProductSaveDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "产品标题")
+    @ApiModelProperty(value = "商品标题")
     private String title;
 
-    @ApiModelProperty(value = "产品副标题")
+    @ApiModelProperty(value = "商品副标题")
     private String subTitle;
 
     @ApiModelProperty(value = "价格")
     private BigDecimal price;
 
-    @ApiModelProperty(value = "产品主图")
+    @ApiModelProperty(value = "商品主图")
     private String image;
 
     @ApiModelProperty(value = "专辑图片，以逗号分割")

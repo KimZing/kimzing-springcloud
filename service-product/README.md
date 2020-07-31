@@ -1,6 +1,6 @@
 # service-product
 
-产品服务
+商品服务
 
 ## 项目用途
 
