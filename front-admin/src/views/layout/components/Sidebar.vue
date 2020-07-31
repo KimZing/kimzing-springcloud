@@ -93,7 +93,7 @@
         setTimeout(function () {
           that.timer = false
           that.height = window.innerHeight + 'px';
-        }, 500)
+        }, 100)
       }
     }
   }
