@@ -20,8 +20,8 @@
 
     <insert id="insertBatch">
         INSERT INTO `${table.name}` (<include refid="po_column"></include>) VALUES
-        <foreach item="item" collection="list" open="(" close=")" separator=",">
-            <#list table.fields as field><#noparse>#</#noparse>{item.${field.propertyName}}<#if field_has_next>,</#if></#list>
+        <foreach item="item" collection="list" separator=",">
+            (<#list table.fields as field><#noparse>#</#noparse>{item.${field.propertyName}}<#if field_has_next>,</#if></#list>)
         </foreach>
     </insert>
 

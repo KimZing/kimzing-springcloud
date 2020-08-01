@@ -11,8 +11,8 @@
 
     <insert id="insertBatch">
         INSERT INTO `product` (<include refid="po_column"></include>) VALUES
-        <foreach item="item" collection="list" open="(" close=")" separator=",">
-            #{item.title},#{item.subTitle},#{item.price},#{item.image},#{item.albumImages},#{item.sales},#{item.stock},#{item.lowStock},#{item.keywords},#{item.detailPc},#{item.detailMobile},#{item.publishStatus}
+        <foreach item="item" collection="list" separator=",">
+            (#{item.title},#{item.subTitle},#{item.price},#{item.image},#{item.albumImages},#{item.sales},#{item.stock},#{item.lowStock},#{item.keywords},#{item.detailPc},#{item.detailMobile},#{item.publishStatus})
         </foreach>
     </insert>
 

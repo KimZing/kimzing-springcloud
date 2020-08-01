@@ -11,8 +11,8 @@
 
     <insert id="insertBatch">
         INSERT INTO `user` (<include refid="po_column"></include>) VALUES
-        <foreach item="item" collection="list" open="(" close=")" separator=",">
-            #{username},#{email},#{age},#{amount},#{gender}
+        <foreach item="item" collection="list" separator=",">
+            (#{username},#{email},#{age},#{amount},#{gender})
         </foreach>
     </insert>
 

@@ -11,8 +11,8 @@
 
     <insert id="insertBatch">
         INSERT INTO `storage_file` (<include refid="po_column"></include>) VALUES
-        <foreach item="item" collection="list" open="(" close=")" separator=",">
-            #{item.bucket},#{item.path},#{item.name},#{item.contentType},#{item.url}
+        <foreach item="item" collection="list" separator=",">
+            (#{item.bucket},#{item.path},#{item.name},#{item.contentType},#{item.url})
         </foreach>
     </insert>
 

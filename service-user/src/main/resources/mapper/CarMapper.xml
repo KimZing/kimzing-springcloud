@@ -6,8 +6,8 @@
 
     <insert id="insertBatch">
         INSERT INTO `car` (<include refid="po_column"></include>) VALUES
-        <foreach item="item" collection="list" open="(" close=")" separator=",">
-            #{userId},#{item.brand},#{item.price},#{item.buyTime}
+        <foreach item="item" collection="list" separator=",">
+            (#{userId},#{item.brand},#{item.price},#{item.buyTime})
         </foreach>
     </insert>
 
