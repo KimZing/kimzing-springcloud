@@ -1,4 +1,4 @@
-package ${cfg.packageParent}.${cfg.moduleName}.doamin.${cfg.packageName};
+package ${cfg.packageParent}.${cfg.moduleName}.domain.${cfg.packageName};
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;

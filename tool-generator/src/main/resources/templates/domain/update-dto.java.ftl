@@ -1,4 +1,4 @@
-package ${cfg.packageParent}.${cfg.moduleName}.doamin.${cfg.packageName};
+package ${cfg.packageParent}.${cfg.moduleName}.domain.${cfg.packageName};
 
 import java.time.LocalDateTime;
 import java.math.BigDecimal;
