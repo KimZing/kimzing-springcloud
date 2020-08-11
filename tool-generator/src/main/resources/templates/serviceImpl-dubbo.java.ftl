@@ -5,7 +5,7 @@ import ${package.Service}.${table.serviceName};
 <#--import ${superServiceImplClassPackage};-->
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import ${package.Entity}.${entity};
-import com.kimzing.${cfg.moduleName}.domain.${cfg.packageName}.*;
+import ${cfg.packageParent}.${cfg.moduleName}.domain.${cfg.packageName}.*;
 import com.kimzing.utils.bean.BeanUtil;
 import com.kimzing.utils.page.PageParam;
 import com.kimzing.utils.page.PageResult;

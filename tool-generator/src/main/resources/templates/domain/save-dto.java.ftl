@@ -1,4 +1,4 @@
-package com.kimzing.${cfg.moduleName}.doamin.${cfg.packageName};
+package ${cfg.packageParent}.${cfg.moduleName}.doamin.${cfg.packageName};
 
 import java.time.LocalDateTime;
 import java.math.BigDecimal;

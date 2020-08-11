@@ -4,7 +4,7 @@ package ${package.Mapper};
 <#--import ${superMapperClassPackage};-->
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.kimzing.${cfg.moduleName}.domain.${cfg.packageName}.*;
+import ${cfg.packageParent}.${cfg.moduleName}.domain.${cfg.packageName}.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;

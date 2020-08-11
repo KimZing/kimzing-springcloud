@@ -2,7 +2,7 @@ package ${package.Mapper};
 
 <#--import ${package.Entity}.${entity};-->
 <#--import ${superMapperClassPackage};-->
-import com.kimzing.${cfg.moduleName}.domain.${cfg.packageName}.*;
+import ${cfg.packageParent}.${cfg.moduleName}.domain.${cfg.packageName}.*;
 import org.springframework.stereotype.Repository;
 import com.kimzing.redis.KFCRedisTemplate;
 import javax.annotation.Resource;

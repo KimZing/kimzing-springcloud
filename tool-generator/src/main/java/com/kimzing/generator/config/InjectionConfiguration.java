@@ -30,6 +30,7 @@ public class InjectionConfiguration {
                 map.put("moduleName", moduleName);
                 map.put("packageName", packageName);
                 map.put("classPrefixName", classPrefixName);
+                map.put("packageParent", packageParent);
                 this.setMap(map);
             }
         };
