@@ -25,7 +25,7 @@
             <if test="amount != null">amount = #{amount},</if>
             <if test="gender != null">gender = #{gender},</if>
         </set>
-        WHERE id = #{id};
+        WHERE id = #{id}  AND deleted = 0;
     </update>
 
     <update id="delete">
@@ -33,7 +33,7 @@
     </update>
 
     <update id="reduceAmount">
-        UPDATE `user` SET amount = amount - #{totalPrice} WHERE id = #{userId};
+        UPDATE `user` SET amount = amount - #{totalPrice} WHERE id = #{userId}  AND deleted = 0;
     </update>
 
     <select id="selectById" resultMap="resultWithCarList" resultType="com.kimzing.user.domain.user.UserBO">
@@ -43,6 +43,7 @@
     <select id="selectPage" resultMap="resultWithCarList" resultType="com.kimzing.user.domain.user.UserBO">
         SELECT <include refid="all_column"></include> FROM `user`
         <where>
+        AND deleted = 0
         <if test="query != null">
             <if test="query.ageFrom != null">AND age &gt;= #{query.ageFrom}</if>
             <if test="query.ageTo != null">AND age &lt;= #{query.ageTo}</if>

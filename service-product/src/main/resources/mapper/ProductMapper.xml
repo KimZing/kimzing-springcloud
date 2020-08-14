@@ -32,7 +32,7 @@
             <if test="detailMobile != null">detail_mobile = #{detailMobile},</if>
             <if test="publishStatus != null">publish_status = #{publishStatus},</if>
         </set>
-        WHERE id = #{id};
+        WHERE id = #{id} AND deleted = 0;
     </update>
 
     <delete id="delete">
@@ -46,6 +46,7 @@
     <select id="selectPage" resultType="com.kimzing.product.domain.product.ProductBO">
         SELECT <include refid="all_column"></include> FROM `product`
         <where>
+            AND deleted = 0
             <if test="query != null">
                 <if test="query.title != null">AND title = #{query.title}</if>
                 <if test="query.subTitle != null">AND sub_title = #{query.subTitle}</if>

@@ -12,7 +12,7 @@
     </insert>
 
     <update id="deleteByUserId">
-        UPDATE `car` SET deleted = 1 WHERE user_id = #{userId}
+        UPDATE `car` SET deleted = 1 WHERE user_id = #{userId} AND deleted = 0
     </update>
 
     <update id="updateListByUserId">
@@ -21,6 +21,7 @@
                 <when test="item.id != null">
                     UPDATE `car`
                     <set>
+                        deleted = 0,
                         <if test="item.brand != null">brand = #{item.brand},</if>
                         <if test="item.price != null">price = #{item.price},</if>
                         <if test="item.buyTime != null">buy_time = #{item.buyTime},</if>

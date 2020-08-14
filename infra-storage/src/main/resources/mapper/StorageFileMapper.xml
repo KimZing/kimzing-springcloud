@@ -25,7 +25,7 @@
             <if test="contentType != null">content_type = #{contentType},</if>
             <if test="url != null">url = #{url},</if>
         </set>
-        WHERE id = #{id};
+        WHERE id = #{id}  AND deleted = 0;
     </update>
 
     <delete id="delete">
@@ -39,6 +39,7 @@
     <select id="selectPage" resultType="com.kimzing.storage.domain.storage.StorageFileBO">
         SELECT <include refid="all_column"></include> FROM `storage_file`
         <where>
+            AND deleted = 0
             <if test="query != null">
                 <if test="query.bucket != null">AND bucket = #{query.bucket}</if>
                 <if test="query.path != null">AND path = #{query.path}</if>
