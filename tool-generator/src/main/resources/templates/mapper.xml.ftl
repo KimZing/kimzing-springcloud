@@ -32,7 +32,7 @@
             <if test="${field.propertyName} != null">${field.columnName} = <#noparse>#</#noparse>{${field.propertyName}},</if>
             </#list>
         </set>
-        WHERE id = <#noparse>#</#noparse>{id};
+        WHERE id = <#noparse>#</#noparse>{id} AND deleted = 0;
     </update>
 
     <delete id="delete">
@@ -46,6 +46,7 @@
     <select id="selectPage" resultType="${cfg.packageParent}.${cfg.moduleName}.domain.${cfg.packageName}.${cfg.classPrefixName?cap_first}BO">
         SELECT <include refid="all_column"></include> FROM `${table.name}`
         <where>
+            AND deleted = 0
             <if test="query != null">
             <#list table.fields as field>
                 <if test="query.${field.propertyName} != null">AND ${field.columnName} = <#noparse>#</#noparse>{query.${field.propertyName}}</if>
