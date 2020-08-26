@@ -1,0 +1,10 @@
+service.vgroupMapping.entry-admin-group=default
+service.vgroupMapping.entry-app-group=default
+service.vgroupMapping.entry-third-group=default
+store.mode=db
+store.db.datasource=druid
+store.db.dbType=mysql
+store.db.driverClassName=com.mysql.jdbc.Driver
+store.db.url=jdbc:mysql://localhost:3306/springcloud-seata?useUnicode=true
+store.db.user=root
+store.db.password=123456

@@ -9,7 +9,8 @@ es  商品搜索，相关搜索
 使用定时任务检查订单的库存报警
 使用Mongo存储浏览历史记录
 缓存的操作方式
-
+各种版本要对应上
+nacos的认证问题
 
 ## 项目简介
 
@@ -90,6 +91,14 @@ Bean容器管理，粘合其他框架
 |entry-admin          | http://localhost:9001/admin   | 9001 | 后台管理入口                        |
 |entry-app            | http://localhost:9002/app     | 9002 | app端入口                          |
 |entry-third          | http://localhost:9003/third   | 9003 | 第三方接口                          |
+
+## 三方组件服务信息
+
+|        服务名        |                主页           |  端口 |             描述                  |
+|---------------------|-------------------------------|------|-----------------------------------|
+|nacos                | http://localhost:8848/nacos   | 8848 | nacos配置与服务发现                 |
+|seata                | http://localhost:8091         | 8091 | 分布式事物                         |
+|zipkin                | http://localhost:9411        | 9411 | 链路追踪                         |
 
 ## 项目结构说明
 

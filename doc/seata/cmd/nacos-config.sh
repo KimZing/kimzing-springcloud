@@ -12,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-# sh nacos-config.sh -h nacos.kimzing.com -p 8848 -g SEATA_GROUP -t seata -u dev -w 123456
 while getopts ":h:p:g:t:u:w:" opt
 do
   case $opt in
@@ -83,7 +82,7 @@ function addConfig() {
 }
 
 count=0
-for line in $(cat $(dirname "$PWD")/config.txt | sed s/[[:space:]]//g); do
+for line in $(cat $(dirname "$PWD")/cmd/config.txt | sed s/[[:space:]]//g); do
   (( count++ ))
 	key=${line%%=*}
     value=${line#*=}
