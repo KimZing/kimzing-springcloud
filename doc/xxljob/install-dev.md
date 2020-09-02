@@ -1,6 +1,3 @@
-rocketmq需手动指定自己ip 否则无法获取正确的地址进行连接
-
-implementation 'com.xuxueli:xxl-job-core:2.2.0'
-
-
-https://www.xuxueli.com/xxl-job/
+```bash
+docker run --privileged --rm --name xxljob -p 8092:8080  -v /Volumes/KimData/Docker/XXLJob/Conf/application.properties:/application.properties -d registry.cn-hangzhou.aliyuncs.com/kimzing/xxljob-admin:2.2.0
+```
