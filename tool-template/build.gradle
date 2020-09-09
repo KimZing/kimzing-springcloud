@@ -42,8 +42,8 @@ dependencies {
     // openfeign接口调用
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 
-    // rocketMQ消息队列
-    implementation 'org.apache.rocketmq:rocketmq-spring-boot-starter:2.1.0'
+    // 消息队列
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
     // xxl-job任务调度
     implementation 'com.xuxueli:xxl-job-core:2.2.0'
 

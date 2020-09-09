@@ -30,8 +30,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-undertow'
     // openfeign接口调用
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-    // rocketMQ消息队列
-    implementation 'org.apache.rocketmq:rocketmq-spring-boot-starter:2.1.0'
+    // 消息队列
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
     // 公共api模块
     implementation project(':service-api')
     // 工具项目

@@ -88,9 +88,9 @@ Bean容器管理，粘合其他框架
 |service-order        | http://localhost:8081/        | 8081 | 订单服务                           |
 |service-product      | http://localhost:8082/        | 8082 | 订单服务                           |
 |service-user         | http://localhost:8083/        | 8083 | 用户服务                           |
-|entry-admin          | http://localhost:9001/admin   | 9001 | 后台管理入口                        |
-|entry-app            | http://localhost:9002/app     | 9002 | app端入口                          |
-|entry-third          | http://localhost:9003/third   | 9003 | 第三方接口                          |
+|entry-admin          | http://localhost:9001/admin   | 9091 | 后台管理入口                        |
+|entry-app            | http://localhost:9002/app     | 9092 | app端入口                          |
+|entry-third          | http://localhost:9003/third   | 9093 | 第三方接口                          |
 
 ## 三方组件服务信息
 

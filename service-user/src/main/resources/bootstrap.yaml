@@ -8,15 +8,19 @@ spring:
   cloud:
     nacos:
       server-addr: ${nacos-server-addr:localhost:8848}
-      username: ${nacos-username:dev}
-      password: ${nacos-password:123456}
+      username: ${nacos-username:nacos}
+      password: ${nacos-password:nacos}
       discovery:
-        namespace: ${spring.profiles.active}
       config:
-        namespace: ${spring.profiles.active}
         file-extension: yaml
         max-retry: 3
         # 共享配置
         extension-configs:
           - data-id: common.yaml
             refresh: false
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: root
+    password: 123456

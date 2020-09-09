@@ -5,8 +5,7 @@ import com.kimzing.storage.domain.storage.StorageFileSaveDTO;
 import com.kimzing.storage.service.storage.StorageFileService;
 import com.kimzing.utils.bean.BeanUtil;
 import com.kimzing.utils.log.LogUtil;
-import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
-import org.apache.rocketmq.spring.core.RocketMQListener;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -18,13 +17,12 @@ import javax.annotation.Resource;
  * @since 2020/7/11 23:26
  */
 @Component
-@RocketMQMessageListener(topic = StorageFileCreateEvent.TOPIC, consumerGroup = "storage-file-create-group")
-public class StorageFileCreateListener implements RocketMQListener<StorageFileCreateEvent> {
+public class StorageFileCreateListener {
 
     @Resource
     StorageFileService storageFileService;
 
-    @Override
+    @EventListener
     public void onMessage(StorageFileCreateEvent message) {
         LogUtil.info("保存上传文件信息:[{}]", message);
 
