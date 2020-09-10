@@ -11,16 +11,12 @@ spring:
       username: ${nacos-username:nacos}
       password: ${nacos-password:nacos}
       discovery:
+        namespace: ${spring.profiles.active}
       config:
+        namespace: ${spring.profiles.active}
         file-extension: yaml
         max-retry: 3
         # 共享配置
         extension-configs:
           - data-id: common.yaml
             refresh: false
-
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: root
-    password: 123456

@@ -11,10 +11,12 @@ spring:
       username: ${nacos-username:nacos}
       password: ${nacos-password:nacos}
       discovery:
+        namespace: ${spring.profiles.active}
         metadata:
           management:
             context-path: '${server.servlet.context-path}/actuator'
       config:
+        namespace: ${spring.profiles.active}
         file-extension: yaml
         max-retry: 3
         # 共享配置

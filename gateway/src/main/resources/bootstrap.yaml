@@ -9,7 +9,9 @@ spring:
       username: ${nacos-username:nacos}
       password: ${nacos-password:nacos}
       discovery:
+        namespace: ${spring.profiles.active}
       config:
+        namespace: ${spring.profiles.active}
         file-extension: yaml
         max-retry: 3
         # 共享配置

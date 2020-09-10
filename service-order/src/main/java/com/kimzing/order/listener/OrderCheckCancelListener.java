@@ -7,8 +7,6 @@ import com.kimzing.order.domain.order.OrderUpdateDTO;
 import com.kimzing.order.service.order.OrderService;
 import com.kimzing.utils.log.LogUtil;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
-import org.apache.rocketmq.spring.core.RocketMQListener;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,13 +16,11 @@ import org.springframework.stereotype.Component;
  * @since 2020/7/11 23:26
  */
 @Component
-@RocketMQMessageListener(topic = OrderCheckCancelEvent.TOPIC, consumerGroup = "order-check-cancel-group")
-public class OrderCheckCancelListener implements RocketMQListener<OrderCheckCancelEvent> {
+public class OrderCheckCancelListener {
 
     @DubboReference
     OrderService orderService;
 
-    @Override
     public void onMessage(OrderCheckCancelEvent message) {
         OrderBO orderBO = orderService.get(message.getId());
         LogUtil.info("检查订单[{}]状态,订单信息:[{}]", message.getId(), orderBO);
