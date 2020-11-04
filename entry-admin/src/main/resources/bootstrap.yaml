@@ -7,7 +7,7 @@ spring:
     active: dev
   cloud:
     nacos:
-      server-addr: ${nacos-server-addr:localhost:8848}
+      server-addr: ${nacos-server-addr:nacos.kimzing.com:8848}
       username: ${nacos-username:nacos}
       password: ${nacos-password:nacos}
       discovery:
