@@ -1,7 +1,7 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.3.0.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'org.springframework.boot' version '2.3.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 }
 
 group 'com.kimzing'
@@ -10,8 +10,6 @@ sourceCompatibility = '1.8'
 description '聚合服务-APP入口'
 
 configurations {
-    // 排除tomcat容器
-    implementation.exclude module: 'spring-boot-starter-tomcat'
     // 排除jackson xml，防止返回xml格式数据
     implementation.exclude module: 'jackson-dataformat-xml'
     // 使compileOnly包含annotationProcessor的集合
@@ -31,7 +29,6 @@ dependencies {
     implementation 'org.apache.dubbo:dubbo-spring-boot-starter:2.7.8'
     // webmvc
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-undertow'
     // openfeign接口调用
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     // 分布式事物
