@@ -17,9 +17,9 @@ configurations {
 }
 
 ext {
-    springBootAdminVersion = '2.2.3'
-    springCloudAlibabaVersion = '2.2.1.RELEASE'
-    springCloudVersion = 'Hoxton.SR4'
+    springBootAdminVersion = '2.3.0'
+    springCloudAlibabaVersion = '2.2.2.RELEASE'
+    springCloudVersion = 'Hoxton.SR8'
 }
 
 dependencies {
@@ -28,7 +28,7 @@ dependencies {
     // openfeign接口调用
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     // 消息队列
-    implementation 'org.apache.rocketmq:rocketmq-spring-boot-starter:2.1.0'
+    implementation 'com.alibaba.cloud:spring-cloud-starter-stream-rocketmq'
     // 公共api模块
     implementation project(':service-api')
     // 工具项目
@@ -79,7 +79,7 @@ test {
 
 repositories {
     maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
-    maven { url 'http://mvn.kimzing.com/repository/maven-releases/' }
+    maven { url 'http://mvn.kimzing.com/repository/maven-public/' }
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
     mavenCentral()
 }

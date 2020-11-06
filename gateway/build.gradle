@@ -10,9 +10,9 @@ sourceCompatibility = '1.8'
 description '网关服务'
 
 ext {
-    springBootAdminVersion = '2.2.3'
-    springCloudAlibabaVersion = '2.2.1.RELEASE'
-    springCloudVersion = 'Hoxton.SR4'
+    springBootAdminVersion = '2.3.0'
+    springCloudAlibabaVersion = '2.2.2.RELEASE'
+    springCloudVersion = 'Hoxton.SR8'
 }
 
 dependencies {
@@ -55,7 +55,7 @@ test {
 
 repositories {
     maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
-    maven { url 'http://mvn.kimzing.com/repository/maven-releases/' }
+    maven { url 'http://mvn.kimzing.com/repository/maven-public/' }
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
     mavenCentral()
 }

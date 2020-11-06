@@ -6,8 +6,8 @@ spring:
   cloud:
     nacos:
       server-addr: ${nacos-server-addr:localhost:8848}
-      username: ${nacos-username:nacos}
-      password: ${nacos-password:nacos}
+      username: ${nacos-username:dev}
+      password: ${nacos-password:123456}
       discovery:
         namespace: ${spring.profiles.active}
       config:
