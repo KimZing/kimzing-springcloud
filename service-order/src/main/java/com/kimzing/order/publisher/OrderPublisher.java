@@ -1,11 +1,7 @@
 package com.kimzing.order.publisher;
 
 import com.kimzing.order.domain.order.OrderCheckCancelEvent;
-import com.kimzing.utils.log.LogUtil;
-import org.apache.rocketmq.client.producer.SendCallback;
-import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
-import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -27,17 +23,17 @@ public class OrderPublisher {
      * @param orderCheckCancelEvent
      */
     public void publishOrderCheckCancelEvent(OrderCheckCancelEvent orderCheckCancelEvent) {
-        rocketMQTemplate.asyncSend(OrderCheckCancelEvent.TOPIC, MessageBuilder.withPayload(orderCheckCancelEvent).build(),
-                new SendCallback() {
-                    @Override
-                    public void onSuccess(SendResult sendResult) {
-                        LogUtil.info("消息[{}]发送成功: [{}]", orderCheckCancelEvent, sendResult);
-                    }
-
-                    @Override
-                    public void onException(Throwable e) {
-                        LogUtil.error("消息[{}]发送失败: [{}]", orderCheckCancelEvent, e);
-                    }
-                }, 3000, 15);
+        // rocketMQTemplate.asyncSend(OrderCheckCancelEvent.TOPIC, MessageBuilder.withPayload(orderCheckCancelEvent).build(),
+        //         new SendCallback() {
+        //             @Override
+        //             public void onSuccess(SendResult sendResult) {
+        //                 LogUtil.info("消息[{}]发送成功: [{}]", orderCheckCancelEvent, sendResult);
+        //             }
+        //
+        //             @Override
+        //             public void onException(Throwable e) {
+        //                 LogUtil.error("消息[{}]发送失败: [{}]", orderCheckCancelEvent, e);
+        //             }
+        //         }, 3000, 15);
     }
 }
