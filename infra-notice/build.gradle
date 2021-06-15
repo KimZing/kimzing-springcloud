@@ -32,9 +32,9 @@ dependencies {
     // 公共api模块
     implementation project(':service-api')
     // 工具项目
-    implementation 'com.kimzing:kimzing-utils:1.0.0'
+    implementation 'com.kimzing:kimzing-utils:1.0.0-SNAPSHOT'
     // 自定义starter, 提供各种功能
-    implementation 'com.kimzing:kimzing-springboot-starter:1.0.0'
+    implementation 'com.kimzing:kimzing-springboot-starter:1.0.0-SNAPSHOT'
     // 邮件功能
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     // JSR303校验

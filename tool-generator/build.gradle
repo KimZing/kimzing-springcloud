@@ -13,7 +13,7 @@ dependencies {
     // mysql连接驱动
     runtimeOnly 'mysql:mysql-connector-java:5.1.48'
     // 工具项目
-    implementation 'com.kimzing:kimzing-utils:1.0.0'
+    implementation 'com.kimzing:kimzing-utils:1.0.0-SNAPSHOT'
 }
 
 repositories {
